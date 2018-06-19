@@ -17,12 +17,12 @@ class ViewController: UIViewController {
 
     
     @IBAction func playInView(_ sender: UIButton) {
-        let vc = VideoViewController()
+        let vc = PlayVideoVC()
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func playInCell(_ sender: UIButton) {
-        let vc = TableCellPalyController()
+        let vc = CellPlayVC()
         navigationController?.pushViewController(vc, animated: true)
     }
 }

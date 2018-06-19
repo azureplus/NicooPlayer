@@ -1,8 +1,8 @@
 //
-//  VideoViewController.swift
-//  TZVideoPlayer_Example
+//  PlayVideoVC.swift
+//  NicooPlayer_Example
 //
-//  Created by 小星星 on 2018/6/12.
+//  Created by 小星星 on 2018/6/19.
 //  Copyright © 2018年 CocoaPods. All rights reserved.
 //
 
@@ -10,17 +10,17 @@ import UIKit
 import NicooPlayer
 let kScreenWidth = UIScreen.main.bounds.width
 let kScreenHeight = UIScreen.main.bounds.height
-class VideoViewController: UIViewController,NicooPlayerDelegate {
-   
+class PlayVideoVC: UIViewController,NicooPlayerDelegate {
     
-
+    
+    
     lazy var playOrPauseBtn: UIButton = {
         let button = UIButton(type: .custom)
-      
+        
         button.setTitle("重置播放器", for: .normal)
         button.backgroundColor = UIColor.gray
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.addTarget(self, action: #selector(VideoViewController.btnclick(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(PlayVideoVC.btnclick(_:)), for: .touchUpInside)
         return button
     }()
     lazy var playOrPauseBtn1: UIButton = {
@@ -28,7 +28,7 @@ class VideoViewController: UIViewController,NicooPlayerDelegate {
         button.setTitle("改变父视图", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.backgroundColor = UIColor.gray
-        button.addTarget(self, action: #selector(VideoViewController.btnclick1(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(PlayVideoVC.btnclick1(_:)), for: .touchUpInside)
         return button
     }()
     lazy var getInfoBtn: UIButton = {
@@ -36,7 +36,7 @@ class VideoViewController: UIViewController,NicooPlayerDelegate {
         button.setTitle("获取进度", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.backgroundColor = UIColor.gray
-        button.addTarget(self, action: #selector(VideoViewController.btnclick2(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(PlayVideoVC.btnclick2(_:)), for: .touchUpInside)
         return button
     }()
     lazy var fateherView: UIView = {
@@ -61,7 +61,7 @@ class VideoViewController: UIViewController,NicooPlayerDelegate {
         super.viewDidLoad()
         view.addSubview(fateherView)
         view.addSubview(fateherView1)
-     
+        
         view.backgroundColor = UIColor.white
         fateherView.snp.makeConstraints { (make) in
             make.leading.equalTo(0)
@@ -103,7 +103,7 @@ class VideoViewController: UIViewController,NicooPlayerDelegate {
         playerView.playVideo("https://dn-mykplus.qbox.me/2.mp4", "这里传递视屏名称", fateherView)
         
         // 初始化播放器，并从某个时间点开始播放
-       // playerView.replayVideo("https://dn-mykplus.qbox.me/3.mp4", "视屏名称", fateherView, 180.0)
+        // playerView.replayVideo("https://dn-mykplus.qbox.me/3.mp4", "视屏名称", fateherView, 180.0)
         
     }
     @objc func btnclick1(_ sender: UIButton) {
@@ -119,11 +119,11 @@ class VideoViewController: UIViewController,NicooPlayerDelegate {
     ///
     /// - Parameter sender:
     @objc func btnclick2(_ sender: UIButton) {
-      // 获取加载进度
-       let poloading  =  playerView.getLoadingPositionTime()
+        // 获取加载进度
+        let poloading  =  playerView.getLoadingPositionTime()
         
-      // 获取播放时间和视频总时长   返回数组， 数组第一个元素为： 播放时间    第二个元素为： 视频总时长
-       let playTime =  playerView.getNowPlayPositionTimeAndVideoDuration()
+        // 获取播放时间和视频总时长   返回数组， 数组第一个元素为： 播放时间    第二个元素为： 视频总时长
+        let playTime =  playerView.getNowPlayPositionTimeAndVideoDuration()
         
         print("已加载时间 = \(poloading) .播放时间 = \(playTime[0]) . 视频总时长= \(playTime[1])")
         sender.setTitle(String(format: "%.2f s", playTime[0]), for: .normal)
@@ -136,7 +136,7 @@ class VideoViewController: UIViewController,NicooPlayerDelegate {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-       
+        
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -156,5 +156,6 @@ class VideoViewController: UIViewController,NicooPlayerDelegate {
     func playerDidSelectedItemIndex(_ index: Int) {
         print("分享按钮点击第几个: index = \(index)")
     }
-
+    
 }
+

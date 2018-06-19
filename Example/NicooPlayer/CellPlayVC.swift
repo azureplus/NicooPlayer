@@ -1,14 +1,14 @@
 //
-//  TableCellPalyController.swift
-//  TZVideoPlayer_Example
+//  CellPlayVC.swift
+//  NicooPlayer_Example
 //
-//  Created by 小星星 on 2018/6/15.
+//  Created by 小星星 on 2018/6/19.
 //  Copyright © 2018年 CocoaPods. All rights reserved.
 //
 
 import UIKit
 import NicooPlayer
-class TableCellPalyController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     fileprivate lazy var playerView: NicooPlayerView = {
@@ -28,7 +28,7 @@ class TableCellPalyController: UIViewController,UITableViewDelegate,UITableViewD
                 make.edges.equalToSuperview()
             }
         }
-        tableView.register(UINib(nibName: "VideoListCellTableViewCell", bundle: nil), forCellReuseIdentifier: TableCellPalyController.cellIdentifier)
+        tableView.register(UINib(nibName: "NicooVideoCell", bundle: nil), forCellReuseIdentifier: CellPlayVC.cellIdentifier)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -40,18 +40,18 @@ class TableCellPalyController: UIViewController,UITableViewDelegate,UITableViewD
         isAllowAutorotate = false
         self.playerView.destructPlayerResource()
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableCellPalyController.cellIdentifier, for: indexPath) as? VideoListCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellPlayVC.cellIdentifier, for: indexPath) as? NicooVideoCell
         
         cell?.playButtonClickBlock = { (sender) in
             let url = String(format: "https://dn-mykplus.qbox.me/%ld.mp4", indexPath.row)
-            self.playerView.playVideo(url, "视频名称", cell?.backgroundImage)
+            self.playerView.playVideo(url, "视频名称", cell?.backGroundImage)
         }
-        cell?.configureCell()
+        
         
         return cell!
     }
@@ -63,7 +63,7 @@ class TableCellPalyController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
 }
-extension TableCellPalyController: NicooPlayerDelegate {
+extension CellPlayVC: NicooPlayerDelegate {
     func retryToPlayVideo(_ videoModel: NicooVideoModel?, _ fatherView: UIView?) {
         if  let sinceTime = videoModel?.videoPlaySinceTime, sinceTime > 0 {
             playerView.replayVideo(videoModel?.videoUrl, videoModel?.videoName, fatherView, sinceTime)

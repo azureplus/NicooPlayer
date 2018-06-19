@@ -1,16 +1,16 @@
 //
-//  VideoListCellTableViewCell.swift
-//  VideoProject
+//  NicooVideoCell.swift
+//  NicooPlayer_Example
 //
-//  Created by 小星星 on 2018/6/14.
-//  Copyright © 2018年 yangxin. All rights reserved.
+//  Created by 小星星 on 2018/6/19.
+//  Copyright © 2018年 CocoaPods. All rights reserved.
 //
 
 import UIKit
-import SnapKit
-class VideoListCellTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var backgroundImage: UIImageView!
+class NicooVideoCell: UITableViewCell {
+
+    @IBOutlet weak var backGroundImage: UIImageView!
     lazy var playButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = UIColor.black
@@ -25,7 +25,7 @@ class VideoListCellTableViewCell: UITableViewCell {
     var playButtonClickBlock:((_ sender: UIButton) ->())?
     override func awakeFromNib() {
         super.awakeFromNib()
-       self.backgroundImage.addSubview(playButton)
+        self.backGroundImage.addSubview(playButton)
         playButton.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.height.equalTo(60)
@@ -37,16 +37,5 @@ class VideoListCellTableViewCell: UITableViewCell {
             self.playButtonClickBlock!(sender)
         }
     }
-    func configureCell() {
-//        let url = "http://img.wdjimg.com/image/video/cd47d8370569dbb9b223942674c41785_0_0.jpeg"
-//        let imageUrl = URL(string: url)
-//    
-//        backgroundImage.kf.setImage(with: imageUrl, placeholder: nil, options: [.transition(ImageTransition.fade(1))], progressBlock: { (receivedSize, totalSize) in
-//            
-//        }) { (image, error, cacheType, imageUrl) in
-//            
-//        }
-       
-        
-    }
+    
 }
