@@ -1,7 +1,7 @@
 # NicooPlayer
-<<<<<<< HEAD
+
 videoPlayer for swift4.1
-=======
+
 
 [![CI Status](https://img.shields.io/travis/504672006@qq.com/NicooPlayer.svg?style=flat)](https://travis-ci.org/504672006@qq.com/NicooPlayer)
 [![Version](https://img.shields.io/cocoapods/v/NicooPlayer.svg?style=flat)](https://cocoapods.org/pods/NicooPlayer)
@@ -30,4 +30,4 @@ pod 'NicooPlayer'
 ## License
 
 NicooPlayer is available under the MIT license. See the LICENSE file for more info.
->>>>>>> ba83e57c0bebde818511fb6721be9d93df43e653
+
