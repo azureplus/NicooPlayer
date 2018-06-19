@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'NicooPlayer_Example' do
+  pod 'NicooPlayer', :path => '../'
+
+  target 'NicooPlayer_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
