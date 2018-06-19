@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0791D65020D8AD32009E1109 /* VideoListCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791D64B20D8AD32009E1109 /* VideoListCellTableViewCell.swift */; };
+		0791D65120D8AD32009E1109 /* VideoListCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0791D64C20D8AD32009E1109 /* VideoListCellTableViewCell.xib */; };
+		0791D65220D8AD32009E1109 /* TableCellPalyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791D64D20D8AD32009E1109 /* TableCellPalyController.swift */; };
+		0791D65320D8AD32009E1109 /* TableCellPalyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0791D64E20D8AD32009E1109 /* TableCellPalyController.xib */; };
+		0791D65420D8AD32009E1109 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791D64F20D8AD32009E1109 /* VideoViewController.swift */; };
 		30858DA0B394890F2DD09422 /* Pods_NicooPlayer_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6237AFA061EFABC61B840210 /* Pods_NicooPlayer_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -28,8 +33,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0791D64B20D8AD32009E1109 /* VideoListCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListCellTableViewCell.swift; sourceTree = "<group>"; };
+		0791D64C20D8AD32009E1109 /* VideoListCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListCellTableViewCell.xib; sourceTree = "<group>"; };
+		0791D64D20D8AD32009E1109 /* TableCellPalyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellPalyController.swift; sourceTree = "<group>"; };
+		0791D64E20D8AD32009E1109 /* TableCellPalyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCellPalyController.xib; sourceTree = "<group>"; };
+		0791D64F20D8AD32009E1109 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		0D689AB229E55E1B0F0F9A6E /* Pods-NicooPlayer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NicooPlayer_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NicooPlayer_Example/Pods-NicooPlayer_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		1714656CCCE457A253FA3994 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1714656CCCE457A253FA3994 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		404488BB86E22FC167AC84D3 /* Pods-NicooPlayer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NicooPlayer_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NicooPlayer_Tests/Pods-NicooPlayer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* NicooPlayer_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NicooPlayer_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,10 +52,10 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6237AFA061EFABC61B840210 /* Pods_NicooPlayer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NicooPlayer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		76BFB662A8AFF6B62BB684E5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		76BFB662A8AFF6B62BB684E5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		94529E51242DE3D7081CB7D6 /* Pods-NicooPlayer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NicooPlayer_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-NicooPlayer_Example/Pods-NicooPlayer_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A8EB779262E6ED0967718D3E /* Pods-NicooPlayer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NicooPlayer_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NicooPlayer_Tests/Pods-NicooPlayer_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		C42E9FFF356523090148D131 /* NicooPlayer.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = NicooPlayer.podspec; path = ../NicooPlayer.podspec; sourceTree = "<group>"; };
+		C42E9FFF356523090148D131 /* NicooPlayer.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NicooPlayer.podspec; path = ../NicooPlayer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E0E5218DF83CD2768D61DAAD /* Pods_NicooPlayer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NicooPlayer_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0791D64A20D8AD32009E1109 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0791D64B20D8AD32009E1109 /* VideoListCellTableViewCell.swift */,
+				0791D64C20D8AD32009E1109 /* VideoListCellTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5EB3806956D38C8FE0CC8301 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +121,10 @@
 		607FACD21AFB9204008FA782 /* Example for NicooPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				0791D64D20D8AD32009E1109 /* TableCellPalyController.swift */,
+				0791D64E20D8AD32009E1109 /* TableCellPalyController.xib */,
+				0791D64F20D8AD32009E1109 /* VideoViewController.swift */,
+				0791D64A20D8AD32009E1109 /* View */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -246,6 +269,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				0791D65320D8AD32009E1109 /* TableCellPalyController.xib in Resources */,
+				0791D65120D8AD32009E1109 /* VideoListCellTableViewCell.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -268,11 +293,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NicooPlayer_Example/Pods-NicooPlayer_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/NicooPlayer/NicooPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NicooPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -324,6 +353,9 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				0791D65220D8AD32009E1109 /* TableCellPalyController.swift in Sources */,
+				0791D65420D8AD32009E1109 /* VideoViewController.swift in Sources */,
+				0791D65020D8AD32009E1109 /* VideoListCellTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

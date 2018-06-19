@@ -15,10 +15,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func playInView(_ sender: UIButton) {
+        let vc = VideoViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
-
+    
+    @IBAction func playInCell(_ sender: UIButton) {
+        let vc = TableCellPalyController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rtw-iy-gHJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +20,74 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zf2-Sp-xfQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="260" id="4KJ-qc-lq4"/>
+                                </constraints>
+                                <string key="text">整个项目不支持横屏，但是单个页面支持横屏，当前页面不支持横屏\n   playerView.playVideo("https://dn-mykplus.qbox.me/3.mp4", "这里传递视屏名称", fateherView) 改变父视图playerView.changeVideoContainerView(fateherView1) 播放器需要实现两个代理方法： 一个用于分享按钮点击一个用于网络重试点击。</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gi2-5g-i7m">
+                                <rect key="frame" x="67.5" y="290" width="240" height="40"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Zuy-Jk-kST"/>
+                                    <constraint firstAttribute="width" constant="240" id="qQV-al-FDi"/>
+                                </constraints>
+                                <state key="normal" title="播放视频"/>
+                                <connections>
+                                    <action selector="playInView:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EXj-iT-ZpF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5z-V0-wM0">
+                                <rect key="frame" x="67.5" y="350" width="240" height="40"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="fCu-tT-NiX"/>
+                                </constraints>
+                                <state key="normal" title="cell上播放"/>
+                                <connections>
+                                    <action selector="playInCell:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7Sn-0a-HJ6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="a5z-V0-wM0" firstAttribute="trailing" secondItem="gi2-5g-i7m" secondAttribute="trailing" id="3AI-2j-wC5"/>
+                            <constraint firstAttribute="trailing" secondItem="Zf2-Sp-xfQ" secondAttribute="trailing" id="6Hd-5C-d1K"/>
+                            <constraint firstItem="Zf2-Sp-xfQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Kva-7n-i4B"/>
+                            <constraint firstItem="gi2-5g-i7m" firstAttribute="top" secondItem="Zf2-Sp-xfQ" secondAttribute="bottom" constant="30" id="PDp-ko-hL6"/>
+                            <constraint firstItem="Zf2-Sp-xfQ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="X1e-aw-86s"/>
+                            <constraint firstItem="a5z-V0-wM0" firstAttribute="top" secondItem="gi2-5g-i7m" secondAttribute="bottom" constant="20" id="agb-EJ-Rbh"/>
+                            <constraint firstItem="gi2-5g-i7m" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="iiw-Ap-EGo"/>
+                            <constraint firstItem="a5z-V0-wM0" firstAttribute="leading" secondItem="gi2-5g-i7m" secondAttribute="leading" id="nOr-No-srG"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="TuU-sy-Ygu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="304.80000000000001" y="169.56521739130437"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zll-ur-nHn">
+            <objects>
+                <navigationController id="rtw-iy-gHJ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p9C-Vx-eKH">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="uGd-oZ-wsl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PaV-A8-z7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-719" y="170"/>
         </scene>
     </scenes>
 </document>
