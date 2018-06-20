@@ -94,7 +94,7 @@ open class NicooPlayerView: UIView {
                 if playControllViewEmbed.loadingView.isAnimating {
                     playControllViewEmbed.loadingView.stopAnimating()
                 }
-                if !playControllViewEmbed.panGesture.isEnabled {
+                if !playControllViewEmbed.panGesture.isEnabled && !playControllViewEmbed.screenIsLock! {
                     playControllViewEmbed.panGesture.isEnabled = true
                 }
                 self.hideLoadingHud()
@@ -415,84 +415,93 @@ open class NicooPlayerView: UIView {
     }
     private func addUserActionBlock() {
         // 返回，关闭
-        playControllViewEmbed.closeButtonClick = { (sender) in
-            if self.isFullScreen! {                                    // 如果全屏，关闭按钮 关闭全屏
-                self.interfaceOrientation(UIInterfaceOrientation.portrait)
+        playControllViewEmbed.closeButtonClick = { [weak self] (sender) in
+            guard let strongSelf = self else {
+                return
+            }
+            if strongSelf.isFullScreen! {                                    // 如果全屏，关闭按钮 关闭全屏
+                strongSelf.interfaceOrientation(UIInterfaceOrientation.portrait)
             }else {                                                    // 非全屏状态，停止播放，移除播放视图
                 print("非全屏状态，停止播放，移除播放视图")
-                self.destructPlayerResource()
+                strongSelf.destructPlayerResource()
             }
         }
         // 全屏
-        playControllViewEmbed.fullScreenButtonClick = { (sender) in
-            if self.isFullScreen! {
-                self.interfaceOrientation(UIInterfaceOrientation.portrait)
+        playControllViewEmbed.fullScreenButtonClick = { [weak self] (sender) in
+            guard let strongSelf = self else {
+                return
+            }
+            if strongSelf.isFullScreen! {
+                strongSelf.interfaceOrientation(UIInterfaceOrientation.portrait)
             }else{
-                self.interfaceOrientation(UIInterfaceOrientation.landscapeRight)
+                strongSelf.interfaceOrientation(UIInterfaceOrientation.landscapeRight)
             }
         }
         // 播放暂停
-        playControllViewEmbed.playOrPauseButtonClick = { (sender) in
-            if self.playerStatu == PlayerStatus.Playing {
-                self.playerStatu = PlayerStatus.Pause
-            }else if self.playerStatu == PlayerStatus.Pause {
-                self.playerStatu = PlayerStatus.Playing
+        playControllViewEmbed.playOrPauseButtonClick = { [weak self] (sender) in
+            if self?.playerStatu == PlayerStatus.Playing {
+                self?.playerStatu = PlayerStatus.Pause
+            }else if self?.playerStatu == PlayerStatus.Pause {
+                self?.playerStatu = PlayerStatus.Playing
             }
         }
         // 重播
-        playControllViewEmbed.replayButtonClick = { (_) in
-            self.avItem?.seek(to: kCMTimeZero)
-            self.startReadyToPlay()
-            self.playerStatu = PlayerStatus.Playing
+        playControllViewEmbed.replayButtonClick = { [weak self] (_) in
+            self?.avItem?.seek(to: kCMTimeZero)
+            self?.startReadyToPlay()
+            self?.playerStatu = PlayerStatus.Playing
         }
         // 分享按钮点击
-        playControllViewEmbed.muneButtonClick = { (_) in
-            if !self.subviews.contains(self.shareMuneView) {
-                self.addSubview(self.shareMuneView)
+        playControllViewEmbed.muneButtonClick = { [weak self] (_) in
+            guard let strongSelf = self else {
+                return
             }
-            self.shareMuneView.snp.makeConstraints({ (make) in
+            if !strongSelf.subviews.contains(strongSelf.shareMuneView) {
+                strongSelf.addSubview(strongSelf.shareMuneView)
+            }
+            strongSelf.shareMuneView.snp.makeConstraints({ (make) in
                 make.edges.equalToSuperview()
             })
         }
         // 音量，亮度，进度拖动
         self.configureSystemVolume()             // 获取系统音量控件   可以选择自定义，效果会比系统的好
         
-        playControllViewEmbed.pangeustureAction = { (sender) in
-            guard let avItem = self.avItem  else {return}                     // 如果 avItem 不存在，手势无响应
-            
-            let locationPoint = sender.location(in: self.playControllViewEmbed)
+        playControllViewEmbed.pangeustureAction = { [weak self] (sender) in
+            guard let avItem = self?.avItem  else {return}                     // 如果 avItem 不存在，手势无响应
+            guard let strongSelf = self else {return}
+            let locationPoint = sender.location(in: strongSelf.playControllViewEmbed)
             /// 根据上次和本次移动的位置，算出一个速率的point
-            let veloctyPoint = sender.velocity(in: self.playControllViewEmbed)
+            let veloctyPoint = sender.velocity(in: strongSelf.playControllViewEmbed)
             switch sender.state {
             case .began:
                 
-                NSObject.cancelPreviousPerformRequests(withTarget: self.playControllViewEmbed, selector: #selector(NicooPlayerControlView.autoHideTopBottomBar), object: nil)    // 取消5秒自动消失控制栏
-                self.playControllViewEmbed.barIsHidden = false
+                NSObject.cancelPreviousPerformRequests(withTarget: strongSelf.playControllViewEmbed, selector: #selector(NicooPlayerControlView.autoHideTopBottomBar), object: nil)    // 取消5秒自动消失控制栏
+                strongSelf.playControllViewEmbed.barIsHidden = false
                 
                 // 使用绝对值来判断移动的方向
                 let x = fabs(veloctyPoint.x)
                 let y = fabs(veloctyPoint.y)
                 
                 if x > y {                       //水平滑动
-                    self.panDirection = PanDirection.PanDirectionHorizontal
-                    self.beforeSliderChangePlayStatu = self.playerStatu  // 拖动开始时，记录下拖动前的状态
-                    self.playerStatu = PlayerStatus.Pause                // 拖动开始，暂停播放
-                    self.pauseButton.isHidden = true                     // 拖动时隐藏暂停按钮
-                    self.sumTime = CGFloat(avItem.currentTime().value)/CGFloat(avItem.currentTime().timescale)
-                    if !self.subviews.contains(self.draggedProgressView) {
-                        self.addSubview(self.draggedProgressView)
-                        self.layoutDraggedContainers()
+                    strongSelf.panDirection = PanDirection.PanDirectionHorizontal
+                    strongSelf.beforeSliderChangePlayStatu = strongSelf.playerStatu  // 拖动开始时，记录下拖动前的状态
+                    strongSelf.playerStatu = PlayerStatus.Pause                // 拖动开始，暂停播放
+                    strongSelf.pauseButton.isHidden = true                     // 拖动时隐藏暂停按钮
+                    strongSelf.sumTime = CGFloat(avItem.currentTime().value)/CGFloat(avItem.currentTime().timescale)
+                    if !strongSelf.subviews.contains(strongSelf.draggedProgressView) {
+                        strongSelf.addSubview(strongSelf.draggedProgressView)
+                        strongSelf.layoutDraggedContainers()
                     }
                     
                 }else if x < y {
-                    self.panDirection = PanDirection.PanDirectionVertical
-                    if locationPoint.x > self.playControllViewEmbed.bounds.size.width/2 && locationPoint.y < self.playControllViewEmbed.bounds.size.height - 40 {  // 触摸点在视图右边，控制音量
+                    strongSelf.panDirection = PanDirection.PanDirectionVertical
+                    if locationPoint.x > strongSelf.playControllViewEmbed.bounds.size.width/2 && locationPoint.y < strongSelf.playControllViewEmbed.bounds.size.height - 40 {  // 触摸点在视图右边，控制音量
                         // 如果需要自定义 音量控制显示，在这里添加自定义VIEW
                         
-                    }else if locationPoint.x < self.playControllViewEmbed.bounds.size.width/2 && locationPoint.y < self.playControllViewEmbed.bounds.size.height - 40 {
-                        if !self.subviews.contains(self.brightnessSlider) {
-                            self.addSubview(self.brightnessSlider)
-                            self.brightnessSlider.snp.makeConstraints({ (make) in
+                    }else if locationPoint.x < strongSelf.playControllViewEmbed.bounds.size.width/2 && locationPoint.y < strongSelf.playControllViewEmbed.bounds.size.height - 40 {
+                        if !strongSelf.subviews.contains(strongSelf.brightnessSlider) {
+                            strongSelf.addSubview(strongSelf.brightnessSlider)
+                            strongSelf.brightnessSlider.snp.makeConstraints({ (make) in
                                 make.center.equalToSuperview()
                                 make.width.equalTo(155)
                                 make.height.equalTo(155)
@@ -502,49 +511,49 @@ open class NicooPlayerView: UIView {
                 }
                 break
             case .changed:
-                switch self.panDirection! {
+                switch strongSelf.panDirection! {
                 case .PanDirectionHorizontal:
                     let durationValue = CGFloat(avItem.duration.value)/CGFloat(avItem.duration.timescale)
-                    let draggedValue = self.horizontalMoved(veloctyPoint.x)
+                    let draggedValue = strongSelf.horizontalMoved(veloctyPoint.x)
                     let positionValue = CMTimeMakeWithSeconds(Float64(durationValue) * Float64(draggedValue), (avItem.duration.timescale))
                     avItem.seek(to: positionValue, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
                     break
                 case .PanDirectionVertical:
-                    if locationPoint.x > self.playControllViewEmbed.bounds.size.width/2 && locationPoint.y < self.playControllViewEmbed.bounds.size.height - 40 {
-                        self.veloctyMoved(veloctyPoint.y, true)
-                    }else if locationPoint.x < self.playControllViewEmbed.bounds.size.width/2 && locationPoint.y < self.playControllViewEmbed.bounds.size.height - 40 {
-                        self.veloctyMoved(veloctyPoint.y, false)
+                    if locationPoint.x > strongSelf.playControllViewEmbed.bounds.size.width/2 && locationPoint.y < strongSelf.playControllViewEmbed.bounds.size.height - 40 {
+                        strongSelf.veloctyMoved(veloctyPoint.y, true)
+                    }else if locationPoint.x < strongSelf.playControllViewEmbed.bounds.size.width/2 && locationPoint.y < strongSelf.playControllViewEmbed.bounds.size.height - 40 {
+                        strongSelf.veloctyMoved(veloctyPoint.y, false)
                     }
                     break
                 }
                 break
             case .ended:
-                switch self.panDirection! {
+                switch strongSelf.panDirection! {
                 case .PanDirectionHorizontal:
                     let position = CGFloat(avItem.duration.value)/CGFloat(avItem.duration.timescale)
-                    let sliderValue = self.sumTime!/position
-                    if !self.playControllViewEmbed.loadingView.isAnimating {
-                        self.playControllViewEmbed.loadingView.startAnimating()
+                    let sliderValue = strongSelf.sumTime!/position
+                    if !strongSelf.playControllViewEmbed.loadingView.isAnimating {
+                        strongSelf.playControllViewEmbed.loadingView.startAnimating()
                     }
                     let po = CMTimeMakeWithSeconds(Float64(position) * Float64(sliderValue), (avItem.duration.timescale))
                     avItem.seek(to: po, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
                     /// 拖动完成，sumTime置为0 回到之前的播放状态，如果播放状态为
-                    self.sumTime = 0
-                    self.pauseButton.isHidden = false
-                    self.playerStatu = self.beforeSliderChangePlayStatu!
+                    strongSelf.sumTime = 0
+                    strongSelf.pauseButton.isHidden = false
+                    strongSelf.playerStatu = strongSelf.beforeSliderChangePlayStatu!
                     
                     //进度拖拽完成，5庙后自动隐藏操作栏
-                    self.playControllViewEmbed.perform(#selector(NicooPlayerControlView.autoHideTopBottomBar), with: nil, afterDelay: 5)
+                    strongSelf.playControllViewEmbed.perform(#selector(NicooPlayerControlView.autoHideTopBottomBar), with: nil, afterDelay: 5)
                     
-                    if self.subviews.contains(self.draggedProgressView) {
-                        self.draggedProgressView.removeFromSuperview()
+                    if strongSelf.subviews.contains(strongSelf.draggedProgressView) {
+                        strongSelf.draggedProgressView.removeFromSuperview()
                     }
                     break
                 case .PanDirectionVertical:
                     //进度拖拽完成，5庙后自动隐藏操作栏
-                    self.playControllViewEmbed.perform(#selector(NicooPlayerControlView.autoHideTopBottomBar), with: nil, afterDelay: 5)
-                    if locationPoint.x < self.playControllViewEmbed.bounds.size.width/2 {    // 触摸点在视图左边 隐藏屏幕亮度
-                        self.brightnessSlider.removeFromSuperview()
+                    strongSelf.playControllViewEmbed.perform(#selector(NicooPlayerControlView.autoHideTopBottomBar), with: nil, afterDelay: 5)
+                    if locationPoint.x < strongSelf.playControllViewEmbed.bounds.size.width/2 {    // 触摸点在视图左边 隐藏屏幕亮度
+                        strongSelf.brightnessSlider.removeFromSuperview()
                     }
                     break
                 }
