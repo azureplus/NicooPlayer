@@ -205,12 +205,12 @@ class NicooPlayerControlView: UIView {
     }
     weak var delegate: NicooPlayerControlViewDelegate?
     
-    var fullScreenButtonClick: ((_ sender: UIButton) -> ())?
-    var playOrPauseButtonClick: ((_ sender: UIButton) -> ())?
-    var closeButtonClick: ((_ sender: UIButton) -> ())?
-    var muneButtonClick:((_ sender: UIButton) -> ())?
-    var replayButtonClick: ((_ sender: UIButton) -> ())?
-    var screenLockButtonClick: ((_ sender: UIButton) -> ())?
+    var fullScreenButtonClickBlock: ((_ sender: UIButton) -> ())?
+    var playOrPauseButtonClickBlock: ((_ sender: UIButton) -> ())?
+    var closeButtonClickBlock: ((_ sender: UIButton) -> ())?
+    var muneButtonClickBlock:((_ sender: UIButton) -> ())?
+    var replayButtonClickBlock: ((_ sender: UIButton) -> ())?
+    var screenLockButtonClickBlock: ((_ sender: UIButton) -> ())?
     var pangeustureAction: ((_ sender: UIPanGestureRecognizer) ->())?
     
     init(frame: CGRect, fullScreen: Bool) {
@@ -315,21 +315,21 @@ class NicooPlayerControlView: UIView {
     // MARK: - closeButton - Action
     
     @objc func closeButtonClick(_ sender: UIButton) {
-        if self.closeButtonClick != nil {
-            self.closeButtonClick!(sender)
+        if self.closeButtonClickBlock != nil {
+            self.closeButtonClickBlock!(sender)
         }
     }
     // MARK: - munesButton - Action
     @objc func munesButtonClick(_ sender: UIButton) {
-        if self.muneButtonClick != nil {
-            self.muneButtonClick!(sender)
+        if self.muneButtonClickBlock != nil {
+            self.muneButtonClickBlock!(sender)
         }
     }
     // MARK: - PlayOrPause - Action
     
     @objc func playOrPauseBtnClick(_ sender: UIButton) {
-        if self.playOrPauseButtonClick != nil {
-            self.playOrPauseButtonClick!(sender)
+        if self.playOrPauseButtonClickBlock != nil {
+            self.playOrPauseButtonClickBlock!(sender)
         }
     }
     // MARK: - screenLockButton - Action
@@ -338,20 +338,23 @@ class NicooPlayerControlView: UIView {
         sender.isSelected = !sender.isSelected
         self.screenIsLock = sender.isSelected
         self.barIsHidden = self.screenIsLock
+        if self.screenLockButtonClickBlock != nil {
+            self.screenLockButtonClickBlock!(sender)
+        }
     }
     
     // MARK: - FullScreen - Action
     
     @objc func fullScreenBtnClick(_ sender: UIButton){
-        if self.fullScreenButtonClick != nil {
-            self.fullScreenButtonClick!(sender)
+        if self.fullScreenButtonClickBlock != nil {
+            self.fullScreenButtonClickBlock!(sender)
         }
     }
     
     // MARK: - ReplayButtonClick
     @objc func replayButtonClick(_ sender: UIButton) {
-        if self.replayButtonClick != nil {
-            self.replayButtonClick!(sender)
+        if self.replayButtonClickBlock != nil {
+            self.replayButtonClickBlock!(sender)
         }
     }
     // MARK: - layoutAllSubviews

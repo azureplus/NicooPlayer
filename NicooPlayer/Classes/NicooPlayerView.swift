@@ -19,6 +19,7 @@ public protocol NicooPlayerDelegate: class {
     ///
     /// - Parameter index: 分享点击的Item Index
     func playerDidSelectedItemIndex(_ index: Int)
+    func screenOrientationSupportForScreenLock(_ screenLock: Bool)
 }
 
 open class NicooPlayerView: UIView {
@@ -416,7 +417,7 @@ open class NicooPlayerView: UIView {
     }
     private func addUserActionBlock() {
         // 返回，关闭
-        playControllViewEmbed.closeButtonClick = { [weak self] (sender) in
+        playControllViewEmbed.closeButtonClickBlock = { [weak self] (sender) in
             guard let strongSelf = self else {
                 return
             }
@@ -428,7 +429,7 @@ open class NicooPlayerView: UIView {
             }
         }
         // 全屏
-        playControllViewEmbed.fullScreenButtonClick = { [weak self] (sender) in
+        playControllViewEmbed.fullScreenButtonClickBlock = { [weak self] (sender) in
             guard let strongSelf = self else {
                 return
             }
@@ -439,21 +440,25 @@ open class NicooPlayerView: UIView {
             }
         }
         // 播放暂停
-        playControllViewEmbed.playOrPauseButtonClick = { [weak self] (sender) in
+        playControllViewEmbed.playOrPauseButtonClickBlock = { [weak self] (sender) in
             if self?.playerStatu == PlayerStatus.Playing {
                 self?.playerStatu = PlayerStatus.Pause
             }else if self?.playerStatu == PlayerStatus.Pause {
                 self?.playerStatu = PlayerStatus.Playing
             }
         }
+        playControllViewEmbed.screenLockButtonClickBlock = { [weak self] (sender) in
+            print("锁屏")
+            self?.delegate?.screenOrientationSupportForScreenLock(sender.isSelected)
+        }
         // 重播
-        playControllViewEmbed.replayButtonClick = { [weak self] (_) in
+        playControllViewEmbed.replayButtonClickBlock = { [weak self] (_) in
             self?.avItem?.seek(to: kCMTimeZero)
             self?.startReadyToPlay()
             self?.playerStatu = PlayerStatus.Playing
         }
         // 分享按钮点击
-        playControllViewEmbed.muneButtonClick = { [weak self] (_) in
+        playControllViewEmbed.muneButtonClickBlock = { [weak self] (_) in
             guard let strongSelf = self else {
                 return
             }
@@ -669,20 +674,24 @@ open class NicooPlayerView: UIView {
                 self.playControllViewEmbed.layoutIfNeeded()
             }, completion: nil)
         }else if orirntation == UIInterfaceOrientation.portrait {
-            isFullScreen = false
-            self.removeFromSuperview()
-            if let containerView = self.fatherView {
-                containerView.addSubview(self)
-                UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
-                    self.snp.makeConstraints({ (make) in
-                        make.edges.equalTo(containerView)
-                    })
-                    self.layoutIfNeeded()
-                    self.playControllViewEmbed.layoutIfNeeded()
-                }, completion: nil)
+            if !self.playControllViewEmbed.screenIsLock! {
+                isFullScreen = false
+                self.removeFromSuperview()
+                
+                if let containerView = self.fatherView {
+                    containerView.addSubview(self)
+                    UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
+                        self.snp.makeConstraints({ (make) in
+                            make.edges.equalTo(containerView)
+                        })
+                        self.layoutIfNeeded()
+                        self.playControllViewEmbed.layoutIfNeeded()
+                    }, completion: nil)
+                }
             }
+            
         }
-        self.layoutIfNeeded()
+       // self.layoutIfNeeded()
     }
     
     /// 强制横屏

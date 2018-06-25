@@ -36,14 +36,21 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        isAllowAutorotate = true
+        let appdelegate =  UIApplication.shared.delegate as? AppDelegate
+        appdelegate?.orientationSupport = .orientationAll
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        isAllowAutorotate = false
+        let appdelegate =  UIApplication.shared.delegate as? AppDelegate
+        appdelegate?.orientationSupport = .orientationPortrait
+        if let cc = playerView.value(forKey: "retainCount"),let vv = self.value(forKey: "retainCount") {
+            print("cccccccccccccccccc = \(cc)  ==  \(vv)")
+        }
         playerView.removeFromSuperview()
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -78,6 +85,13 @@ extension CellPlayVC: NicooPlayerDelegate {
         
     }
     
-    
+    func screenOrientationSupportForScreenLock(_ screenLock: Bool) {
+        let appdelegate =  UIApplication.shared.delegate as? AppDelegate
+        if screenLock {
+            appdelegate?.orientationSupport = .orientationLeftAndRight
+        }else {
+            appdelegate?.orientationSupport = .orientationAll
+        }
+    }
     
 }

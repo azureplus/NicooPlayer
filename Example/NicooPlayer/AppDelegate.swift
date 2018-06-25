@@ -7,26 +7,37 @@
 //
 
 import UIKit
-var isAllowAutorotate: Bool = false
+
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-
+    
+    public enum OrientationSupport: Int {
+        case orientationPortrait
+        case orientationLeftAndRight
+        case orientationAll
+    }
+    var orientationSupport: OrientationSupport = .orientationPortrait
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?)
         -> UIInterfaceOrientationMask {
-            if isAllowAutorotate {  // 这里用最暴力的方式解决横竖屏问题
+            if orientationSupport == .orientationAll {  // 这里用最暴力的方式解决横竖屏问题
                 return [.portrait, .landscapeLeft, .landscapeRight]
             }
-            else {
+            else if orientationSupport == .orientationPortrait {
                 return .portrait
+            }else {
+                return [.landscapeLeft, .landscapeRight]
             }
     }
+
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

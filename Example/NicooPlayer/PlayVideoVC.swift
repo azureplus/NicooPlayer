@@ -134,7 +134,8 @@ class PlayVideoVC: UIViewController,NicooPlayerDelegate {
     // 暴力支持横屏
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        isAllowAutorotate = true
+        let appdelegate =  UIApplication.shared.delegate as? AppDelegate
+        appdelegate?.orientationSupport = .orientationAll
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -142,8 +143,13 @@ class PlayVideoVC: UIViewController,NicooPlayerDelegate {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        isAllowAutorotate = false
-       
+        let appdelegate =  UIApplication.shared.delegate as? AppDelegate
+        appdelegate?.orientationSupport = .orientationPortrait
+        
+        if let cc = playerView.value(forKey: "retainCount") {
+            print("cccccccccccccccccc = \(cc)")
+        }
+        
     }
     
     //MARK: - NicooPlayerDelegate
@@ -157,6 +163,14 @@ class PlayVideoVC: UIViewController,NicooPlayerDelegate {
     }
     func playerDidSelectedItemIndex(_ index: Int) {
         print("分享按钮点击第几个: index = \(index)")
+    }
+    func screenOrientationSupportForScreenLock(_ screenLock: Bool) {
+        let appdelegate =  UIApplication.shared.delegate as? AppDelegate
+        if screenLock {
+            appdelegate?.orientationSupport = .orientationLeftAndRight
+        }else {
+            appdelegate?.orientationSupport = .orientationAll
+        }
     }
     
 }
