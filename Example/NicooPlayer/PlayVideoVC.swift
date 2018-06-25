@@ -56,7 +56,9 @@ class PlayVideoVC: UIViewController,NicooPlayerDelegate {
         player.delegate = self
         return player
     }()
-    
+    deinit {
+        print("视图控制器被释放了11")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(fateherView)
@@ -141,7 +143,7 @@ class PlayVideoVC: UIViewController,NicooPlayerDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         isAllowAutorotate = false
-        self.playerView.destructPlayerResource()
+       
     }
     
     //MARK: - NicooPlayerDelegate

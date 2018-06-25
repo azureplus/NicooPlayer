@@ -31,6 +31,9 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tableView.register(UINib(nibName: "NicooVideoCell", bundle: nil), forCellReuseIdentifier: CellPlayVC.cellIdentifier)
         
     }
+    deinit {
+        print("试图控制器被释放了")
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         isAllowAutorotate = true
@@ -38,7 +41,7 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         isAllowAutorotate = false
-        self.playerView.destructPlayerResource()
+        playerView.removeFromSuperview()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -47,9 +50,9 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellPlayVC.cellIdentifier, for: indexPath) as? NicooVideoCell
         
-        cell?.playButtonClickBlock = { (sender) in
+        cell?.playButtonClickBlock = { [weak self] (sender) in
             let url = String(format: "https://dn-mykplus.qbox.me/%ld.mp4", indexPath.row)
-            self.playerView.playVideo(url, "视频名称", cell?.backGroundImage)
+            self?.playerView.playVideo(url, "视频名称", cell?.backGroundImage)
         }
         
         

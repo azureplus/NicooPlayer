@@ -107,7 +107,7 @@ open class NicooPlayerView: UIView {
     var videoDuration: Float = 0
     
     /// 父视图
-    var fatherView: UIView?  {
+    weak var fatherView: UIView?  {
         willSet {
             if newValue != nil {
                 for view in (newValue?.subviews)! {
@@ -216,9 +216,12 @@ open class NicooPlayerView: UIView {
     }()
     
     deinit {
+        print("播放器被释放了")
         NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-        
+        self.avItem?.removeObserver(self, forKeyPath: "status")
+        self.avItem?.removeObserver(self, forKeyPath: "loadedTimeRanges")
+        self.avItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
+        self.avItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
     }
     public init(frame: CGRect, controlView: UIView? = nil) {
         super.init(frame: frame)
@@ -348,14 +351,12 @@ open class NicooPlayerView: UIView {
     }
     
     /// 销毁播放器
-    public func destructPlayerResource() {
+    fileprivate func destructPlayerResource() {
         self.avAsset = nil
         self.avItem = nil
         self.player?.replaceCurrentItem(with: nil)
         self.player = nil
         self.playerLayer?.removeFromSuperlayer()
-        NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         if let superView = self.fatherView {
             for view in superView.subviews {
                 if view.tag != 0 {
@@ -371,10 +372,10 @@ open class NicooPlayerView: UIView {
     /// - Parameter time: 要从开始的播放起点
     fileprivate func playSinceTime(_ time: CMTime) {
         if CMTIME_IS_VALID(time) {
-            avItem?.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero, completionHandler: { (finish) in
+            avItem?.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero, completionHandler: { [weak self] (finish) in
                 if finish {
-                    self.playerStatu = PlayerStatus.Playing
-                    self.hideLoadingHud()
+                    self?.playerStatu = PlayerStatus.Playing
+                    self?.hideLoadingHud()
                 }
             })
             return
@@ -804,19 +805,18 @@ extension NicooPlayerView {
     /// 监听PlayerItem对象
     fileprivate func listenTothePlayer() {
         guard let avItem = self.avItem else {return}
-        player?.addPeriodicTimeObserver(forInterval: CMTimeMake(Int64(1.0), Int32(1.0)), queue: nil, using: { (time) in
+        player?.addPeriodicTimeObserver(forInterval: CMTimeMake(Int64(1.0), Int32(1.0)), queue: nil, using: { [weak self] (time) in
             if Int(avItem.duration.value) > 0 && Int(avItem.currentTime().value) > 0 {
                 let value = Int(avItem.currentTime().value)/Int(avItem.currentTime().timescale)
                 let duration = Int(avItem.duration.value)/Int(avItem.duration.timescale)
                 let playValue = Float(value)/Float(duration)
                 // print("timeValue = \(value) s,alltime = \(duration) s  playvalue = \(playValue)")
-                let stringDuration = self.formatTimDuration(position: value, duration:duration)
-                let stringValue = self.formatTimPosition(position: value, duration: duration)
-                
-                //self.playControllViewEmbed.positionTimeLab.text = stringValue
-                self.playControllViewEmbed.timeSlider.value = playValue
-                self.playControllViewEmbed.durationTimeLab.text = String(format: "%@/%@", stringValue,stringDuration)
-                self.playedValue = Float(value)                                      // 保存播放进度
+                if  let stringDuration = self?.formatTimDuration(position: value, duration:duration), let stringValue = self?.formatTimPosition(position: value, duration: duration) {
+                    //self.playControllViewEmbed.positionTimeLab.text = stringValue
+                    self?.playControllViewEmbed.timeSlider.value = playValue
+                    self?.playControllViewEmbed.durationTimeLab.text = String(format: "%@/%@", stringValue, stringDuration)
+                }
+                self?.playedValue = Float(value)                                      // 保存播放进度
             }
         })
         addNotificationAndObserver()
