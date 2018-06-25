@@ -33,6 +33,7 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     deinit {
         print("试图控制器被释放了")
+        playerView.removeFromSuperview()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -49,7 +50,7 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if let cc = playerView.value(forKey: "retainCount"),let vv = self.value(forKey: "retainCount") {
             print("cccccccccccccccccc = \(cc)  ==  \(vv)")
         }
-        playerView.removeFromSuperview()
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
