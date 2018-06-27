@@ -19,7 +19,6 @@ public protocol NicooPlayerDelegate: class {
     ///
     /// - Parameter index: 分享点击的Item Index
     func playerDidSelectedItemIndex(_ index: Int)
-    func screenOrientationSupportForScreenLock(_ screenLock: Bool)
 }
 
 open class NicooPlayerView: UIView {
@@ -72,14 +71,18 @@ open class NicooPlayerView: UIView {
                 if self.subviews.contains(shareMuneView) {
                     shareMuneView.removeFromSuperview()
                 }
+                playControllViewEmbed.closeButton.snp.updateConstraints { (make) in
+                    make.width.equalTo(5)
+                }
+                playControllViewEmbed.closeButton.isEnabled = false
+            }else {
+                playControllViewEmbed.closeButton.snp.updateConstraints { (make) in
+                    make.width.equalTo(40)
+                }
+                playControllViewEmbed.closeButton.isEnabled = true
             }
         }
     }
-    
-    /// 是否允许全屏
-    var isLandScape: Bool? = false
-    
-    var isDragged: Bool? = false  //是否有手势作用
     
     /// 视频截图
     private(set)  var imageGenerator: AVAssetImageGenerator?  // 用来做预览，目前没有预览的需求
@@ -223,6 +226,7 @@ open class NicooPlayerView: UIView {
         self.avItem?.removeObserver(self, forKeyPath: "loadedTimeRanges")
         self.avItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
         self.avItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
+        orientationSupport = OrientationSupport.orientationPortrait
     }
     public init(frame: CGRect, controlView: UIView? = nil) {
         super.init(frame: frame)
@@ -256,9 +260,7 @@ open class NicooPlayerView: UIView {
         playerStatu = PlayerStatus.Playing // 初始状态为播放
         listenTothePlayer()
         addUserActionBlock()
-        playControllViewEmbed.closeButton.snp.updateConstraints { (make) in
-            make.width.equalTo(40)
-        }
+        
     }
     
     ///   从某个时间点开始播放
@@ -292,9 +294,7 @@ open class NicooPlayerView: UIView {
     open func changeVideoContainerView(_ containerView: UIView) {
         fatherView = containerView
         layoutAllPageSubviews()        //改变了父视图，需要重新布局
-        playControllViewEmbed.closeButton.snp.updateConstraints { (make) in
-            make.width.equalTo(0)
-        }
+       
     }
     /// 获取当前播放时间点 + 视频总时长
     ///
@@ -335,6 +335,8 @@ open class NicooPlayerView: UIView {
         NSObject.cancelPreviousPerformRequests(withTarget: playControllViewEmbed, selector: #selector(NicooPlayerControlView.autoHideTopBottomBar), object: nil)
         playControllViewEmbed.perform(#selector(NicooPlayerControlView.autoHideTopBottomBar), with: nil, afterDelay: 5)
         showLoadingHud()
+        
+        orientationSupport = OrientationSupport.orientationAll  //让播放器支持全屏播放
     }
     
     /// 重置播放器
@@ -357,6 +359,7 @@ open class NicooPlayerView: UIView {
         self.avItem = nil
         self.player?.replaceCurrentItem(with: nil)
         self.player = nil
+        orientationSupport = OrientationSupport.orientationPortrait
         self.playerLayer?.removeFromSuperlayer()
         if let superView = self.fatherView {
             for view in superView.subviews {
@@ -425,7 +428,7 @@ open class NicooPlayerView: UIView {
                 strongSelf.interfaceOrientation(UIInterfaceOrientation.portrait)
             }else {                                                    // 非全屏状态，停止播放，移除播放视图
                 print("非全屏状态，停止播放，移除播放视图")
-                strongSelf.destructPlayerResource()
+               // strongSelf.destructPlayerResource()
             }
         }
         // 全屏
@@ -449,7 +452,7 @@ open class NicooPlayerView: UIView {
         }
         playControllViewEmbed.screenLockButtonClickBlock = { [weak self] (sender) in
             print("锁屏")
-            self?.delegate?.screenOrientationSupportForScreenLock(sender.isSelected)
+            //self?.delegate?.screenOrientationSupportForScreenLock(sender.isSelected)
         }
         // 重播
         playControllViewEmbed.replayButtonClickBlock = { [weak self] (_) in
@@ -489,6 +492,10 @@ open class NicooPlayerView: UIView {
                 let y = fabs(veloctyPoint.y)
                 
                 if x > y {                       //水平滑动
+                    if !strongSelf.playControllViewEmbed.replayContainerView.isHidden {  // 锁屏状态下播放完成,解锁后，滑动
+                        strongSelf.startReadyToPlay()
+                        strongSelf.playControllViewEmbed.screenIsLock = false
+                    }
                     strongSelf.panDirection = PanDirection.PanDirectionHorizontal
                     strongSelf.beforeSliderChangePlayStatu = strongSelf.playerStatu  // 拖动开始时，记录下拖动前的状态
                     strongSelf.playerStatu = PlayerStatus.Pause                // 拖动开始，暂停播放
@@ -631,6 +638,7 @@ open class NicooPlayerView: UIView {
         playControllViewEmbed.doubleTapGesture.isEnabled = false
         playControllViewEmbed.panGesture.isEnabled = false
         playControllViewEmbed.timeSlider.value = 0
+        playControllViewEmbed.screenLockButton.isHidden = true
         playControllViewEmbed.loadedProgressView.setProgress(0, animated: false)
         playControllViewEmbed.loadingView.stopAnimating()
     }

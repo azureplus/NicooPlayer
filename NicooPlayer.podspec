@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NicooPlayer'
-  s.version          = '0.1.5'
+  s.version          = '1.0.1'
   s.summary          = 'NicooVideoPlayer for swift4.1'
 
 # This description is used to generate tags and improve search results.
@@ -41,6 +41,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency  'SnapKit', '~> 4.0.0'
+  s.dependency 'SnapKit', '~> 4.0.0'
   s.dependency 'MBProgressHUD','~> 0.9.2'
 end

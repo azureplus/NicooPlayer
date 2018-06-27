@@ -28,7 +28,7 @@ class NicooPlayerControlView: UIView {
     }()
     lazy var closeButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setImage(NicooImgManager.foundImage(imageName: "player_close"), for: .normal)
+        button.setImage(NicooImgManager.foundImage(imageName: ""), for: .normal)
         button.setImage(NicooImgManager.foundImage(imageName: "back"), for: .selected)
         button.setImage(NicooImgManager.foundImage(imageName: "back_hight"), for: .highlighted)
         button.addTarget(self, action: #selector(closeButtonClick(_:)), for: .touchUpInside)
@@ -189,17 +189,25 @@ class NicooPlayerControlView: UIView {
         didSet {
             self.screenLockButton.isHidden = !fullScreen!     // 只有全屏能锁定屏幕
             self.munesButton.isHidden = !fullScreen!          // 只有全屏显示分享按钮
+            if !screenLockButton.isHidden {
+                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideScreenLockButton), object: nil)
+                self.perform(#selector(autoHideScreenLockButton), with: nil, afterDelay: 5)
+            }
         }
     }
     
     var screenIsLock: Bool? = false {
         didSet {
             if screenIsLock! {
-                self.doubleTapGesture.isEnabled = false
-                self.panGesture.isEnabled = false
+                screenLockButton.isSelected = true
+                doubleTapGesture.isEnabled = false
+                panGesture.isEnabled = false
+                orientationSupport = OrientationSupport.orientationLeftAndRight
             }else {
-                self.doubleTapGesture.isEnabled = true
-                self.panGesture.isEnabled = true
+                screenLockButton.isSelected = false
+                doubleTapGesture.isEnabled = true
+                panGesture.isEnabled = true
+                orientationSupport = OrientationSupport.orientationAll
             }
         }
     }
@@ -335,12 +343,11 @@ class NicooPlayerControlView: UIView {
     // MARK: - screenLockButton - Action
     
     @objc func screenLockButtonClick(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        self.screenIsLock = sender.isSelected
-        self.barIsHidden = self.screenIsLock
-        if self.screenLockButtonClickBlock != nil {
-            self.screenLockButtonClickBlock!(sender)
-        }
+        screenIsLock = !screenIsLock!
+        barIsHidden = screenIsLock
+//        if self.screenLockButtonClickBlock != nil {
+//            self.screenLockButtonClickBlock!(sender)
+//        }
     }
     
     // MARK: - FullScreen - Action
@@ -386,7 +393,7 @@ class NicooPlayerControlView: UIView {
     private func layoutCloseButton() {
         closeButton.snp.makeConstraints { (make) in
             make.leading.top.bottom.equalToSuperview()
-            make.width.equalTo(40)
+            make.width.equalTo(5)
         }
     }
     private func layoutMunesButton() {

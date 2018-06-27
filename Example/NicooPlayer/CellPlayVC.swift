@@ -37,16 +37,14 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let appdelegate =  UIApplication.shared.delegate as? AppDelegate
-        appdelegate?.orientationSupport = .orientationAll
+       
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        let appdelegate =  UIApplication.shared.delegate as? AppDelegate
-        appdelegate?.orientationSupport = .orientationPortrait
+       
         if let cc = playerView.value(forKey: "retainCount"),let vv = self.value(forKey: "retainCount") {
             print("cccccccccccccccccc = \(cc)  ==  \(vv)")
         }
@@ -84,15 +82,6 @@ extension CellPlayVC: NicooPlayerDelegate {
     }
     func playerDidSelectedItemIndex(_ index: Int) {
         
-    }
-    
-    func screenOrientationSupportForScreenLock(_ screenLock: Bool) {
-        let appdelegate =  UIApplication.shared.delegate as? AppDelegate
-        if screenLock {
-            appdelegate?.orientationSupport = .orientationLeftAndRight
-        }else {
-            appdelegate?.orientationSupport = .orientationAll
-        }
     }
     
 }

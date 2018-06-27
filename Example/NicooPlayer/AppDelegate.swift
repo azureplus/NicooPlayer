@@ -7,19 +7,13 @@
 //
 
 import UIKit
-
+import NicooPlayer
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    public enum OrientationSupport: Int {
-        case orientationPortrait
-        case orientationLeftAndRight
-        case orientationAll
-    }
-    var orientationSupport: OrientationSupport = .orientationPortrait
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -27,14 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?)
         -> UIInterfaceOrientationMask {
-            if orientationSupport == .orientationAll {  // 这里用最暴力的方式解决横竖屏问题
-                return [.portrait, .landscapeLeft, .landscapeRight]
+            guard let num =  OrientationSupport(rawValue: orientationSupport.rawValue) else {
+                return [.portrait]
             }
-            else if orientationSupport == .orientationPortrait {
-                return .portrait
-            }else {
-                return [.landscapeLeft, .landscapeRight]
-            }
+            return num.getOrientSupports()   // 这里的支持方向，实际项目中最好用路由去播放器内拿
     }
 
 

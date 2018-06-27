@@ -1,6 +1,6 @@
 PODS:
   - MBProgressHUD (0.9.2)
-  - NicooPlayer (0.1.1):
+  - NicooPlayer (0.1.5):
     - MBProgressHUD (~> 0.9.2)
     - SnapKit (~> 4.0.0)
   - SnapKit (4.0.0)
@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  NicooPlayer: e9ab7f58685debb40ccd01ee8dc9411d2ffe4b73
+  NicooPlayer: 41ae42ae6360002b95a1b63ac6939b5112fbd368
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
 PODFILE CHECKSUM: 9f2552d28063f90c767cf84106025b2fde0e09c7

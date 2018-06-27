@@ -15,13 +15,14 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 ## 怎么用
-如果整个项目不支持横屏，播放视频的页面需要横屏，在APPDelegate 内添加方法 ：
+如果整个项目不支持横屏，播放视频时，页面需要横屏，在APPDelegate 内导入播放器头文件 , 添加方法 ：
 func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?)
--> UIInterfaceOrientationMask {if isAllowAutorotate { return [.portrait, .landscapeLeft, .landscapeRight]}else {return .portrait}}   其中 isAllowAutorotate为整个项目的全局变量
-
-实现此方法之后，在需要横屏的VC内的viewWillAppear 中设置为true， viewDidDisappear中设置为false.
-
-
+-> UIInterfaceOrientationMask {
+guard let num =  OrientationSupport(rawValue: orientationSupport.rawValue) else {
+return [.portrait]
+}
+return num.getOrientSupports()   
+}
 点击播放按钮时，调用：
 playerView.playVideo("视频链接", "视频名称", fateherView)
 
@@ -36,8 +37,7 @@ playerView.changeVideoContainerView ( fateherView1 )  ，传入需要的父视�
 let playTime =  playerView.getNowPlayPositionTimeAndVideoDuration()
 
 
-另外还要实现两个代理
-
+另外还要实现两个代理，具体看Demo
 
 
 ## Installation
