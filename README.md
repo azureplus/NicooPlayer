@@ -40,6 +40,7 @@ let playTime =  playerView.getNowPlayPositionTimeAndVideoDuration()
 另外还要实现两个代理，具体看Demo
 
 
+
 ## Installation
 
 NicooPlayer is available through [CocoaPods](https://cocoapods.org). To install
