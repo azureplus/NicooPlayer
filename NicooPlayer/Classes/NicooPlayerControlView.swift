@@ -435,8 +435,8 @@ class NicooPlayerControlView: UIView {
         screenLockButton.snp.makeConstraints { (make) in
             make.leading.equalTo(10)
             make.centerY.equalToSuperview()
-            make.height.equalTo(60)
-            make.width.equalTo(60)
+            make.height.equalTo(45)
+            make.width.equalTo(45)
         }
     }
     private func layoutReplayLable() {
@@ -492,7 +492,8 @@ class NicooPlayerControlView: UIView {
     }
     private func layoutFullScreenBtn() {
         fullScreenBtn.snp.makeConstraints { (make) in
-            make.trailing.top.bottom.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.trailing.equalTo(-5)
             make.width.equalTo(40)
         }
     }

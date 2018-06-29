@@ -22,4 +22,11 @@ public struct  NicooVideoModel {
     public var videoPlaySinceTime: Float = 0
 }
 
-
+public extension UIDevice {
+    public func isiPhoneX() -> Bool {
+        if UIScreen.main.bounds.height == 812 {
+            return true
+        }
+        return false
+    }
+}

@@ -675,9 +675,6 @@ open class NicooPlayerView: UIView {
                 self.snp.makeConstraints({ (make) in
                     make.edges.equalTo(UIApplication.shared.keyWindow!)
                 })
-                self.playControllViewEmbed.snp.makeConstraints({ (make) in
-                    make.edges.equalToSuperview()
-                })
                 self.layoutIfNeeded()
                 self.playControllViewEmbed.layoutIfNeeded()
             }, completion: nil)
@@ -744,7 +741,19 @@ open class NicooPlayerView: UIView {
     }
     private func layoutPlayControllView() {
         playControllViewEmbed.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            if #available(iOS 11.0, *) {
+                if UIDevice.current.isiPhoneX() {
+                    make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(25)
+                    make.trailing.equalTo(self.safeAreaLayoutGuide.snp.trailing).offset(-25)
+                    make.top.equalTo(self.safeAreaLayoutGuide.snp.top)
+                    make.bottom.equalToSuperview()
+                } else {
+                    make.edges.equalToSuperview()
+                }
+                
+            } else {
+                make.edges.equalToSuperview()
+            }
         }
     }
     private func layoutDraggedProgressView() {
