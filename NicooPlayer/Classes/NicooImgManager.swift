@@ -23,8 +23,20 @@ public struct  NicooVideoModel {
 }
 
 public extension UIDevice {
+    /// 兼容X
+    ///
+    /// - Returns: 判断是否为iPhoneX
     public func isiPhoneX() -> Bool {
         if UIScreen.main.bounds.height == 812 {
+            return true
+        }
+        return false
+    }
+    /// 兼容iPad
+    ///
+    /// - Returns: 判断是否为iPad
+    public func isPad() -> Bool {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             return true
         }
         return false

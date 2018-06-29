@@ -387,7 +387,11 @@ class NicooPlayerControlView: UIView {
     private func layoutBottomControlBarView() {
         bottomControlBarView.snp.makeConstraints { (make) in
             make.leading.bottom.trailing.equalTo(0)
-            make.height.equalTo(40)
+            if UIDevice.current.isPad() {             //兼容iPad
+                make.height.equalTo(70)
+            } else {
+                make.height.equalTo(40)
+            }
         }
     }
     private func layoutCloseButton() {
@@ -448,7 +452,11 @@ class NicooPlayerControlView: UIView {
     private func layoutTopControlBarView() {
         topControlBarView.snp.makeConstraints { (make) in
             make.leading.top.trailing.equalTo(0)
-            make.height.equalTo(40)
+            if UIDevice.current.isPad() {             //兼容iPad
+                make.height.equalTo(70)
+            } else {
+                make.height.equalTo(40)
+            }
         }
     }
     private func layoutPlayOrPauseBtn() {
