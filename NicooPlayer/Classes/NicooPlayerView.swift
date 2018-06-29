@@ -171,8 +171,8 @@ open class NicooPlayerView: UIView {
     lazy var pauseButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(NicooImgManager.foundImage(imageName: "pause"), for: .normal)
-        button.backgroundColor = UIColor(white: 0.1, alpha: 0.98)
-        button.layer.cornerRadius = 30
+        button.backgroundColor = UIColor(white: 0.0, alpha: 0.9)
+        button.layer.cornerRadius = 27.5
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(pauseButtonClick), for: .touchUpInside)
         return button
@@ -675,6 +675,16 @@ open class NicooPlayerView: UIView {
                 self.snp.makeConstraints({ (make) in
                     make.edges.equalTo(UIApplication.shared.keyWindow!)
                 })
+                if #available(iOS 11.0, *) {         // 横屏播放时，适配X
+                    if UIDevice.current.isiPhoneX() {
+                        self.playControllViewEmbed.snp.remakeConstraints({ (make) in
+                            make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(25)
+                            make.trailing.equalTo(self.safeAreaLayoutGuide.snp.trailing).offset(-25)
+                            make.top.equalTo(self.safeAreaLayoutGuide.snp.top)
+                            make.bottom.equalToSuperview()
+                        })
+                    }
+                }
                 self.layoutIfNeeded()
                 self.playControllViewEmbed.layoutIfNeeded()
             }, completion: nil)
@@ -689,6 +699,13 @@ open class NicooPlayerView: UIView {
                         self.snp.makeConstraints({ (make) in
                             make.edges.equalTo(containerView)
                         })
+                        if #available(iOS 11.0, *) {         // 竖屏播放时，适配X
+                            if UIDevice.current.isiPhoneX() {
+                                self.playControllViewEmbed.snp.makeConstraints({ (make) in
+                                    make.edges.equalToSuperview()
+                                })
+                            }
+                        }
                         self.layoutIfNeeded()
                         self.playControllViewEmbed.layoutIfNeeded()
                     }, completion: nil)
@@ -782,8 +799,8 @@ open class NicooPlayerView: UIView {
     private func layoutPauseButton() {
         pauseButton.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
-            make.width.equalTo(60)
-            make.height.equalTo(60)
+            make.width.equalTo(55)
+            make.height.equalTo(55)
         }
     }
     override open func layoutSubviews() {
