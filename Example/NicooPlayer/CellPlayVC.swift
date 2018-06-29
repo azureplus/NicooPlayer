@@ -57,7 +57,7 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellPlayVC.cellIdentifier, for: indexPath) as? NicooVideoCell
         
         cell?.playButtonClickBlock = { [weak self] (sender) in
-            let url = String(format: "https://dn-mykplus.qbox.me/%ld.mp4", indexPath.row)
+            let url = String(format: "https://dn-mykplus.qbox.me/%ld.mp4", indexPath.row+1)
             self?.playerView.playVideo(url, "视频名称", cell?.backGroundImage)
         }
         
@@ -68,7 +68,7 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return kScreenWidth * 9/16
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
 }
