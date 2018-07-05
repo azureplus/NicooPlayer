@@ -131,24 +131,19 @@ class PlayVideoVC: UIViewController,NicooPlayerDelegate {
         sender.setTitle(String(format: "%.2f s", playTime[0]), for: .normal)
     }
     
-    // 暴力支持横屏
+    
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       
+        if fateherView.subviews.contains(playerView) {
+            orientationSupport = OrientationSupport.orientationAll
+        }
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-
-        
-        if let cc = playerView.value(forKey: "retainCount") {
-            print("cccccccccccccccccc = \(cc)")
-        }
-        
+        playerView.playerStatu = NicooPlayerView.PlayerStatus.Pause
+        orientationSupport = OrientationSupport.orientationPortrait
     }
+   
     
     //MARK: - NicooPlayerDelegate
     func retryToPlayVideo(_ videoModel: NicooVideoModel?, _ fatherView: UIView?) {
