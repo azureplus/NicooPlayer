@@ -1,6 +1,6 @@
 {
   "name": "NicooPlayer",
-  "version": "0.1.5",
+  "version": "1.1.5",
   "summary": "NicooVideoPlayer for swift4.1",
   "description": "创建播放器：\nplayerView.playVideo(\"URL\", \"视频名称\", fateherView)\n从某个时间点开始比方（用于播放上次播放记录）\nplayerView.replayVideo(videoModel?.videoUrl, videoModel?.videoName, fatherView, sinceTime)\n改变播放器父视图:\nplayerView.changeVideoContainerView(fateherView1)\n获取播放进度：\nplayerView.getNowPlayPositionTimeAndVideoDuration()\n缓存进度：\nplayerView.getLoadingPositionTime()",
   "homepage": "https://github.com/yangxina/NicooPlayer",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/yangxina/NicooPlayer.git",
-    "tag": "0.1.5"
+    "tag": "1.1.5"
   },
   "platforms": {
     "ios": "8.0"

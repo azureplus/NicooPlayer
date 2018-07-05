@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NicooPlayer'
-  s.version          = '1.1.3'
+  s.version          = '1.1.5'
   s.summary          = 'NicooVideoPlayer for swift4.1'
 
 # This description is used to generate tags and improve search results.

@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0739E31120EE1E3900C0BEBD /* CustomMuneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739E31020EE1E3900C0BEBD /* CustomMuneView.swift */; };
 		0791D65620D8B2E1009E1109 /* PlayVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791D65520D8B2E1009E1109 /* PlayVideoVC.swift */; };
 		0791D65920D8B369009E1109 /* NicooVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791D65720D8B369009E1109 /* NicooVideoCell.swift */; };
 		0791D65A20D8B369009E1109 /* NicooVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0791D65820D8B369009E1109 /* NicooVideoCell.xib */; };
 		0791D65D20D8B492009E1109 /* CellPlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791D65B20D8B492009E1109 /* CellPlayVC.swift */; };
 		0791D65E20D8B492009E1109 /* CellPlayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0791D65C20D8B492009E1109 /* CellPlayVC.xib */; };
+		079B9F4620EE1754006A0531 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079B9F4520EE1753006A0531 /* ViewController.swift */; };
 		30858DA0B394890F2DD09422 /* Pods_NicooPlayer_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6237AFA061EFABC61B840210 /* Pods_NicooPlayer_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -33,18 +34,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0739E31020EE1E3900C0BEBD /* CustomMuneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMuneView.swift; sourceTree = "<group>"; };
 		0791D65520D8B2E1009E1109 /* PlayVideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoVC.swift; sourceTree = "<group>"; };
 		0791D65720D8B369009E1109 /* NicooVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicooVideoCell.swift; sourceTree = "<group>"; };
 		0791D65820D8B369009E1109 /* NicooVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NicooVideoCell.xib; sourceTree = "<group>"; };
 		0791D65B20D8B492009E1109 /* CellPlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPlayVC.swift; sourceTree = "<group>"; };
 		0791D65C20D8B492009E1109 /* CellPlayVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellPlayVC.xib; sourceTree = "<group>"; };
+		079B9F4520EE1753006A0531 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0D689AB229E55E1B0F0F9A6E /* Pods-NicooPlayer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NicooPlayer_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NicooPlayer_Example/Pods-NicooPlayer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1714656CCCE457A253FA3994 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		404488BB86E22FC167AC84D3 /* Pods-NicooPlayer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NicooPlayer_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NicooPlayer_Tests/Pods-NicooPlayer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* NicooPlayer_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NicooPlayer_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -84,8 +86,20 @@
 			children = (
 				0791D65720D8B369009E1109 /* NicooVideoCell.swift */,
 				0791D65820D8B369009E1109 /* NicooVideoCell.xib */,
+				0739E31020EE1E3900C0BEBD /* CustomMuneView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		079B9F4420EE0407006A0531 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				079B9F4520EE1753006A0531 /* ViewController.swift */,
+				0791D65B20D8B492009E1109 /* CellPlayVC.swift */,
+				0791D65C20D8B492009E1109 /* CellPlayVC.xib */,
+				0791D65520D8B2E1009E1109 /* PlayVideoVC.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 		5EB3806956D38C8FE0CC8301 /* Frameworks */ = {
@@ -121,13 +135,10 @@
 		607FACD21AFB9204008FA782 /* Example for NicooPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				0791D65B20D8B492009E1109 /* CellPlayVC.swift */,
-				0791D65C20D8B492009E1109 /* CellPlayVC.xib */,
-				0791D65520D8B2E1009E1109 /* PlayVideoVC.swift */,
-				0791D64A20D8AD32009E1109 /* View */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				079B9F4420EE0407006A0531 /* VC */,
+				0791D64A20D8AD32009E1109 /* View */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -355,10 +366,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079B9F4620EE1754006A0531 /* ViewController.swift in Sources */,
 				0791D65D20D8B492009E1109 /* CellPlayVC.swift in Sources */,
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				0791D65620D8B2E1009E1109 /* PlayVideoVC.swift in Sources */,
+				0739E31120EE1E3900C0BEBD /* CustomMuneView.swift in Sources */,
 				0791D65920D8B369009E1109 /* NicooVideoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

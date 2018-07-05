@@ -6,8 +6,6 @@
 //
 
 import UIKit
-
-
 import SnapKit
 
 
@@ -188,7 +186,6 @@ class NicooPlayerControlView: UIView {
     var fullScreen: Bool? = false {
         didSet {
             self.screenLockButton.isHidden = !fullScreen!     // 只有全屏能锁定屏幕
-            self.munesButton.isHidden = !fullScreen!          // 只有全屏显示分享按钮
             if !screenLockButton.isHidden {
                 NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideScreenLockButton), object: nil)
                 self.perform(#selector(autoHideScreenLockButton), with: nil, afterDelay: 5)

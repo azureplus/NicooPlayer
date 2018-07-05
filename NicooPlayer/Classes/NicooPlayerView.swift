@@ -12,16 +12,23 @@ import SnapKit
 import MediaPlayer
 import MBProgressHUD
 
+ public protocol NicooCustomMuneDelegate: class {
+    /// 自定义右上角按钮点击操作
+    func showCustomMuneView() -> UIView?
+}
+
 public protocol NicooPlayerDelegate: class {
     /// 代理在外部处理网络问题
     func retryToPlayVideo(_ videoModel: NicooVideoModel?, _ fatherView: UIView?)
     /// 分享平台按钮点击代理
     ///
     /// - Parameter index: 分享点击的Item Index
-    func playerDidSelectedItemIndex(_ index: Int)
+    ///func playerDidSelectedItemIndex(_ index: Int)
 }
 
 open class NicooPlayerView: UIView {
+    
+    static let kCustomViewTag = 77777777
     
     public enum PlayerStatus {
         case Failed
@@ -71,6 +78,11 @@ open class NicooPlayerView: UIView {
                 if self.subviews.contains(shareMuneView) {
                     shareMuneView.removeFromSuperview()
                 }
+                /// 非全屏状态下，移除自定义视图
+                if let customView = self.viewWithTag(NicooPlayerView.kCustomViewTag) {
+                    customView.removeFromSuperview()
+                }
+                playControllViewEmbed.munesButton.isHidden = true
                 playControllViewEmbed.closeButton.snp.updateConstraints { (make) in
                     make.width.equalTo(5)
                 }
@@ -80,6 +92,13 @@ open class NicooPlayerView: UIView {
                     make.width.equalTo(40)
                 }
                 playControllViewEmbed.closeButton.isEnabled = true
+                if customMuneDelegate != nil {
+                    playControllViewEmbed.munesButton.isHidden = false
+                }else {
+                    playControllViewEmbed.munesButton.isHidden = true
+                }
+        
+                
             }
         }
     }
@@ -207,6 +226,8 @@ open class NicooPlayerView: UIView {
         }
     }
     public weak var delegate: NicooPlayerDelegate?
+    public weak var customMuneDelegate: NicooCustomMuneDelegate?
+    
     fileprivate var playerLayer: AVPlayerLayer?
     fileprivate var player: AVPlayer?
     fileprivate var avItem: AVPlayerItem?
@@ -450,7 +471,7 @@ open class NicooPlayerView: UIView {
                 self?.playerStatu = PlayerStatus.Playing
             }
         }
-        playControllViewEmbed.screenLockButtonClickBlock = { [weak self] (sender) in
+        playControllViewEmbed.screenLockButtonClickBlock = {  (sender) in
             print("锁屏")
             //self?.delegate?.screenOrientationSupportForScreenLock(sender.isSelected)
         }
@@ -465,12 +486,28 @@ open class NicooPlayerView: UIView {
             guard let strongSelf = self else {
                 return
             }
-            if !strongSelf.subviews.contains(strongSelf.shareMuneView) {
-                strongSelf.addSubview(strongSelf.shareMuneView)
+            if let customMuneView = strongSelf.customMuneDelegate?.showCustomMuneView() {
+                
+                customMuneView.tag = NicooPlayerView.kCustomViewTag /// 给外来视图打标签，便于移除
+            
+                if !strongSelf.subviews.contains(customMuneView) {
+                    strongSelf.addSubview(customMuneView)
+                }
+                customMuneView.snp.makeConstraints({ (make) in
+                    if #available(iOS 11.0, *) {
+                        make.edges.equalTo(strongSelf.safeAreaLayoutGuide.snp.edges)
+                    } else {
+                        make.edges.equalToSuperview()
+                    }
+                })
             }
-            strongSelf.shareMuneView.snp.makeConstraints({ (make) in
-                make.edges.equalToSuperview()
-            })
+           
+//            if !strongSelf.subviews.contains(strongSelf.shareMuneView) {
+//                strongSelf.addSubview(strongSelf.shareMuneView)
+//            }
+//            strongSelf.shareMuneView.snp.makeConstraints({ (make) in
+//                make.edges.equalToSuperview()
+//            })
         }
         // 音量，亮度，进度拖动
         self.configureSystemVolume()             // 获取系统音量控件   可以选择自定义，效果会比系统的好
@@ -654,7 +691,9 @@ open class NicooPlayerView: UIView {
     // MARK: - 网络提示显示
     fileprivate func showLoadedFailedView() {
         self.addSubview(loadedFailedView)
+        orientationSupport = OrientationSupport.orientationPortrait
         loadedFailedView.retryButtonClickBlock = { [weak self] (sender) in
+            orientationSupport = OrientationSupport.orientationAll
             let model = NicooVideoModel(videoName: self?.videoName, videoUrl: self?.playUrlString, videoPlaySinceTime: (self?.playTimeSince)!)
             self?.delegate?.retryToPlayVideo(model, self?.fatherView)
         }
@@ -948,6 +987,6 @@ extension NicooPlayerView {
 }
 extension NicooPlayerView: NicooPlayerShareDelegate {
     public func shareMuneItemSelected(_ shreType: Int) {
-        delegate?.playerDidSelectedItemIndex(shreType)
+       // delegate?.playerDidSelectedItemIndex(shreType)
     }
 }
