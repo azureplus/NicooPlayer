@@ -154,9 +154,7 @@ class PlayVideoVC: UIViewController,NicooPlayerDelegate {
             playerView.playVideo(videoModel?.videoUrl, videoModel?.videoName, fatherView)
         }
     }
-    func playerDidSelectedItemIndex(_ index: Int) {
-        print("分享按钮点击第几个: index = \(index)")
-    }
+    
     
 }
 

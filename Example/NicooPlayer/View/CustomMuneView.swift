@@ -15,7 +15,7 @@ class CustomMuneView: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        self.backgroundColor = UIColor(white: 0, alpha: 0.7)
         loadUI()
     }
     
@@ -62,7 +62,7 @@ class CustomMuneView11: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        self.backgroundColor = UIColor(white: 0, alpha: 0.5)
         loadUI()
     }
     

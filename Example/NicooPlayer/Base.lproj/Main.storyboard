@@ -54,20 +54,37 @@
                                     <action selector="playInCell:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7Sn-0a-HJ6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxY-st-ZYg">
+                                <rect key="frame" x="67" y="410" width="240.5" height="40"/>
+                                <color key="backgroundColor" red="0.49113657994923854" green="0.49113657994923854" blue="0.49113657994923854" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="FgQ-Wg-dNx"/>
+                                </constraints>
+                                <state key="normal" title="直接全屏播放(下载好的)"/>
+                                <connections>
+                                    <action selector="palyInFullScreenClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="n7k-Yc-kWD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="a5z-V0-wM0" firstAttribute="trailing" secondItem="gi2-5g-i7m" secondAttribute="trailing" id="3AI-2j-wC5"/>
+                            <constraint firstItem="DxY-st-ZYg" firstAttribute="top" secondItem="a5z-V0-wM0" secondAttribute="bottom" constant="20" id="4LB-bq-ckN"/>
                             <constraint firstAttribute="trailing" secondItem="Zf2-Sp-xfQ" secondAttribute="trailing" id="6Hd-5C-d1K"/>
                             <constraint firstItem="Zf2-Sp-xfQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Kva-7n-i4B"/>
                             <constraint firstItem="gi2-5g-i7m" firstAttribute="top" secondItem="Zf2-Sp-xfQ" secondAttribute="bottom" constant="30" id="PDp-ko-hL6"/>
+                            <constraint firstItem="DxY-st-ZYg" firstAttribute="trailing" secondItem="a5z-V0-wM0" secondAttribute="trailing" id="URY-jG-VbY"/>
                             <constraint firstItem="Zf2-Sp-xfQ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="X1e-aw-86s"/>
                             <constraint firstItem="a5z-V0-wM0" firstAttribute="top" secondItem="gi2-5g-i7m" secondAttribute="bottom" constant="20" id="agb-EJ-Rbh"/>
+                            <constraint firstItem="DxY-st-ZYg" firstAttribute="leading" secondItem="a5z-V0-wM0" secondAttribute="leading" id="gaP-8g-7Rp"/>
                             <constraint firstItem="gi2-5g-i7m" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="iiw-Ap-EGo"/>
                             <constraint firstItem="a5z-V0-wM0" firstAttribute="leading" secondItem="gi2-5g-i7m" secondAttribute="leading" id="nOr-No-srG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TuU-sy-Ygu"/>
+                    <connections>
+                        <outlet property="playInFullScreen" destination="DxY-st-ZYg" id="PF2-5P-dsb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

@@ -18,7 +18,7 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     fileprivate lazy var playerView: NicooPlayerView = {
         let player = NicooPlayerView(frame: self.view.bounds)
         player.delegate = self
-        player.customMuneDelegate = self   // 这个是用于自定义右上角按钮的显示
+        player.customViewDelegate = self   // 这个是用于自定义右上角按钮的显示
         return player
     }()
     static let cellIdentifier = "VideoCell"
@@ -107,7 +107,7 @@ extension CellPlayVC: NicooPlayerDelegate, NicooCustomMuneDelegate {
             let view1 = CustomMuneView11(frame: self.view.bounds)
             return view1
         }
-      return nil
+      
     }
     
 }

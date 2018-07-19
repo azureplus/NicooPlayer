@@ -28,7 +28,7 @@ public protocol NicooPlayerDelegate: class {
 
 open class NicooPlayerView: UIView {
     
-    static let kCustomViewTag = 77777777
+    static let kCustomViewTag = 6666
     
     public enum PlayerStatus {
         case Failed
@@ -45,13 +45,15 @@ open class NicooPlayerView: UIView {
                 playControllViewEmbed.playOrPauseBtn.isSelected = true
                 player?.play()
                 if self.subviews.contains(pauseButton) {
+                    pauseButton.isHidden = true
                     pauseButton.removeFromSuperview()
                 }
             }else if playerStatu == PlayerStatus.Pause {
                 player?.pause()
                 playControllViewEmbed.playOrPauseBtn.isSelected = false
                 if !self.subviews.contains(pauseButton) {
-                    insertSubview(pauseButton, aboveSubview: playControllViewEmbed)
+                    self.insertSubview(pauseButton, aboveSubview: playControllViewEmbed)
+                    pauseButton.isHidden = false
                     layoutPauseButton()
                 }
             }
@@ -69,15 +71,12 @@ open class NicooPlayerView: UIView {
     var beforeSliderChangePlayStatu: PlayerStatus?
     
     /// 是否是全屏
-    var isFullScreen: Bool? = false {
+    public var isFullScreen: Bool? = false {
         didSet {  // 监听全屏切换， 改变返回按钮，全屏按钮的状态和图片
             playControllViewEmbed.closeButton.isSelected = isFullScreen!
             playControllViewEmbed.fullScreenBtn.isSelected = isFullScreen!
             playControllViewEmbed.fullScreen = isFullScreen!
             if !isFullScreen! {
-                if self.subviews.contains(shareMuneView) {
-                    shareMuneView.removeFromSuperview()
-                }
                 /// 非全屏状态下，移除自定义视图
                 if let customView = self.viewWithTag(NicooPlayerView.kCustomViewTag) {
                     customView.removeFromSuperview()
@@ -92,16 +91,19 @@ open class NicooPlayerView: UIView {
                     make.width.equalTo(40)
                 }
                 playControllViewEmbed.closeButton.isEnabled = true
-                if customMuneDelegate != nil {
+                if customViewDelegate != nil {
                     playControllViewEmbed.munesButton.isHidden = false
                 }else {
                     playControllViewEmbed.munesButton.isHidden = true
                 }
-        
-                
             }
         }
     }
+    
+    var isDragged: Bool? = false  //是否有手势作用
+    
+    /// 本地视频播放时回调视频播放进度
+    public var playLocalFileVideoCloseCallBack:((_ playValue: Float) -> Void)?
     
     /// 视频截图
     private(set)  var imageGenerator: AVAssetImageGenerator?  // 用来做预览，目前没有预览的需求
@@ -151,6 +153,7 @@ open class NicooPlayerView: UIView {
             if fatherView != nil && !(fatherView?.subviews.contains(self))! {
                 fatherView?.addSubview(self)
             }
+            
         }
     }
     
@@ -190,19 +193,19 @@ open class NicooPlayerView: UIView {
     lazy var pauseButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(NicooImgManager.foundImage(imageName: "pause"), for: .normal)
-        button.backgroundColor = UIColor(white: 0.0, alpha: 0.9)
+        button.backgroundColor = UIColor(white: 0.0, alpha: 0.90)
         button.layer.cornerRadius = 27.5
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(pauseButtonClick), for: .touchUpInside)
         return button
     }()
-    /// 分享菜单
-    fileprivate lazy var shareMuneView: NicooPlayerShareView = {
-        let shareView = NicooPlayerShareView(frame: self.bounds)
-        shareView.backgroundColor = UIColor(white: 0.1, alpha: 0.7)
-        shareView.delegate = self
-        return shareView
-    }()
+    //    /// 分享菜单
+    //    fileprivate lazy var shareMuneView: TZPlayerShareView = {
+    //        let shareView = TZPlayerShareView(frame: self.bounds)
+    //        shareView.backgroundColor = UIColor(white: 0.1, alpha: 0.7)
+    //        shareView.delegate = self
+    //        return shareView
+    //    }()
     /// 网络不好时提示
     fileprivate lazy var loadedFailedView: NicooLoadedFailedView = {
         let failedView = NicooLoadedFailedView(frame: self.bounds)
@@ -226,14 +229,31 @@ open class NicooPlayerView: UIView {
         }
     }
     public weak var delegate: NicooPlayerDelegate?
-    public weak var customMuneDelegate: NicooCustomMuneDelegate?
-    
+    public weak var customViewDelegate: NicooCustomMuneDelegate?
     fileprivate var playerLayer: AVPlayerLayer?
     fileprivate var player: AVPlayer?
     fileprivate var avItem: AVPlayerItem?
     fileprivate var avAsset: AVAsset?
     /// 音量显示
     fileprivate var volumeSlider: UISlider?
+    fileprivate lazy var volumeView: MPVolumeView = {
+        let volumeV = MPVolumeView()
+        volumeV.showsVolumeSlider = false
+        volumeV.showsRouteButton = false
+        volumeSlider = nil //每次获取要将之前的置为nil
+        for view in volumeV.subviews {
+            if view.classForCoder.description() == "MPVolumeSlider" {
+                if let vSlider = view as? UISlider {
+                    volumeSlider = vSlider
+                    volumeSliderValue = Float64(vSlider.value)
+                }
+                break
+            }
+        }
+        return volumeV
+    }()
+    /// 音量大小
+    fileprivate var volumeSliderValue: Float64 = 0
     /// 亮度显示
     fileprivate var brightnessSlider: NicooBrightnessView = {
         let brightView = NicooBrightnessView(frame: CGRect(x: 0, y: 0, width: 155, height: 155))
@@ -241,7 +261,7 @@ open class NicooPlayerView: UIView {
     }()
     
     deinit {
-        print("播放器被释放了")
+        print("播放器释放")
         NotificationCenter.default.removeObserver(self)
         self.avItem?.removeObserver(self, forKeyPath: "status")
         self.avItem?.removeObserver(self, forKeyPath: "loadedTimeRanges")
@@ -253,9 +273,6 @@ open class NicooPlayerView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .black
         
-        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-        // 注册屏幕旋转通知
-        NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.orientChange(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: UIDevice.current)
         // 注册APP被挂起 + 进入前台通知
         NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.applicationResignActivity(_:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.applicationBecomeActivity(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
@@ -275,7 +292,11 @@ open class NicooPlayerView: UIView {
         // 👇三个属性的设置顺序很重要
         self.playUrlString = videoUrl   // 判断视频链接是否更改，更改了就重置播放器
         self.videoName = videoName      // 视频名称
-        self.fatherView = containerView // 更换父视图时
+        
+        if !isFullScreen! {
+            fatherView = containerView // 更换父视图时
+        }
+        
         
         layoutAllPageSubviews()
         playerStatu = PlayerStatus.Playing // 初始状态为播放
@@ -309,13 +330,56 @@ open class NicooPlayerView: UIView {
         }
         
     }
+    
+    /// 直接全屏播放，思路就是：直接将播放器添加到window上，：1.播放视频，2：屏幕强制旋转到右侧，3.隐藏全屏切换按钮 ，4.更换返回按钮事件为从window上移除播放器
+    ///
+    /// - Parameters:
+    ///   - videoUrl: 视屏URL
+    ///   - videoTitle: 视屏名称
+    ///   - containerView: 父视图
+    open func playLocalVideoInFullscreen(_ filePathUrl: String?, _ videoTitle: String? = nil, _ containerView: UIView?) {
+        playControllViewEmbed.playInFullScreen = true  // 声明直接就进入全屏播放
+        playControllViewEmbed.videoNameLable.text = videoTitle ?? ""  // 设置Videoname
+        startReadyToPlay()
+        let url = URL(fileURLWithPath: filePathUrl ?? "")
+        avAsset = AVAsset(url: url)
+        avItem = AVPlayerItem(asset: self.avAsset!)
+        player = AVPlayer(playerItem: self.avItem!)
+        playerLayer = AVPlayerLayer(player: self.player!)
+        self.layer.addSublayer(playerLayer!)
+        self.addSubview(playControllViewEmbed)
+        playControllViewEmbed.timeSlider.value = 0
+        
+        playControllViewEmbed.loadedProgressView.setProgress(1, animated: false)
+        NSObject.cancelPreviousPerformRequests(withTarget: playControllViewEmbed, selector: #selector(NicooPlayerControlView.autoHideTopBottomBar), object: nil)
+        playControllViewEmbed.perform(#selector(NicooPlayerControlView.autoHideTopBottomBar), with: nil, afterDelay: 5)
+        
+        self.playControllViewEmbed.fullScreenBtn.isHidden = true  // 4
+        if let localFatherView = containerView {
+            if !localFatherView.subviews.contains(self) {
+                localFatherView.addSubview(self)
+                self.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+                layoutLocalPlayView(localFatherView)
+                layoutPlayControllView()
+            }
+            playerStatu = PlayerStatus.Playing // 初始状态为播放
+            listenTothePlayer()
+            addUserActionBlock()
+        }
+        playControllViewEmbed.closeButton.setImage(NicooImgManager.foundImage(imageName: "back"), for: .normal)
+        playControllViewEmbed.closeButton.snp.updateConstraints({ (make) in
+            make.width.equalTo(40)
+        })
+        
+        
+        
+    }
     /// 改变播放器的父视图
     ///
     /// - Parameter containerView: New fatherView
     open func changeVideoContainerView(_ containerView: UIView) {
         fatherView = containerView
         layoutAllPageSubviews()        //改变了父视图，需要重新布局
-       
     }
     /// 获取当前播放时间点 + 视频总时长
     ///
@@ -329,6 +393,8 @@ open class NicooPlayerView: UIView {
     open func getLoadingPositionTime() -> Float {
         return self.loadedValue
     }
+    
+    
     fileprivate func showLoadingHud() {
         let hud = MBProgressHUD.showAdded(to: self, animated: false)
         hud?.labelText = "正在加载..."
@@ -355,9 +421,10 @@ open class NicooPlayerView: UIView {
         playControllViewEmbed.loadedProgressView.setProgress(0, animated: false)
         NSObject.cancelPreviousPerformRequests(withTarget: playControllViewEmbed, selector: #selector(NicooPlayerControlView.autoHideTopBottomBar), object: nil)
         playControllViewEmbed.perform(#selector(NicooPlayerControlView.autoHideTopBottomBar), with: nil, afterDelay: 5)
-        showLoadingHud()
         
-        orientationSupport = OrientationSupport.orientationAll  //让播放器支持全屏播放
+        showLoadingHud()  /// 菊花
+        
+        orientationSupport = OrientationSupport.orientationAll
     }
     
     /// 重置播放器
@@ -380,8 +447,8 @@ open class NicooPlayerView: UIView {
         self.avItem = nil
         self.player?.replaceCurrentItem(with: nil)
         self.player = nil
-        orientationSupport = OrientationSupport.orientationPortrait
         self.playerLayer?.removeFromSuperlayer()
+        orientationSupport = OrientationSupport.orientationPortrait
         if let superView = self.fatherView {
             for view in superView.subviews {
                 if view.tag != 0 {
@@ -411,14 +478,15 @@ open class NicooPlayerView: UIView {
             showLoadedFailedView()
         }
     }
-    /// 获取系统音量
+    /// 获取系统音量控件 及大小
     fileprivate func configureSystemVolume() {
         let volumeView = MPVolumeView()
-        self.volumeSlider = nil                 //每次获取要将之前的置为nil
+        self.volumeSlider = nil //每次获取要将之前的置为nil
         for view in volumeView.subviews {
             if view.classForCoder.description() == "MPVolumeSlider" {
                 if let vSlider = view as? UISlider {
-                    self.volumeSlider = vSlider
+                    volumeSlider = vSlider
+                    volumeSliderValue = Float64(vSlider.value)
                 }
                 break
             }
@@ -433,6 +501,11 @@ open class NicooPlayerView: UIView {
         avItem.addObserver(self, forKeyPath: "loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
         avItem.addObserver(self, forKeyPath: "playbackBufferEmpty", options: NSKeyValueObservingOptions.new, context: nil)
         avItem.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: NSKeyValueObservingOptions.new, context: nil)
+        if !playControllViewEmbed.playInFullScreen! {
+            UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+            // 注册屏幕旋转通知
+            NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.orientChange(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: UIDevice.current)
+        }
     }
     
     // MARK: - 返回，关闭，全屏，播放，暂停,重播,音量，亮度，进度拖动 - UserAction
@@ -442,14 +515,20 @@ open class NicooPlayerView: UIView {
     private func addUserActionBlock() {
         // 返回，关闭
         playControllViewEmbed.closeButtonClickBlock = { [weak self] (sender) in
-            guard let strongSelf = self else {
-                return
-            }
-            if strongSelf.isFullScreen! {                                    // 如果全屏，关闭按钮 关闭全屏
-                strongSelf.interfaceOrientation(UIInterfaceOrientation.portrait)
+            
+            if (self?.isFullScreen!)! {
+                
+                self?.interfaceOrientation(UIInterfaceOrientation.portrait)
+                
             }else {                                                    // 非全屏状态，停止播放，移除播放视图
                 print("非全屏状态，停止播放，移除播放视图")
-               // strongSelf.destructPlayerResource()
+                if (self?.playControllViewEmbed.playInFullScreen!)! {   // 直接全屏播放  。这里的全屏是指 只存在全屏播放，没有小窗播放的情况
+                    self?.removeFromSuperview()
+                    orientationSupport = OrientationSupport.orientationPortrait
+                    if self?.playLocalFileVideoCloseCallBack != nil {
+                        self?.playLocalFileVideoCloseCallBack!(self?.playedValue ?? 0.0)
+                    }
+                }
             }
         }
         // 全屏
@@ -471,9 +550,13 @@ open class NicooPlayerView: UIView {
                 self?.playerStatu = PlayerStatus.Playing
             }
         }
-        playControllViewEmbed.screenLockButtonClickBlock = {  (sender) in
-            print("锁屏")
-            //self?.delegate?.screenOrientationSupportForScreenLock(sender.isSelected)
+        // 锁屏
+        playControllViewEmbed.screenLockButtonClickBlock = { (sender) in
+            if sender.isSelected {
+                orientationSupport = OrientationSupport.orientationLeftAndRight
+            }else {
+                orientationSupport = OrientationSupport.orientationAll
+            }
         }
         // 重播
         playControllViewEmbed.replayButtonClickBlock = { [weak self] (_) in
@@ -486,10 +569,11 @@ open class NicooPlayerView: UIView {
             guard let strongSelf = self else {
                 return
             }
-            if let customMuneView = strongSelf.customMuneDelegate?.showCustomMuneView() {
+            /// 通过代理回调设置自定义覆盖操作视图
+            if let customMuneView = strongSelf.customViewDelegate?.showCustomMuneView() {
                 
                 customMuneView.tag = NicooPlayerView.kCustomViewTag /// 给外来视图打标签，便于移除
-            
+                
                 if !strongSelf.subviews.contains(customMuneView) {
                     strongSelf.addSubview(customMuneView)
                 }
@@ -501,13 +585,7 @@ open class NicooPlayerView: UIView {
                     }
                 })
             }
-           
-//            if !strongSelf.subviews.contains(strongSelf.shareMuneView) {
-//                strongSelf.addSubview(strongSelf.shareMuneView)
-//            }
-//            strongSelf.shareMuneView.snp.makeConstraints({ (make) in
-//                make.edges.equalToSuperview()
-//            })
+            
         }
         // 音量，亮度，进度拖动
         self.configureSystemVolume()             // 获取系统音量控件   可以选择自定义，效果会比系统的好
@@ -545,8 +623,18 @@ open class NicooPlayerView: UIView {
                     
                 }else if x < y {
                     strongSelf.panDirection = PanDirection.PanDirectionVertical
+                    
                     if locationPoint.x > strongSelf.playControllViewEmbed.bounds.size.width/2 && locationPoint.y < strongSelf.playControllViewEmbed.bounds.size.height - 40 {  // 触摸点在视图右边，控制音量
                         // 如果需要自定义 音量控制显示，在这里添加自定义VIEW
+                        if !strongSelf.subviews.contains(strongSelf.volumeView) {
+                            strongSelf.addSubview(strongSelf.volumeView)
+                            strongSelf.volumeView.snp.makeConstraints({ (make) in
+                                make.center.equalToSuperview()
+                                make.width.equalTo(155)
+                                make.height.equalTo(155)
+                            })
+                        }
+                        
                         
                     }else if locationPoint.x < strongSelf.playControllViewEmbed.bounds.size.width/2 && locationPoint.y < strongSelf.playControllViewEmbed.bounds.size.height - 40 {
                         if !strongSelf.subviews.contains(strongSelf.brightnessSlider) {
@@ -604,6 +692,8 @@ open class NicooPlayerView: UIView {
                     strongSelf.playControllViewEmbed.perform(#selector(NicooPlayerControlView.autoHideTopBottomBar), with: nil, afterDelay: 5)
                     if locationPoint.x < strongSelf.playControllViewEmbed.bounds.size.width/2 {    // 触摸点在视图左边 隐藏屏幕亮度
                         strongSelf.brightnessSlider.removeFromSuperview()
+                    } else {
+                        strongSelf.volumeView.removeFromSuperview()
                     }
                     break
                 }
@@ -653,16 +743,17 @@ open class NicooPlayerView: UIView {
     }
     // MARK - 上下拖动手势
     fileprivate func veloctyMoved(_ movedValue: CGFloat, _ isVolume: Bool) {
-        // isVolume ? (self.volumeSlider?.value -= movedValue / 10000) : (UIScreen.main.brightness -= movedValue / 10000)
+        
         if isVolume {
-            self.volumeSlider?.value  -= Float(movedValue/10000)
+            volumeSlider?.value  -= Float(movedValue/10000)
+            print("self.volumeSliderValue== \(self.volumeSliderValue)")
         }else {
             UIScreen.main.brightness  -= movedValue/10000
             self.brightnessSlider.updateBrightness(UIScreen.main.brightness)
         }
     }
     
-    /// 播放结束时调用
+    /// 播放结束时调用"
     ///
     /// - Parameter sender: 监听播放结束
     @objc func playToEnd(_ sender: Notification) {
@@ -670,7 +761,7 @@ open class NicooPlayerView: UIView {
         self.pauseButton.isHidden = true
         playControllViewEmbed.replayContainerView.isHidden = false
         playControllViewEmbed.barIsHidden = true
-        playControllViewEmbed.topControlBarView.isHidden = false //单独显示顶部操作栏
+        playControllViewEmbed.topControlBarView.isHidden = false   //单独显示顶部操作栏
         playControllViewEmbed.singleTapGesture.isEnabled = false
         playControllViewEmbed.doubleTapGesture.isEnabled = false
         playControllViewEmbed.panGesture.isEnabled = false
@@ -691,9 +782,7 @@ open class NicooPlayerView: UIView {
     // MARK: - 网络提示显示
     fileprivate func showLoadedFailedView() {
         self.addSubview(loadedFailedView)
-        orientationSupport = OrientationSupport.orientationPortrait
         loadedFailedView.retryButtonClickBlock = { [weak self] (sender) in
-            orientationSupport = OrientationSupport.orientationAll
             let model = NicooVideoModel(videoName: self?.videoName, videoUrl: self?.playUrlString, videoPlaySinceTime: (self?.playTimeSince)!)
             self?.delegate?.retryToPlayVideo(model, self?.fatherView)
         }
@@ -724,14 +813,14 @@ open class NicooPlayerView: UIView {
                         })
                     }
                 }
+                
                 self.layoutIfNeeded()
                 self.playControllViewEmbed.layoutIfNeeded()
             }, completion: nil)
         }else if orirntation == UIInterfaceOrientation.portrait {
-            if !self.playControllViewEmbed.screenIsLock! {
+            if !self.playControllViewEmbed.screenIsLock! { // 非锁品状态下
                 isFullScreen = false
                 self.removeFromSuperview()
-                
                 if let containerView = self.fatherView {
                     containerView.addSubview(self)
                     UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
@@ -745,14 +834,14 @@ open class NicooPlayerView: UIView {
                                 })
                             }
                         }
+                        
                         self.layoutIfNeeded()
                         self.playControllViewEmbed.layoutIfNeeded()
                     }, completion: nil)
                 }
             }
-            
         }
-       // self.layoutIfNeeded()
+        
     }
     
     /// 强制横屏
@@ -781,6 +870,21 @@ open class NicooPlayerView: UIView {
         }
     }
     // MARK: - 布局
+    private func layoutLocalPlayView(_ localView: UIView) {
+        self.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalTo(localView.snp.height)
+            make.height.equalTo(localView.snp.width)
+        }
+    }
+    //    private func upDatelayoutLocalPlayView(_ localView: UIView) {
+    //        self.snp.makeConstraints { (make) in
+    //            make.leading.equalTo(localView.snp.top)
+    //            make.top.equalTo(localView.snp.trailing)
+    //            make.trailing.equalTo(localView.snp.bottom)
+    //            make.bottom.equalTo(localView.snp.leading)
+    //        }
+    //    }
     private func layoutAllPageSubviews() {
         layoutSelf()
         layoutPlayControllView()
@@ -797,19 +901,7 @@ open class NicooPlayerView: UIView {
     }
     private func layoutPlayControllView() {
         playControllViewEmbed.snp.makeConstraints { (make) in
-            if #available(iOS 11.0, *) {
-                if UIDevice.current.isiPhoneX() {
-                    make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(25)
-                    make.trailing.equalTo(self.safeAreaLayoutGuide.snp.trailing).offset(-25)
-                    make.top.equalTo(self.safeAreaLayoutGuide.snp.top)
-                    make.bottom.equalToSuperview()
-                } else {
-                    make.edges.equalToSuperview()
-                }
-                
-            } else {
-                make.edges.equalToSuperview()
-            }
+            make.edges.equalToSuperview()
         }
     }
     private func layoutDraggedProgressView() {
@@ -888,12 +980,16 @@ extension NicooPlayerView {
     fileprivate func listenTothePlayer() {
         guard let avItem = self.avItem else {return}
         player?.addPeriodicTimeObserver(forInterval: CMTimeMake(Int64(1.0), Int32(1.0)), queue: nil, using: { [weak self] (time) in
-            if Int(avItem.duration.value) > 0 && Int(avItem.currentTime().value) > 0 {
-                let value = Int(avItem.currentTime().value)/Int(avItem.currentTime().timescale)
-                let duration = Int(avItem.duration.value)/Int(avItem.duration.timescale)
+            
+            let timeScaleValue = Int64(avItem.currentTime().timescale) /// 当前时间
+            let timeScaleDuration = Int64(avItem.duration.timescale)   /// 总时间
+            
+            if avItem.duration.value > 0 && avItem.currentTime().value > 0 {
+                let value = avItem.currentTime().value / timeScaleValue  /// 当前播放时间
+                let duration = avItem.duration.value / timeScaleDuration /// 视频总时长
                 let playValue = Float(value)/Float(duration)
-                // print("timeValue = \(value) s,alltime = \(duration) s  playvalue = \(playValue)")
-                if  let stringDuration = self?.formatTimDuration(position: value, duration:duration), let stringValue = self?.formatTimPosition(position: value, duration: duration) {
+                
+                if  let stringDuration = self?.formatTimDuration(position: Int(value), duration:Int(duration)), let stringValue = self?.formatTimPosition(position: Int(value), duration: Int(duration)) {
                     //self.playControllViewEmbed.positionTimeLab.text = stringValue
                     self?.playControllViewEmbed.timeSlider.value = playValue
                     self?.playControllViewEmbed.durationTimeLab.text = String(format: "%@/%@", stringValue, stringDuration)
@@ -937,7 +1033,8 @@ extension NicooPlayerView {
                 hideLoadingHud()
                 showLoadedFailedView()
             }
-        } else if keyPath == "loadedTimeRanges" {                             //监听缓存进度，根据时间来监听
+        } else if keyPath == "loadedTimeRanges" {
+            //监听缓存进度，根据时间来监听
             let timeRange = avItem.loadedTimeRanges
             let cmTimeRange = timeRange[0] as! CMTimeRange
             let startSeconds = CMTimeGetSeconds(cmTimeRange.start)
@@ -983,10 +1080,5 @@ extension NicooPlayerView {
             return String(format: "%02d:%02d",durationMinutes,durationSeconds)
         }
         return String(format: "%02d:%02d:%02d",durationHours,durationMinutes,durationSeconds)
-    }
-}
-extension NicooPlayerView: NicooPlayerShareDelegate {
-    public func shareMuneItemSelected(_ shreType: Int) {
-       // delegate?.playerDidSelectedItemIndex(shreType)
     }
 }

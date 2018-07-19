@@ -102,11 +102,11 @@ class NicooPlayerControlView: UIView {
         slider.minimumTrackTintColor = UIColor.white
         slider.maximumTrackTintColor = UIColor.clear
         slider.setThumbImage(NicooImgManager.foundImage(imageName: "NicooPlayer_slider"), for: .normal)
-        slider.addTarget(self, action: #selector(sliderValueChange(_:)),for:.valueChanged)
-        slider.addTarget(self, action: #selector(sliderAllTouchBegin(_:)), for: .touchDown)
-        slider.addTarget(self, action: #selector(sliderAllTouchEnd(_:)), for: .touchCancel)
-        slider.addTarget(self, action: #selector(sliderAllTouchEnd(_:)), for: .touchUpInside)
-        slider.addTarget(self, action: #selector(sliderAllTouchEnd(_:)), for: .touchUpOutside)
+        slider.addTarget(self, action: #selector(NicooPlayerControlView.sliderValueChange(_:)),for:.valueChanged)
+        slider.addTarget(self, action: #selector(NicooPlayerControlView.sliderAllTouchBegin(_:)), for: .touchDown)
+        slider.addTarget(self, action: #selector(NicooPlayerControlView.sliderAllTouchEnd(_:)), for: .touchCancel)
+        slider.addTarget(self, action: #selector(NicooPlayerControlView.sliderAllTouchEnd(_:)), for: .touchUpInside)
+        slider.addTarget(self, action: #selector(NicooPlayerControlView.sliderAllTouchEnd(_:)), for: .touchUpOutside)
         return slider
     }()
     
@@ -131,14 +131,14 @@ class NicooPlayerControlView: UIView {
         let button = UIButton(type: .custom)
         button.setImage(NicooImgManager.foundImage(imageName: "pause"), for: .normal)
         button.setImage(NicooImgManager.foundImage(imageName: "Player_pause"), for: .selected)
-        button.addTarget(self, action: #selector(playOrPauseBtnClick(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(NicooPlayerControlView.playOrPauseBtnClick(_:)), for: .touchUpInside)
         return button
     }()
     lazy var screenLockButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(NicooImgManager.foundImage(imageName: "unlock"), for: .normal)
         button.setImage(NicooImgManager.foundImage(imageName: "lockscreen"), for: .selected)
-        button.addTarget(self, action: #selector(screenLockButtonClick(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(NicooPlayerControlView.screenLockButtonClick(_:)), for: .touchUpInside)
         button.isHidden = true
         return button
     }()
@@ -146,7 +146,7 @@ class NicooPlayerControlView: UIView {
         let button = UIButton(type: .custom)
         button.setImage(NicooImgManager.foundImage(imageName: "NicooPlayer_fullscreen"), for: .normal)
         button.setImage(NicooImgManager.foundImage(imageName: "shrinkScreen"), for: .selected)
-        button.addTarget(self, action: #selector(fullScreenBtnClick(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(NicooPlayerControlView.fullScreenBtnClick(_:)), for: .touchUpInside)
         return button
     }()
     /// 手势
@@ -183,15 +183,19 @@ class NicooPlayerControlView: UIView {
             }
         }
     }
+    ///  是否为全屏状态
     var fullScreen: Bool? = false {
         didSet {
             self.screenLockButton.isHidden = !fullScreen!     // 只有全屏能锁定屏幕
+            self.munesButton.isHidden = !fullScreen!          // 只有全屏显示分享按钮
             if !screenLockButton.isHidden {
                 NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideScreenLockButton), object: nil)
                 self.perform(#selector(autoHideScreenLockButton), with: nil, afterDelay: 5)
             }
         }
     }
+    /// 是否是  直接全屏播放
+    var playInFullScreen: Bool? = false
     
     var screenIsLock: Bool? = false {
         didSet {
@@ -204,7 +208,8 @@ class NicooPlayerControlView: UIView {
                 screenLockButton.isSelected = false
                 doubleTapGesture.isEnabled = true
                 panGesture.isEnabled = true
-                orientationSupport = OrientationSupport.orientationAll
+                /// 直接全屏播放时，只支持左右，非直接全屏播放支持上左右
+                orientationSupport = playInFullScreen! ? OrientationSupport.orientationPortrait : OrientationSupport.orientationAll
             }
         }
     }
@@ -220,6 +225,9 @@ class NicooPlayerControlView: UIView {
     
     init(frame: CGRect, fullScreen: Bool) {
         super.init(frame: frame)
+        addSubview(topControlBarView)
+        addSubview(bottomControlBarView)
+        addSubview(replayContainerView)
         topControlBarView.addSubview(closeButton)
         topControlBarView.addSubview(videoNameLable)
         topControlBarView.addSubview(munesButton)
@@ -233,10 +241,8 @@ class NicooPlayerControlView: UIView {
         replayContainerView.addSubview(replayButton)
         replayContainerView.addSubview(replayLable)
         
-        addSubview(topControlBarView)
-        addSubview(bottomControlBarView)
+        
         addSubview(loadingView)
-        addSubview(replayContainerView)
         addSubview(screenLockButton)
         
         layoutAllPageViews()
@@ -268,7 +274,7 @@ class NicooPlayerControlView: UIView {
     @objc func singleTapGestureRecognizers(_ sender: UITapGestureRecognizer) {
         if screenIsLock! {                                                    // 锁屏状态下，单击手势只显示锁屏按钮
             screenLockButton.isHidden = !screenLockButton.isHidden
-            if screenLockButton.isHidden {
+            if !screenLockButton.isHidden {
                 NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideScreenLockButton), object: nil)
                 self.perform(#selector(autoHideScreenLockButton), with: nil, afterDelay: 5)
             }
@@ -276,7 +282,7 @@ class NicooPlayerControlView: UIView {
         }else {
             barIsHidden = !barIsHidden! // 单击改变操作栏的显示隐藏
             if !barIsHidden! {
-                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideScreenLockButton), object: nil)
+                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideTopBottomBar), object: nil)
                 self.perform(#selector(autoHideTopBottomBar), with: nil, afterDelay: 5)
             }
         }
@@ -342,9 +348,9 @@ class NicooPlayerControlView: UIView {
     @objc func screenLockButtonClick(_ sender: UIButton) {
         screenIsLock = !screenIsLock!
         barIsHidden = screenIsLock
-//        if self.screenLockButtonClickBlock != nil {
-//            self.screenLockButtonClickBlock!(sender)
-//        }
+        //        if self.screenLockButtonClickBlock != nil {
+        //            self.screenLockButtonClickBlock!(sender)
+        //        }
     }
     
     // MARK: - FullScreen - Action
@@ -380,21 +386,23 @@ class NicooPlayerControlView: UIView {
         layoutReplayButton()
         layoutReplayLable()
         layoutScreenLockButton()
+        self.layoutIfNeeded()
     }
     private func layoutBottomControlBarView() {
         bottomControlBarView.snp.makeConstraints { (make) in
             make.leading.bottom.trailing.equalTo(0)
             if UIDevice.current.isPad() {             //兼容iPad
-                make.height.equalTo(70)
+                make.height.equalTo(80)
             } else {
                 make.height.equalTo(40)
             }
+            
         }
     }
     private func layoutCloseButton() {
         closeButton.snp.makeConstraints { (make) in
             make.leading.top.bottom.equalToSuperview()
-            make.width.equalTo(5)
+            make.width.equalTo(0)
         }
     }
     private func layoutMunesButton() {
@@ -433,6 +441,7 @@ class NicooPlayerControlView: UIView {
         }
     }
     private func layoutScreenLockButton() {
+        
         screenLockButton.snp.makeConstraints { (make) in
             make.leading.equalTo(10)
             make.centerY.equalToSuperview()
@@ -450,7 +459,7 @@ class NicooPlayerControlView: UIView {
         topControlBarView.snp.makeConstraints { (make) in
             make.leading.top.trailing.equalTo(0)
             if UIDevice.current.isPad() {             //兼容iPad
-                make.height.equalTo(70)
+                make.height.equalTo(80)
             } else {
                 make.height.equalTo(40)
             }
@@ -502,5 +511,6 @@ class NicooPlayerControlView: UIView {
             make.width.equalTo(40)
         }
     }
+
     
 }
