@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NicooPlayer'
-  s.version          = '1.1.6'
+  s.version          = '1.1.7'
   s.summary          = 'NicooVideoPlayer for swift4.1'
 
 # This description is used to generate tags and improve search results.
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-  创建播放器：
+  播放器API：
   playerView.playVideo("URL", "视频名称", fateherView)
   从某个时间点开始比方（用于播放上次播放记录）
   playerView.replayVideo(videoModel?.videoUrl, videoModel?.videoName, fatherView, sinceTime)

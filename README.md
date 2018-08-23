@@ -16,6 +16,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## 怎么用
  1.  如果整个项目不支持横屏，播放视频时，页面需要横屏，在APPDelegate 内导入播放器头文件 , 添加方法 ：
+ （在实际项目中，如果有做组件化，这里应该通过路由去拿OrientationSupport 状态，如果对路由有兴趣的朋友可以到：https://github.com/yangxina/NicooSwiftRouterDemo 查看Swift路由Demo） 
+ 
+ 另外由于播放器对系统的状态栏做了操作， 所以需要在主工程的 info.plist 文件中添加：Status bar is initially hidden == YES ， 并在有播放器的VC中重写 Status bar 三个方法：
+ （具体看Demo）
+ 
 /***********************************************************************************************************/
  func application(_ application: UIApplication, supportedInterfaceOrientationsFor window:  
 UIWindow?)
@@ -49,19 +54,25 @@ playerView.changeVideoContainerView ( fateherView1 )   // 传入需要的父视�
 let playTime =  playerView.getNowPlayPositionTimeAndVideoDuration()
 /***********************************************************************************************************/
 
+6.播放本地视频文件
+ playerView.playLocalVideoInFullscreen(self.videoUrl, videoName, self, sinceTime: sinceTime)
+ 
 
-6. 另外还要实现两个代理，具体看Demo   :  （）
+7. 另外还要实现两个代理，具体看Demo   :  （）
 
 let player = NicooPlayerView(frame: self.view.bounds)
 player.delegate = self  
 player.customMuneDelegate = self        // 这个是用于自定义右上角按钮的显示
 
-delegate 对应的代理方法 ：  func retryToPlayVideo(_ videoModel: NicooVideoModel?, _ fatherView: UIView?) 
+delegate 对应的代理方法 ： 
+func retryToPlayVideo(_ videoModel: NicooVideoModel?, _ fatherView: UIView?) 
+
 此方法是在网络加载失败后点击"重试"按钮时调用。
 
 customMuneDelegate 对应的代理方法：  func showCustomMuneView() -> UIView?
 
 此方法是全屏播放时右上角按钮点击后调用：返回一个自定义的控件，实现操作自定义。
+
 
 
 如果你需要自定义右上角按钮的操作控件： 设置    customMuneDelegate   ，实现方法： 
@@ -72,8 +83,11 @@ customMuneDelegate 对应的代理方法：  func showCustomMuneView() -> UIView
  
  如果你不需要右上角的按钮以及自定义操作控件 ： 不设置 customMuneDelegate 即可。
 
- 
+新增视频播放完的回调代理：
 
+func currentVideoPlayToEnd(_ videoModel: NicooVideoModel?, _ isPlayingDownLoadFile: Bool) {
+
+}
 
 
 ## Installation

@@ -8,11 +8,33 @@
 
 import UIKit
 import NicooPlayer
-class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+
+
+class CellPlayVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     var index = 0
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if playerView.superview != nil {
+            if !playerView.isFullScreen! {
+                return .lightContent
+            } else {
+                return .default
+            }
+        } else {
+            return .default
+        }
+        
+    }
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .none
+    }
+    
     
     
     fileprivate lazy var playerView: NicooPlayerView = {
@@ -21,11 +43,18 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         player.customViewDelegate = self   // 这个是用于自定义右上角按钮的显示
         return player
     }()
+    /// 网络变化按钮
+    private lazy var barButton: UIBarButtonItem = {
+        let barBtn = UIBarButtonItem(title: "模拟网络变化",  style: .plain, target: self, action: #selector(CellPlayVC.barButtonClick))
+        barBtn.tintColor = UIColor.red
+        return barBtn
+    }()
     static let cellIdentifier = "VideoCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "视频列表播放"
+        navigationItem.title = "视频列表播放"
+        navigationItem.rightBarButtonItem = barButton
         tableView.tableFooterView = UIView()
         tableView.snp.makeConstraints { (make) in
             if #available(iOS 11.0, *)  {
@@ -57,6 +86,27 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         
     }
+ 
+    @objc func barButtonClick() {
+        /// netWorkAlert 实际上应该是一个变量
+        let netWorkAlert = NicooNetWorkAlert(frame: self.view.bounds, itemButtonTitles: ["不播放","继续"], message: "是否允许非wifi播放？")
+        if  !netWorkAlert.allowedWWanPlayInCurrentVideoGroups {  // 当前这个部电视剧没有被允许
+            print("当前这个部电视剧没有被允许")
+        } else {
+             print("已经允许当前电视剧非wifi播放，尽管看")
+        }
+        netWorkAlert.itemButtonClick = { [weak self] (index) in
+           
+        }
+        netWorkAlert.showInWindow()
+    }
+    
+}
+
+// MARK: - UITableViewDelegate UITableViewDataSource
+
+extension CellPlayVC: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -64,7 +114,7 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellPlayVC.cellIdentifier, for: indexPath) as? NicooVideoCell
         
         cell?.playButtonClickBlock = { [weak self] (sender) in
-            let url = String(format: "https://dn-mykplus.qbox.me/%ld.mp4", indexPath.row+1)
+            let url = URL(string: "http://img.ytsg.cn/video/2/6/1531478862326.mp4")
             self?.playerView.playVideo(url, "视频名称", cell?.backGroundImage)
             self?.index = indexPath.row
         }
@@ -77,22 +127,20 @@ class CellPlayVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
-    
-    
-    
 }
 
-/// MARK: 代理方法： 1. 网络不好，点击重试的操作。   2、 自定义操作栏
+// MARK: - 代理方法： 1. 网络不好，点击重试的操作。   2、 自定义操作栏
 
 extension CellPlayVC: NicooPlayerDelegate, NicooCustomMuneDelegate {
     
     // NicooPlayerDelegate 网络重试
     
     func retryToPlayVideo(_ videoModel: NicooVideoModel?, _ fatherView: UIView?) {
+         let url = URL(string: videoModel?.videoUrl ?? "")
         if  let sinceTime = videoModel?.videoPlaySinceTime, sinceTime > 0 {
-            playerView.replayVideo(videoModel?.videoUrl, videoModel?.videoName, fatherView, sinceTime)
+            playerView.replayVideo(url, videoModel?.videoName, fatherView, sinceTime)
         }else {
-            playerView.playVideo(videoModel?.videoUrl, videoModel?.videoName, fatherView)
+            playerView.playVideo(url, videoModel?.videoName, fatherView)
         }
     }
     

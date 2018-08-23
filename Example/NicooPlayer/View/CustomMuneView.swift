@@ -13,6 +13,7 @@ class CustomMuneView: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeFromSuperview()
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor(white: 0, alpha: 0.7)
@@ -22,6 +23,7 @@ class CustomMuneView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     func loadUI() {
         let sideView = UIView()
         addSubview(sideView)
@@ -49,6 +51,7 @@ class CustomMuneView: UIView {
             }
         }
     }
+    
     @objc func muneButtonClick(_ sender: UIButton) {
         print("sender.title = \(String(describing: sender.titleLabel?.text))")
     }
@@ -60,6 +63,7 @@ class CustomMuneView11: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeFromSuperview()
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -69,6 +73,7 @@ class CustomMuneView11: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     func loadUI() {
         let sideView = UIView()
         addSubview(sideView)
@@ -98,6 +103,7 @@ class CustomMuneView11: UIView {
             }
         }
     }
+    
     @objc func muneButtonClick(_ sender: UIButton) {
         print("sender.title = \(String(describing: sender.titleLabel?.text))")
     }

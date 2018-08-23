@@ -126,7 +126,6 @@ class NicooPlayerControlView: UIView {
         durationLab.textColor = .white
         return durationLab
     }()
-    
     lazy var playOrPauseBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(NicooImgManager.foundImage(imageName: "pause"), for: .normal)
@@ -175,10 +174,18 @@ class NicooPlayerControlView: UIView {
     var barIsHidden: Bool? = false {
         didSet {
             if let barIsHiden = barIsHidden {
-                topControlBarView.isHidden = barIsHiden
-                bottomControlBarView.isHidden = barIsHiden
+                if barIsHiden {
+                    hideTopBottomBar()
+                } else {
+                    showTopBottomBar()
+                }
                 if self.fullScreen! && !self.screenIsLock! {
                     screenLockButton.isHidden = barIsHiden
+                }
+                if let view = UIApplication.shared.value(forKey: "statusBar") as? UIView {  //根据 barIsHiden 改变状态栏的透明度
+                    if fullScreen! {
+                        view.alpha = barIsHiden ? 0 : 1.0
+                    }
                 }
             }
         }
@@ -192,11 +199,10 @@ class NicooPlayerControlView: UIView {
                 NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideScreenLockButton), object: nil)
                 self.perform(#selector(autoHideScreenLockButton), with: nil, afterDelay: 5)
             }
+            updateTopBarWith(fullScreen: fullScreen!)
         }
     }
-    /// 是否是  直接全屏播放
-    var playInFullScreen: Bool? = false
-    
+    /// 是否锁屏
     var screenIsLock: Bool? = false {
         didSet {
             if screenIsLock! {
@@ -208,13 +214,18 @@ class NicooPlayerControlView: UIView {
                 screenLockButton.isSelected = false
                 doubleTapGesture.isEnabled = true
                 panGesture.isEnabled = true
-                /// 直接全屏播放时，只支持左右，非直接全屏播放支持上左右
-                orientationSupport = playInFullScreen! ? OrientationSupport.orientationPortrait : OrientationSupport.orientationAll
+                /// 全屏播放本地时，只支持左右，非直接全屏播放支持上左右
+                orientationSupport = playLocalFile! ? OrientationSupport.orientationLeftAndRight : OrientationSupport.orientationAll
             }
         }
     }
+    /// 是否是  播放本地文件
+    var playLocalFile: Bool? = false
+    
+    // MARK: - Delegate
     weak var delegate: NicooPlayerControlViewDelegate?
     
+    // MARK: - CallBackBlock
     var fullScreenButtonClickBlock: ((_ sender: UIButton) -> ())?
     var playOrPauseButtonClickBlock: ((_ sender: UIButton) -> ())?
     var closeButtonClickBlock: ((_ sender: UIButton) -> ())?
@@ -222,6 +233,8 @@ class NicooPlayerControlView: UIView {
     var replayButtonClickBlock: ((_ sender: UIButton) -> ())?
     var screenLockButtonClickBlock: ((_ sender: UIButton) -> ())?
     var pangeustureAction: ((_ sender: UIPanGestureRecognizer) ->())?
+    
+    // MARK: - LifeCycle
     
     init(frame: CGRect, fullScreen: Bool) {
         super.init(frame: frame)
@@ -240,23 +253,136 @@ class NicooPlayerControlView: UIView {
         bottomControlBarView.addSubview(fullScreenBtn)
         replayContainerView.addSubview(replayButton)
         replayContainerView.addSubview(replayLable)
-        
-        
+       
         addSubview(loadingView)
         addSubview(screenLockButton)
         
         layoutAllPageViews()
         addGestureAllRecognizers()
-        
         replayContainerView.isHidden = true
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - add - GestureRecognizers
     
+    /// 自动隐藏操作栏
+    @objc func autoHideTopBottomBar() {
+        barIsHidden = true
+    }
+    /// 自动隐藏锁屏按钮
+    @objc func autoHideScreenLockButton() {
+        screenLockButton.isHidden = true
+    }
+    
+    
+    
+}
+
+// MARK: - User -Actions {
+
+extension NicooPlayerControlView {
+    
+   // MARK: - GestureRecognizers - Action
+    @objc func singleTapGestureRecognizers(_ sender: UITapGestureRecognizer) {
+        if screenIsLock! {                                                    // 锁屏状态下，单击手势只显示锁屏按钮
+            screenLockButton.isHidden = !screenLockButton.isHidden
+            if !screenLockButton.isHidden {
+                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideScreenLockButton), object: nil)
+                self.perform(#selector(autoHideScreenLockButton), with: nil, afterDelay: 5)
+            }
+        }else {
+            barIsHidden = !barIsHidden! // 单击改变操作栏的显示隐藏
+            if !barIsHidden! {
+                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideTopBottomBar), object: nil)
+                self.perform(#selector(autoHideTopBottomBar), with: nil, afterDelay: 5)
+            }
+        }
+    }
+    
+    @objc func doubleTapGestureRecognizers(_ sender: UITapGestureRecognizer) {
+        self.playOrPauseBtnClick(playOrPauseBtn) // 双击时直接响应播放暂停按钮点击
+    }
+    
+    @objc func panGestureRecognizers(_ sender: UIPanGestureRecognizer) {
+        if let panGestureAction = self.pangeustureAction {
+            panGestureAction(sender)
+        }
+    }
+    
+    // MARK: - Slider - Action
+    @objc func sliderValueChange (_ sender: UISlider) {
+        barIsHidden = false
+        delegate?.sliderValueChange(sender)
+    }
+    
+    @objc func sliderAllTouchBegin(_ sender: UISlider) {
+        barIsHidden = false  // 防止拖动进度时，操作栏5秒后自动隐藏
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideTopBottomBar), object: nil)
+        delegate?.sliderTouchBegin(sender)
+        
+    }
+    
+    @objc func sliderAllTouchEnd(_ sender: UISlider) {
+        delegate?.sliderTouchEnd(sender)
+        if !barIsHidden! {   // 拖动完成后，操作栏5秒后自动隐藏
+            self.perform(#selector(autoHideTopBottomBar), with: nil, afterDelay: 5)
+        }
+    }
+    
+    // MARK: - closeButton - Action
+    @objc func closeButtonClick(_ sender: UIButton) {
+        if self.closeButtonClickBlock != nil {
+            self.closeButtonClickBlock!(sender)
+        }
+    }
+    
+    // MARK: - munesButton - Action
+    @objc func munesButtonClick(_ sender: UIButton) {
+        if self.muneButtonClickBlock != nil {
+            self.muneButtonClickBlock!(sender)
+        }
+    }
+    
+    // MARK: - PlayOrPause - Action
+    @objc func playOrPauseBtnClick(_ sender: UIButton) {
+        if self.playOrPauseButtonClickBlock != nil {
+            self.playOrPauseButtonClickBlock!(sender)
+        }
+    }
+    
+    // MARK: - screenLockButton - Action
+    @objc func screenLockButtonClick(_ sender: UIButton) {
+        screenIsLock = !screenIsLock!
+        barIsHidden = screenIsLock
+        //        if self.screenLockButtonClickBlock != nil {
+        //            self.screenLockButtonClickBlock!(sender)
+        //        }
+    }
+    
+    // MARK: - FullScreen - Action
+    @objc func fullScreenBtnClick(_ sender: UIButton){
+        if self.fullScreenButtonClickBlock != nil {
+            self.fullScreenButtonClickBlock!(sender)
+        }
+    }
+    
+    // MARK: - ReplayButtonClick
+    @objc func replayButtonClick(_ sender: UIButton) {
+        if self.replayButtonClickBlock != nil {
+            self.replayButtonClickBlock!(sender)
+        }
+    }
+    
+}
+
+// MARK: - Private - Funcs
+
+extension NicooPlayerControlView {
+    
+    // MARK: - add - GestureRecognizers
     fileprivate func addGestureAllRecognizers() {
         self.addGestureRecognizer(singleTapGesture)
         self.addGestureRecognizer(doubleTapGesture)
@@ -271,103 +397,44 @@ class NicooPlayerControlView: UIView {
         singleTapGesture.require(toFail: doubleTapGesture)
         singleTapGesture.require(toFail: panGesture)
     }
-    @objc func singleTapGestureRecognizers(_ sender: UITapGestureRecognizer) {
-        if screenIsLock! {                                                    // 锁屏状态下，单击手势只显示锁屏按钮
-            screenLockButton.isHidden = !screenLockButton.isHidden
-            if !screenLockButton.isHidden {
-                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideScreenLockButton), object: nil)
-                self.perform(#selector(autoHideScreenLockButton), with: nil, afterDelay: 5)
-            }
-            
-        }else {
-            barIsHidden = !barIsHidden! // 单击改变操作栏的显示隐藏
-            if !barIsHidden! {
-                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideTopBottomBar), object: nil)
-                self.perform(#selector(autoHideTopBottomBar), with: nil, afterDelay: 5)
-            }
-        }
-    }
-    @objc func doubleTapGestureRecognizers(_ sender: UITapGestureRecognizer) {
-        self.playOrPauseBtnClick(playOrPauseBtn) // 双击时直接响应播放暂停按钮点击
-    }
-    @objc func panGestureRecognizers(_ sender: UIPanGestureRecognizer) {
-        if let panGestureAction = self.pangeustureAction {
-            panGestureAction(sender)
-        }
-    }
-    /// 自动隐藏操作栏
-    @objc func autoHideTopBottomBar() {
-        barIsHidden = true
-    }
-    /// 自动隐藏锁屏按钮
-    @objc func autoHideScreenLockButton() {
-        screenLockButton.isHidden = true
-    }
     
-    // MARK: - Slider - Action
     
-    @objc func sliderValueChange (_ sender: UISlider) {
-        barIsHidden = false
-        delegate?.sliderValueChange(sender)
-    }
-    @objc func sliderAllTouchBegin(_ sender: UISlider) {
-        barIsHidden = false  // 防止拖动进度时，操作栏5秒后自动隐藏
-        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(autoHideTopBottomBar), object: nil)
-        delegate?.sliderTouchBegin(sender)
-        
-    }
-    @objc func sliderAllTouchEnd(_ sender: UISlider) {
-        delegate?.sliderTouchEnd(sender)
-        if !barIsHidden! {   // 拖动完成后，操作栏5秒后自动隐藏
-            self.perform(#selector(autoHideTopBottomBar), with: nil, afterDelay: 5)
+    /// 隐藏操作栏，带动画
+    private func hideTopBottomBar() {
+        topControlBarView.snp.updateConstraints { (make) in
+            make.height.equalTo(0)
+        }
+        bottomControlBarView.snp.updateConstraints { (make) in
+            make.height.equalTo(0)
+        }
+        UIView.animate(withDuration: 0.2, animations: {
+            self.layoutIfNeeded()
+        }) { (finish) in
+            self.bottomControlBarView.isHidden = true
+            self.topControlBarView.isHidden = true
         }
     }
     
-    // MARK: - closeButton - Action
-    
-    @objc func closeButtonClick(_ sender: UIButton) {
-        if self.closeButtonClickBlock != nil {
-            self.closeButtonClickBlock!(sender)
+    ///显示操作栏，带动画
+    private func showTopBottomBar() {
+        topControlBarView.isHidden = false
+        bottomControlBarView.isHidden = false
+        topControlBarView.snp.updateConstraints { (make) in
+            make.height.equalTo(fullScreen! ? 60 : 40)
         }
-    }
-    // MARK: - munesButton - Action
-    @objc func munesButtonClick(_ sender: UIButton) {
-        if self.muneButtonClickBlock != nil {
-            self.muneButtonClickBlock!(sender)
+        bottomControlBarView.snp.updateConstraints { (make) in
+            make.height.equalTo(40)
         }
-    }
-    // MARK: - PlayOrPause - Action
-    
-    @objc func playOrPauseBtnClick(_ sender: UIButton) {
-        if self.playOrPauseButtonClickBlock != nil {
-            self.playOrPauseButtonClickBlock!(sender)
-        }
-    }
-    // MARK: - screenLockButton - Action
-    
-    @objc func screenLockButtonClick(_ sender: UIButton) {
-        screenIsLock = !screenIsLock!
-        barIsHidden = screenIsLock
-        //        if self.screenLockButtonClickBlock != nil {
-        //            self.screenLockButtonClickBlock!(sender)
-        //        }
+        UIView.animate(withDuration: 0.2, animations: {
+            self.layoutIfNeeded()
+        })
     }
     
-    // MARK: - FullScreen - Action
-    
-    @objc func fullScreenBtnClick(_ sender: UIButton){
-        if self.fullScreenButtonClickBlock != nil {
-            self.fullScreenButtonClickBlock!(sender)
-        }
-    }
-    
-    // MARK: - ReplayButtonClick
-    @objc func replayButtonClick(_ sender: UIButton) {
-        if self.replayButtonClickBlock != nil {
-            self.replayButtonClickBlock!(sender)
-        }
-    }
-    // MARK: - layoutAllSubviews
+}
+
+// MARK : - Layout All Subviews
+
+extension NicooPlayerControlView {
     
     private func layoutAllPageViews() {
         layoutTopControlBarView()
@@ -401,19 +468,22 @@ class NicooPlayerControlView: UIView {
     }
     private func layoutCloseButton() {
         closeButton.snp.makeConstraints { (make) in
-            make.leading.top.bottom.equalToSuperview()
+            make.top.equalTo(0)
+            make.leading.bottom.equalToSuperview()
             make.width.equalTo(0)
         }
     }
     private func layoutMunesButton() {
         munesButton.snp.makeConstraints { (make) in
-            make.trailing.top.bottom.equalToSuperview()
+            make.top.equalTo(0)
+            make.trailing.bottom.equalToSuperview()
             make.width.equalTo(60)
         }
     }
     private func layoutVideoNameLable() {
         videoNameLable.snp.makeConstraints { (make) in
-            make.top.bottom.equalToSuperview()
+            make.top.equalTo(0)
+            make.bottom.equalToSuperview()
             make.leading.equalTo(closeButton.snp.trailing).offset(5)
             make.trailing.equalToSuperview().offset(80)
         }
@@ -511,6 +581,21 @@ class NicooPlayerControlView: UIView {
             make.width.equalTo(40)
         }
     }
-
+    
+    private func updateTopBarWith(fullScreen: Bool) {
+        topControlBarView.snp.updateConstraints { (make) in
+            make.height.equalTo(fullScreen ? 60 : 40)
+        }
+        closeButton.snp.updateConstraints { (make) in
+            make.top.equalTo(fullScreen ? 20 : 0)
+        }
+        videoNameLable.snp.updateConstraints { (make) in
+            make.top.equalTo(fullScreen ? 20 : 0)
+        }
+        munesButton.snp.updateConstraints { (make) in
+            make.top.equalTo(fullScreen ? 20 : 0)
+    
+        }
+    }
     
 }

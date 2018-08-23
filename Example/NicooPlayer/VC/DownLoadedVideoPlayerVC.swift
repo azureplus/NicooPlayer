@@ -8,24 +8,44 @@
 
 import UIKit
 import NicooPlayer
+
+/// 播放本地视频
+/// 模拟播放已下载好的本地视频
+
 class DownLoadedVideoPlayerVC: UIViewController {
+    
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
     }
+    /// 播放本地文件的时候，状态栏颜色样式与是否全屏无关 （默认全屏）
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if isLightContentStatusBar {
+            return .lightContent
+        } else {
+            return .default
+        }
+    }
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .none
+    }
+    
+    var isLightContentStatusBar: Bool = false
+    
+    fileprivate lazy var playLocalButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.backgroundColor = UIColor.yellow
+        button.setTitle("播放本地文件", for: .normal)
+        button.setTitleColor(UIColor.darkGray, for: .normal)
+        button.addTarget(self, action: #selector(DownLoadedVideoPlayerVC.playLacalFileVideo), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        self.view.backgroundColor = UIColor.white
-        //  这里应该走另一条线，一个简单的视频播放，将播放View旋转90度。
-        let player = NicooPlayerView(frame: self.view.frame)
+        view.backgroundColor = UIColor.white
         
-        let fileUrl = Bundle.main.path(forResource: "localFile", ofType: ".mp4")
-        
-        player.playLocalVideoInFullscreen(fileUrl, "videoName", view)
-        
-        player.playLocalFileVideoCloseCallBack = { [weak self] (playValue) in
-            self?.dismiss(animated: true, completion: nil)
-        }
+        view.addSubview(playLocalButton)
+        layouPageSubviews()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,14 +54,43 @@ class DownLoadedVideoPlayerVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+// MARK: - User Actions
+
+extension DownLoadedVideoPlayerVC {
+    
+    @objc func playLacalFileVideo() {
+        isLightContentStatusBar = true  // 开始播放，状态栏变为白色
+        
+        let fileUrl = Bundle.main.path(forResource: "localFile", ofType: ".mp4")
+        let videoBgView = VideoPlayerFatherView(frame: self.view.bounds, fileUrl)
+        videoBgView.backgroundColor = UIColor.blue
+        view.addSubview(videoBgView)
+        layoutVideoBgView(videoBgView)
+        videoBgView.playLocalVideo(fileUrl: fileUrl!, videoName:  "localFile", sinceTime: 0, self)
     }
-    */
+    
+}
 
+// MARK: - Layout
+
+extension DownLoadedVideoPlayerVC {
+    
+    func layouPageSubviews() {
+        layoutPlayButton()
+    }
+    func layoutVideoBgView(_ videoBGview: UIView) {
+        videoBGview.snp.makeConstraints { (make) in
+            make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(UIScreen.main.bounds.size.width * 9/16)
+        }
+    }
+    func layoutPlayButton() {
+        playLocalButton.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.height.equalTo(70)
+            make.width.equalTo(120)
+        }
+    }
 }
