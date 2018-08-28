@@ -15,10 +15,7 @@ class CellPlayVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var index = 0
-    
-    override var prefersStatusBarHidden: Bool {
-        return false
-    }
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if playerView.superview != nil {
             if !playerView.isFullScreen! {
@@ -31,11 +28,6 @@ class CellPlayVC: UIViewController {
         }
         
     }
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .none
-    }
-    
-    
     
     fileprivate lazy var playerView: NicooPlayerView = {
         let player = NicooPlayerView(frame: self.view.bounds)

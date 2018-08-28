@@ -14,9 +14,7 @@ import NicooPlayer
 
 class DownLoadedVideoPlayerVC: UIViewController {
     
-    override var prefersStatusBarHidden: Bool {
-        return false
-    }
+   
     /// 播放本地文件的时候，状态栏颜色样式与是否全屏无关 （默认全屏）
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if isLightContentStatusBar {
@@ -25,27 +23,30 @@ class DownLoadedVideoPlayerVC: UIViewController {
             return .default
         }
     }
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .none
-    }
+   
     
     var isLightContentStatusBar: Bool = false
     
-    fileprivate lazy var playLocalButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.backgroundColor = UIColor.yellow
-        button.setTitle("播放本地文件", for: .normal)
-        button.setTitleColor(UIColor.darkGray, for: .normal)
-        button.addTarget(self, action: #selector(DownLoadedVideoPlayerVC.playLacalFileVideo), for: .touchUpInside)
-        return button
+    fileprivate lazy var videoPlayer: NicooPlayerView = {
+        //  这里应该走另一条线，一个简单的视频播放，将播放View旋转90度。
+        let player = NicooPlayerView(frame: self.view.frame, bottomBarBothSide: true)
+        player.delegate = self
+        return player
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        view.addSubview(playLocalButton)
-        layouPageSubviews()
+        isLightContentStatusBar = true // 开始播放，状态栏变为白色
+        
+        let fileUrl = Bundle.main.path(forResource: "localFile", ofType: ".mp4")
+        videoPlayer.playLocalVideoInFullscreen(fileUrl, "localFile", view, sinceTime: 0)
+        videoPlayer.playLocalFileVideoCloseCallBack = { [weak self] (playValue) in
+            // 这里由于出现了一个处理不了的bug，所以才这样先横屏再竖屏的
+            self?.isLightContentStatusBar = false   // 变为黑色
+            self?.navigationController?.popViewController(animated: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,37 +61,16 @@ class DownLoadedVideoPlayerVC: UIViewController {
 
 extension DownLoadedVideoPlayerVC {
     
-    @objc func playLacalFileVideo() {
-        isLightContentStatusBar = true  // 开始播放，状态栏变为白色
-        
-        let fileUrl = Bundle.main.path(forResource: "localFile", ofType: ".mp4")
-        let videoBgView = VideoPlayerFatherView(frame: self.view.bounds, fileUrl)
-        videoBgView.backgroundColor = UIColor.blue
-        view.addSubview(videoBgView)
-        layoutVideoBgView(videoBgView)
-        videoBgView.playLocalVideo(fileUrl: fileUrl!, videoName:  "localFile", sinceTime: 0, self)
-    }
     
 }
 
-// MARK: - Layout
+// MARK: - NicooPlayerDelegate
 
-extension DownLoadedVideoPlayerVC {
+extension DownLoadedVideoPlayerVC: NicooPlayerDelegate {
     
-    func layouPageSubviews() {
-        layoutPlayButton()
+    func retryToPlayVideo(_ videoModel: NicooVideoModel?, _ fatherView: UIView?) {
+        
     }
-    func layoutVideoBgView(_ videoBGview: UIView) {
-        videoBGview.snp.makeConstraints { (make) in
-            make.leading.trailing.top.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.size.width * 9/16)
-        }
-    }
-    func layoutPlayButton() {
-        playLocalButton.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.height.equalTo(70)
-            make.width.equalTo(120)
-        }
-    }
+    
+    
 }

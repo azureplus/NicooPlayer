@@ -16,9 +16,6 @@ class PlayVideoVC: UIViewController {
     
     
     /// 这里重写系统方法，为了让 StatusBar 跟随播放器的操作栏一起 隐藏或显示，且在全屏播放时， StatusBar 样式变为 lightContent
-    override var prefersStatusBarHidden: Bool {
-        return false
-    }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if playerView.superview != nil {
             if !playerView.isFullScreen! {
@@ -30,9 +27,6 @@ class PlayVideoVC: UIViewController {
             return .default
         }
         
-    }
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .none
     }
     
     
@@ -74,7 +68,7 @@ class PlayVideoVC: UIViewController {
     }()
     
     private lazy var playerView: NicooPlayerView = {
-        let player = NicooPlayerView(frame: self.fateherView.bounds)
+        let player = NicooPlayerView(frame: self.fateherView.bounds, bottomBarBothSide: true)
         player.delegate = self
         return player
     }()

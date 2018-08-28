@@ -21,7 +21,13 @@ class NicooPlayerControlView: UIView {
     /// 顶部控制栏
     lazy var topControlBarView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(white: 0.2, alpha: 0.2)
+       //view.backgroundColor = UIColor(white: 0.2, alpha: 0.2)
+        //创建渐变层
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor(white: 0.1, alpha: 0.5).cgColor, UIColor.darkGray.withAlphaComponent(0.0).cgColor]
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.height, height: 60)
+        gradientLayer.locations = [0, 0.99, 1]
+        view.layer.addSublayer(gradientLayer)
         return view
     }()
     lazy var closeButton: UIButton = {
@@ -60,6 +66,7 @@ class NicooPlayerControlView: UIView {
         view.layer.cornerRadius = 6
         view.backgroundColor = UIColor(white: 0.2, alpha: 0.2)
         view.layer.masksToBounds = true
+        view.isHidden = true
         return view
     }()
     lazy var replayButton: UIButton = {
@@ -80,7 +87,13 @@ class NicooPlayerControlView: UIView {
     /// 底部控制栏
     lazy var bottomControlBarView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(white: 0.2, alpha: 0.2)
+       // view.backgroundColor = UIColor(white: 0.2, alpha: 0.2)
+        //创建渐变层
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.darkGray.withAlphaComponent(0.0).cgColor, UIColor(white: 0.1, alpha: 0.5).cgColor]
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.height, height: 40)
+        gradientLayer.locations = [0, 0.99, 1]
+        view.layer.addSublayer(gradientLayer)
         return view
     }()
     lazy var loadedProgressView: UIProgressView = {
@@ -109,7 +122,6 @@ class NicooPlayerControlView: UIView {
         slider.addTarget(self, action: #selector(NicooPlayerControlView.sliderAllTouchEnd(_:)), for: .touchUpOutside)
         return slider
     }()
-    
     lazy var positionTimeLab: UILabel = {
         let lable = UILabel()
         lable.textAlignment = .left
@@ -121,7 +133,7 @@ class NicooPlayerControlView: UIView {
     lazy var durationTimeLab: UILabel = {
         let durationLab = UILabel()
         durationLab.textAlignment = .right
-        durationLab.text = "00:00/00:00"
+        durationLab.text = barType == PlayerBottomBarType.PlayerBottomBarTimeBothSides ? "00:00" : "00:00/00:00"
         durationLab.font = UIFont.systemFont(ofSize: 13)
         durationLab.textColor = .white
         return durationLab
@@ -221,6 +233,8 @@ class NicooPlayerControlView: UIView {
     }
     /// 是否是  播放本地文件
     var playLocalFile: Bool? = false
+    /// 默认时间显示在右侧
+    var barType: PlayerBottomBarType = PlayerBottomBarType.PlayerBottomBarTimeRight
     
     // MARK: - Delegate
     weak var delegate: NicooPlayerControlViewDelegate?
@@ -236,8 +250,9 @@ class NicooPlayerControlView: UIView {
     
     // MARK: - LifeCycle
     
-    init(frame: CGRect, fullScreen: Bool) {
+    init(frame: CGRect, fullScreen: Bool, _ bottomBarType: PlayerBottomBarType) {
         super.init(frame: frame)
+        barType = bottomBarType
         addSubview(topControlBarView)
         addSubview(bottomControlBarView)
         addSubview(replayContainerView)
@@ -246,7 +261,9 @@ class NicooPlayerControlView: UIView {
         topControlBarView.addSubview(munesButton)
         
         bottomControlBarView.addSubview(playOrPauseBtn)
-        //bottomControlBarView.addSubview(positionTimeLab)
+        if bottomBarType == PlayerBottomBarType.PlayerBottomBarTimeBothSides {
+            bottomControlBarView.addSubview(positionTimeLab)
+        }
         bottomControlBarView.addSubview(loadedProgressView)
         bottomControlBarView.addSubview(timeSlider)
         bottomControlBarView.addSubview(durationTimeLab)
@@ -259,8 +276,6 @@ class NicooPlayerControlView: UIView {
         
         layoutAllPageViews()
         addGestureAllRecognizers()
-        replayContainerView.isHidden = true
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -276,9 +291,7 @@ class NicooPlayerControlView: UIView {
     @objc func autoHideScreenLockButton() {
         screenLockButton.isHidden = true
     }
-    
-    
-    
+   
 }
 
 // MARK: - User -Actions {
@@ -383,7 +396,7 @@ extension NicooPlayerControlView {
 extension NicooPlayerControlView {
     
     // MARK: - add - GestureRecognizers
-    fileprivate func addGestureAllRecognizers() {
+    private func addGestureAllRecognizers() {
         self.addGestureRecognizer(singleTapGesture)
         self.addGestureRecognizer(doubleTapGesture)
         self.addGestureRecognizer(panGesture)
@@ -405,8 +418,9 @@ extension NicooPlayerControlView {
             make.height.equalTo(0)
         }
         bottomControlBarView.snp.updateConstraints { (make) in
-            make.height.equalTo(0)
+            make.height.equalTo(fullScreen! ? 0 : 40)
         }
+        
         UIView.animate(withDuration: 0.2, animations: {
             self.layoutIfNeeded()
         }) { (finish) in
@@ -422,6 +436,7 @@ extension NicooPlayerControlView {
         topControlBarView.snp.updateConstraints { (make) in
             make.height.equalTo(fullScreen! ? 60 : 40)
         }
+        
         bottomControlBarView.snp.updateConstraints { (make) in
             make.height.equalTo(40)
         }
@@ -429,6 +444,7 @@ extension NicooPlayerControlView {
             self.layoutIfNeeded()
         })
     }
+    
     
 }
 
@@ -443,7 +459,9 @@ extension NicooPlayerControlView {
         layoutVideoNameLable()
         layoutBottomControlBarView()
         layoutPlayOrPauseBtn()
-        // layoutPositionTimeLab()
+        if barType == PlayerBottomBarType.PlayerBottomBarTimeBothSides {
+            layoutPositionTimeLab()
+        }
         layoutFullScreenBtn()
         layoutDurationTimeLab()
         layoutLoadedProgressView()
@@ -511,7 +529,6 @@ extension NicooPlayerControlView {
         }
     }
     private func layoutScreenLockButton() {
-        
         screenLockButton.snp.makeConstraints { (make) in
             make.leading.equalTo(10)
             make.centerY.equalToSuperview()
@@ -554,7 +571,11 @@ extension NicooPlayerControlView {
         loadedProgressView.snp.makeConstraints { (make) in
             make.centerY.equalTo(bottomControlBarView.snp.centerY)
             make.height.equalTo(1.5)
-            make.leading.equalTo(playOrPauseBtn.snp.trailing).offset(5)
+            if barType == PlayerBottomBarType.PlayerBottomBarTimeBothSides {
+                make.leading.equalTo(positionTimeLab.snp.trailing).offset(5)
+            } else {
+                make.leading.equalTo(playOrPauseBtn.snp.trailing).offset(5)
+            }
             make.trailing.equalTo(durationTimeLab.snp.leading).offset(-5)
         }
     }
@@ -571,7 +592,11 @@ extension NicooPlayerControlView {
             make.trailing.equalTo(fullScreenBtn.snp.leading).offset(-5)
             make.height.equalTo(25)
             make.centerY.equalTo(bottomControlBarView.snp.centerY)
-            make.width.equalTo(80)
+            if barType == PlayerBottomBarType.PlayerBottomBarTimeBothSides {
+                make.width.equalTo(45)
+            } else {
+                make.width.equalTo(80)
+            }
         }
     }
     private func layoutFullScreenBtn() {
