@@ -17,17 +17,27 @@ class PlayVideoVC: UIViewController {
     
     /// 这里重写系统方法，为了让 StatusBar 跟随播放器的操作栏一起 隐藏或显示，且在全屏播放时， StatusBar 样式变为 lightContent
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if playerView.superview != nil {
-            if !playerView.isFullScreen! {
-                return .lightContent
-            } else {
+        if isLightContentStatusBarInFullScreen {
+            if playerView.superview != nil {
+                if !playerView.isFullScreen! {  // 播放器添加，全屏（这里因为横竖屏切换时，先调用这个属性，再走横竖屏的方法，所以在走这里的时候，isFullScreen还没有附上值，所以取反）
+                    return .lightContent
+                } else {
+                    return .default
+                }
+            } else {  // 播放器没有添加，返回默认
                 return .default
             }
         } else {
             return .default
         }
-        
     }
+    /// 全屏播放时，让状态栏变为 lightContent
+    /// 1.如果整个项目的状态栏已经为 lightContent，则不需要这些操作，直接播放就好。
+    /// 2.如果整个项目状态栏为default，则需要在添加播放器的页面加上一个bool判断， 再重写preferredStatusBarStyle属性,将状态栏样式与播放器的横竖屏关联，plist文件中添加: Status bar is initially hidden = YES
+    var isLightContentStatusBarInFullScreen: Bool = false
+    
+    
+    
     
     
     private lazy var playOrPauseBtn: UIButton = {
@@ -93,7 +103,7 @@ class PlayVideoVC: UIViewController {
         //  初始化播放器
         let url = URL(string: "http://img.ytsg.cn/video/2/6/1531478862326.mp4")
         playerView.playVideo(url, "这里传递视屏名称", fateherView)
-        
+        isLightContentStatusBarInFullScreen = true
         // 初始化播放器，并从某个时间点开始播放
         // playerView.replayVideo("https://dn-mykplus.qbox.me/3.mp4", "视屏名称", fateherView, 180.0)
         
@@ -128,6 +138,7 @@ class PlayVideoVC: UIViewController {
         // 如果当前播放器已经添加，支持横竖屏
         if fateherView.subviews.contains(playerView) {
             orientationSupport = OrientationSupport.orientationAll
+            isLightContentStatusBarInFullScreen = true
         }
     }
     
@@ -136,6 +147,7 @@ class PlayVideoVC: UIViewController {
         /// 离开视频播放页面，只支持竖屏
         playerView.playerStatu = PlayerStatus.Pause
         orientationSupport = OrientationSupport.orientationPortrait
+        isLightContentStatusBarInFullScreen = false
     }
    
 }
@@ -148,8 +160,10 @@ extension PlayVideoVC: NicooPlayerDelegate {
         print("网络不可用时调用")
         let url = URL(string: videoModel?.videoUrl ?? "")
         if  let sinceTime = videoModel?.videoPlaySinceTime, sinceTime > 0 {
+            isLightContentStatusBarInFullScreen = true
             playerView.replayVideo(url, videoModel?.videoName, fatherView, sinceTime)
         }else {
+            isLightContentStatusBarInFullScreen = true
             playerView.playVideo(url, videoModel?.videoName, fatherView)
         }
     }

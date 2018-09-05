@@ -10,6 +10,8 @@ import UIKit
 
 class CustomMuneView: UIView {
 
+    var itemClick:(() -> Void)?
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeFromSuperview()
     }
@@ -54,11 +56,14 @@ class CustomMuneView: UIView {
     
     @objc func muneButtonClick(_ sender: UIButton) {
         print("sender.title = \(String(describing: sender.titleLabel?.text))")
+        itemClick?()
     }
 
 }
 
 class CustomMuneView11: UIView {
+    
+    var itemClick:(() -> Void)?
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeFromSuperview()
@@ -73,6 +78,8 @@ class CustomMuneView11: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
     
     func loadUI() {
         let sideView = UIView()
@@ -106,6 +113,7 @@ class CustomMuneView11: UIView {
     
     @objc func muneButtonClick(_ sender: UIButton) {
         print("sender.title = \(String(describing: sender.titleLabel?.text))")
+        itemClick?()
     }
     
 }

@@ -38,13 +38,12 @@ class DownLoadedVideoPlayerVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        isLightContentStatusBar = true // 开始播放，状态栏变为白色
+        isLightContentStatusBar = true             // 开始播放，状态栏变为白色
         
         let fileUrl = Bundle.main.path(forResource: "localFile", ofType: ".mp4")
         videoPlayer.playLocalVideoInFullscreen(fileUrl, "localFile", view, sinceTime: 0)
         videoPlayer.playLocalFileVideoCloseCallBack = { [weak self] (playValue) in
-            // 这里由于出现了一个处理不了的bug，所以才这样先横屏再竖屏的
-            self?.isLightContentStatusBar = false   // 变为黑色
+            self?.isLightContentStatusBar = false    // 变为黑色
             self?.navigationController?.popViewController(animated: false)
         }
     }
