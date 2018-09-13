@@ -81,7 +81,7 @@ class CellPlayVC: UIViewController {
         super.viewWillAppear(animated)
         // 如果当前播放器已经添加，支持横竖屏
         if playerView.superview != nil {
-            orientationSupport = OrientationSupport.orientationAll
+            orientationSupport = NicooPlayerOrietation.orientationAll
             // 视图出现时，播放器存在与当前页面
             isLightContentStatusBarInFullScreen = true
             playerView.playerStatu = PlayerStatus.Playing

@@ -78,7 +78,7 @@ class PlayVideoVC: UIViewController {
     }()
     
     private lazy var playerView: NicooPlayerView = {
-        let player = NicooPlayerView(frame: self.fateherView.bounds, bottomBarBothSide: true)
+        let player = NicooPlayerView(frame: self.fateherView.bounds, bothSidesTimelable: true)
         player.delegate = self
         return player
     }()
@@ -137,7 +137,7 @@ class PlayVideoVC: UIViewController {
         
         // 如果当前播放器已经添加，支持横竖屏
         if fateherView.subviews.contains(playerView) {
-            orientationSupport = OrientationSupport.orientationAll
+            orientationSupport = NicooPlayerOrietation.orientationAll
             isLightContentStatusBarInFullScreen = true
         }
     }
@@ -146,7 +146,7 @@ class PlayVideoVC: UIViewController {
         super.viewDidDisappear(animated)
         /// 离开视频播放页面，只支持竖屏
         playerView.playerStatu = PlayerStatus.Pause
-        orientationSupport = OrientationSupport.orientationPortrait
+        orientationSupport = NicooPlayerOrietation.orientationPortrait
         isLightContentStatusBarInFullScreen = false
     }
    
