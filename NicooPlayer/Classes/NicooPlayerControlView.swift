@@ -114,7 +114,8 @@ class NicooPlayerControlView: UIView {
         slider.contentMode = UIViewContentMode.scaleAspectFit
         slider.minimumTrackTintColor = UIColor.white
         slider.maximumTrackTintColor = UIColor.clear
-        slider.setThumbImage(NicooImgManager.foundImage(imageName: "NicooPlayer_slider"), for: .normal)
+        slider.setThumbImage(NicooImgManager.foundImage(imageName: "sliderflash"), for: .normal)
+        slider.setThumbImage(NicooImgManager.foundImage(imageName: "sliderHightLight"), for: .highlighted)
         slider.addTarget(self, action: #selector(NicooPlayerControlView.sliderValueChange(_:)),for:.valueChanged)
         slider.addTarget(self, action: #selector(NicooPlayerControlView.sliderAllTouchBegin(_:)), for: .touchDown)
         slider.addTarget(self, action: #selector(NicooPlayerControlView.sliderAllTouchEnd(_:)), for: .touchCancel)
@@ -179,6 +180,7 @@ class NicooPlayerControlView: UIView {
         let gesture = UIPanGestureRecognizer()
         gesture.addTarget(self, action: #selector(panGestureRecognizers(_:)))
         gesture.maximumNumberOfTouches = 1
+        gesture.delegate = self
         gesture.isEnabled = false          //先让手势不能触发
         return gesture
     }()
@@ -221,13 +223,13 @@ class NicooPlayerControlView: UIView {
                 screenLockButton.isSelected = true
                 doubleTapGesture.isEnabled = false
                 panGesture.isEnabled = false
-                orientationSupport = OrientationSupport.orientationLeftAndRight
+                orientationSupport = NicooPlayerOrietation.orientationLeftAndRight
             }else {
                 screenLockButton.isSelected = false
                 doubleTapGesture.isEnabled = true
                 panGesture.isEnabled = true
                 /// 全屏播放本地时，只支持左右，非直接全屏播放支持上左右
-                orientationSupport = playLocalFile! ? OrientationSupport.orientationLeftAndRight : OrientationSupport.orientationAll
+                orientationSupport = playLocalFile! ? NicooPlayerOrietation.orientationLeftAndRight : NicooPlayerOrietation.orientationAll
             }
         }
     }
@@ -389,6 +391,18 @@ extension NicooPlayerControlView {
         }
     }
     
+}
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension NicooPlayerControlView: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view is UISlider {
+            return false
+        }
+        return true
+    }
 }
 
 // MARK: - Private - Funcs

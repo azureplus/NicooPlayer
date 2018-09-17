@@ -17,15 +17,13 @@ class DownLoadedVideoPlayerVC: UIViewController {
    
     /// 播放本地文件的时候，状态栏颜色样式与是否全屏无关 （默认全屏）
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if isLightContentStatusBar {
+        let orirntation = UIApplication.shared.statusBarOrientation
+        if  orirntation == UIInterfaceOrientation.landscapeLeft || orirntation == UIInterfaceOrientation.landscapeRight {
             return .lightContent
-        } else {
-            return .default
         }
+        return .default
     }
    
-    
-    var isLightContentStatusBar: Bool = false
     
     fileprivate lazy var videoPlayer: NicooPlayerView = {
         //  这里应该走另一条线，一个简单的视频播放，将播放View旋转90度。
@@ -38,12 +36,9 @@ class DownLoadedVideoPlayerVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        isLightContentStatusBar = true             // 开始播放，状态栏变为白色
-        
         let fileUrl = Bundle.main.path(forResource: "localFile", ofType: ".mp4")
         videoPlayer.playLocalVideoInFullscreen(fileUrl, "localFile", view, sinceTime: 0)
         videoPlayer.playLocalFileVideoCloseCallBack = { [weak self] (playValue) in
-            self?.isLightContentStatusBar = false    // 变为黑色
             self?.navigationController?.popViewController(animated: false)
         }
     }

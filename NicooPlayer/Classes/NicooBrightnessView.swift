@@ -10,14 +10,8 @@ import SnapKit
 
 
 extension UINavigationController { // 用于状态栏的显示，样式
-    override open var prefersStatusBarHidden: Bool {
-        return (self.viewControllers.last?.prefersStatusBarHidden)!
-    }
     override open var preferredStatusBarStyle: UIStatusBarStyle {
         return (self.viewControllers.last?.preferredStatusBarStyle)!
-    }
-    override open var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return  (self.viewControllers.last?.preferredStatusBarUpdateAnimation)!
     }
 }
 

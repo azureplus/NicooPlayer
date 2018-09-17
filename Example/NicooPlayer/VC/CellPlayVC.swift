@@ -20,24 +20,16 @@ class CellPlayVC: UIViewController {
 
     /// 这里重写系统方法，为了让 StatusBar 跟随播放器的操作栏一起 隐藏或显示，且在全屏播放时， StatusBar 样式变为 lightContent
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if isLightContentStatusBarInFullScreen {
-            if playerView.superview != nil {
-                if !playerView.isFullScreen! {  // 播放器添加，全屏（这里因为横竖屏切换时，先调用这个属性，再走横竖屏的方法，所以在走这里的时候，isFullScreen还没有附上值，所以取反）
-                    return .lightContent
-                } else {
-                    return .default
-                }
-            } else {  // 播放器没有添加，返回默认
-                return .default
-            }
-        } else {
-            return .default
+        let orirntation = UIApplication.shared.statusBarOrientation
+        if  orirntation == UIInterfaceOrientation.landscapeLeft || orirntation == UIInterfaceOrientation.landscapeRight {
+            return .lightContent
         }
+        return .default
     }
     /// 全屏播放时，让状态栏变为 lightContent
     /// 1.如果整个项目的状态栏已经为 lightContent，则不需要这些操作，直接播放就好。
     /// 2.如果整个项目状态栏为default，则需要在添加播放器的页面加上一个bool判断， 再重写preferredStatusBarStyle属性,将状态栏样式与播放器的横竖屏关联，plist文件中添加: Status bar is initially hidden = YES
-    var isLightContentStatusBarInFullScreen: Bool = false
+   
     
     
     /// 播放器控件
@@ -83,7 +75,6 @@ class CellPlayVC: UIViewController {
         if playerView.superview != nil {
             orientationSupport = NicooPlayerOrietation.orientationAll
             // 视图出现时，播放器存在与当前页面
-            isLightContentStatusBarInFullScreen = true
             playerView.playerStatu = PlayerStatus.Playing
         }
        
@@ -92,7 +83,6 @@ class CellPlayVC: UIViewController {
         super.viewWillDisappear(animated)
         // 视图消失时，将状态栏变为默认
         playerView.playerStatu = PlayerStatus.Pause
-        isLightContentStatusBarInFullScreen = false
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -121,6 +111,10 @@ class CellPlayVC: UIViewController {
         netWorkAlert.showInWindow()
     }
     
+    @objc func topBarCustonButtonClick(_ sender: UIButton) {
+        print("button.customAction")
+    }
+    
     func push() {
         playerView.interfaceOrientation(UIInterfaceOrientation.portrait)  // 先回到竖屏状态
         navigationController?.pushViewController(NextViewController(), animated: true)
@@ -139,10 +133,14 @@ extension CellPlayVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellPlayVC.cellIdentifier, for: indexPath) as? NicooVideoCell
         
         cell?.playButtonClickBlock = { [weak self] (sender) in
-            let url = URL(string: "http://img.ytsg.cn/video/2/6/1531478862326.mp4")
-            self?.playerView.playVideo(url, "视频名称", cell?.backGroundImage)
-            self?.isLightContentStatusBarInFullScreen = true
+            var url = URL(string: "http://img.ytsg.cn/video/2/6/1531478862326.mp4")
             
+            if indexPath.row % 2 == 0 {
+                if let filePath = Bundle.main.path(forResource: "localFile", ofType: ".mp4") {
+                    url = URL(fileURLWithPath: filePath)
+                }
+            }
+            self?.playerView.playVideo(url, "视频名称", cell?.backGroundImage)
             self?.index = indexPath.row
         }
         
@@ -171,24 +169,36 @@ extension CellPlayVC: NicooPlayerDelegate, NicooCustomMuneDelegate {
         }
     }
     
-    /// 自定义操作控件代理  ：NicooCustomMuneDelegate
-    
-    func showCustomMuneView() -> UIView? {
-        
-        if self.index%2 == 0 {
-            let view = CustomMuneView(frame: self.view.bounds)
-            view.itemClick = { [weak self] in
-                self?.push()
-            }
-             return view
-        }else {
-            let view1 = CustomMuneView11(frame: self.view.bounds)
-            view1.itemClick = { [weak self] in
-                 self?.push()
-            }
-            return view1
+    func customTopBarActions() -> [UIButton]? {
+        var buttonS = [UIButton]()
+        for i in 0..<3 {
+            let button = UIButton(type: .custom)
+            button.backgroundColor = UIColor.white
+            button.setImage(UIImage(named: ["collection","downLoad","shareAction"][i]), for: .normal)
+            button.addTarget(self, action: #selector(topBarCustonButtonClick(_:)), for: .touchUpInside)
+            buttonS.append(button)
         }
-      
+        return buttonS
     }
+    
+    /// 自定义操作控件代理  ：NicooCustomMuneDelegate,   customTopBarActions 和 showCustomMuneView的优先级为  后者优先， 实现后者， 前者不起效
+    
+//    func showCustomMuneView() -> UIView? {
+//
+//        if self.index%2 == 0 {
+//            let view = CustomMuneView(frame: self.view.bounds)
+//            view.itemClick = { [weak self] in
+//                self?.push()
+//            }
+//             return view
+//        }else {
+//            let view1 = CustomMuneView11(frame: self.view.bounds)
+//            view1.itemClick = { [weak self] in
+//                 self?.push()
+//            }
+//            return view1
+//        }
+//
+//    }
     
 }

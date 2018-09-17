@@ -7,7 +7,7 @@
 
 import UIKit
 
-public enum OrientationSupport: Int {
+public enum NicooPlayerOrietation: Int {
     case orientationPortrait
     case orientationLeftAndRight
     case orientationAll
@@ -23,8 +23,6 @@ public enum OrientationSupport: Int {
         }
     }
 }
-public var orientationSupport: OrientationSupport = .orientationPortrait
+public var orientationSupport: NicooPlayerOrietation = .orientationPortrait
 
-class NicooPlayerOrietation: NSObject {
 
-}
