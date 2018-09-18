@@ -93,22 +93,18 @@ class PlayVideoVC: UIViewController {
         layoutAllSubviews()
     }
     
+    //  初始化播放器
     @objc func btnclick(_ sender: UIButton) {
-        //  初始化播放器
         let url = URL(string: "http://img.ytsg.cn/video/2/6/1531478862326.mp4")
-        playerView.playVideo(url, "这里传递视屏名称", fateherView)
+        playerView.playVideo(url, "VideoName", fateherView)
         // 初始化播放器，并从某个时间点开始播放
         // playerView.replayVideo("https://dn-mykplus.qbox.me/3.mp4", "视屏名称", fateherView, 180.0)
-        
     }
     
+    // 改变父视图
     @objc func btnclick1(_ sender: UIButton) {
-        
-        playerView.changeVideoContainerView(fateherView1) // 改变父视图
-        
+        playerView.changeVideoContainerView(fateherView1)
         //playerView.playerStatu = TZPlayerView.PlayerStatus.Pause  // 检测到网络变化时调用
-        
-        
     }
     
     /// 获取播放时间，加载时间，视频总时长
@@ -127,7 +123,6 @@ class PlayVideoVC: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
         // 如果当前播放器已经添加，支持横竖屏
         if fateherView.subviews.contains(playerView) {
             orientationSupport = NicooPlayerOrietation.orientationAll
@@ -143,6 +138,12 @@ class PlayVideoVC: UIViewController {
     
     @objc func topBarCustonButtonClick(_ sender: UIButton) {
         print("button.imageName = \(sender)")
+        push()
+    }
+    
+    func push() {
+        playerView.interfaceOrientation(UIInterfaceOrientation.portrait)  // 先回到竖屏状态
+        navigationController?.pushViewController(NextViewController(), animated: true)
     }
    
 }

@@ -79,14 +79,16 @@ class CellPlayVC: UIViewController {
         }
        
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // 视图消失时，将状态栏变为默认
+        // 视图消失时，暂停播放，屏幕只支持竖屏
         playerView.playerStatu = PlayerStatus.Pause
+        orientationSupport = NicooPlayerOrietation.orientationPortrait
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-       
         if let cc = playerView.value(forKey: "retainCount"),let vv = self.value(forKey: "retainCount") {
             print("cccccccccccccccccc = \(cc)  ==  \(vv)")
         }
@@ -113,6 +115,7 @@ class CellPlayVC: UIViewController {
     
     @objc func topBarCustonButtonClick(_ sender: UIButton) {
         print("button.customAction")
+        self.push()
     }
     
     func push() {
@@ -140,7 +143,7 @@ extension CellPlayVC: UITableViewDelegate, UITableViewDataSource {
                     url = URL(fileURLWithPath: filePath)
                 }
             }
-            self?.playerView.playVideo(url, "视频名称", cell?.backGroundImage)
+            self?.playerView.playVideo(url, "VideoName", cell?.backGroundImage)
             self?.index = indexPath.row
         }
         
