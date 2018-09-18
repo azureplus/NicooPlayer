@@ -4,7 +4,7 @@
 
 1.  如果整个项目不支持横屏，播放视频时，页面需要横屏，在APPDelegate 内导入播放器头文件 , 添加方法 ：
 
-（在实际项目中，如果有做组件化，这里应该通过路由去拿OrientationSupport 状态，如果对路由有兴趣的朋友可以到：demo地址 查看Swift路由Demo） 
+（在实际项目中，如果有做组件化，这里应该通过路由去拿OrientationSupport 状态，如果对路由有兴趣的朋友可以到：https://github.com/yangxina/NicooSwiftRouterDemo  查看Swift路由Demo） 
 
 
 
