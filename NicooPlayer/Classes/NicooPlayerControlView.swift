@@ -432,10 +432,10 @@ extension NicooPlayerControlView {
             make.height.equalTo(0)
         }
         bottomControlBarView.snp.updateConstraints { (make) in
-            make.height.equalTo(fullScreen! ? 0 : 40)
+            make.height.equalTo(fullScreen! ? 10 : 40)
         }
         
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             self.layoutIfNeeded()
         }) { (finish) in
             self.bottomControlBarView.isHidden = true

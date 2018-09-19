@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NicooPlayer'
-  s.version          = '1.2.0'
+  s.version          = '1.2.1'
   s.summary          = 'NicooVideoPlayer for swift4.1'
 
 # This description is used to generate tags and improve search results.
@@ -12,16 +12,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-  播放器API：
-  playerView.playVideo("URL", "视频名称", fateherView)
-  从某个时间点开始比方（用于播放上次播放记录）
-  playerView.replayVideo(videoModel?.videoUrl, videoModel?.videoName, fatherView, sinceTime)
-  改变播放器父视图:
-  playerView.changeVideoContainerView(fateherView1)
-  获取播放进度：
-  playerView.getNowPlayPositionTimeAndVideoDuration()
-  缓存进度：
-  playerView.getLoadingPositionTime()
+  播放器： 1. 播放本地网络视频。 2.播放已下载本地文件。 3. 全屏不可切换竖屏播放。 3. 横竖屏，锁屏，进度拖动，网络重试，状态栏跟随，操作栏暗影效果，时间样式选择。
                        DESC
 
   s.homepage         = 'https://github.com/yangxina/NicooPlayer'
@@ -41,6 +32,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'SnapKit', '~> 4.0.0'
+  s.dependency 'SnapKit'
   s.dependency 'MBProgressHUD','~> 0.9.2'
 end

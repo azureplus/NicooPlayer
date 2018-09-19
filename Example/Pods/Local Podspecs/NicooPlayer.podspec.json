@@ -1,8 +1,8 @@
 {
   "name": "NicooPlayer",
-  "version": "1.1.8",
+  "version": "1.2.1",
   "summary": "NicooVideoPlayer for swift4.1",
-  "description": "播放器API：\nplayerView.playVideo(\"URL\", \"视频名称\", fateherView)\n从某个时间点开始比方（用于播放上次播放记录）\nplayerView.replayVideo(videoModel?.videoUrl, videoModel?.videoName, fatherView, sinceTime)\n改变播放器父视图:\nplayerView.changeVideoContainerView(fateherView1)\n获取播放进度：\nplayerView.getNowPlayPositionTimeAndVideoDuration()\n缓存进度：\nplayerView.getLoadingPositionTime()",
+  "description": "播放器： 1. 播放本地网络视频。 2.播放已下载本地文件。 3. 全屏不可切换竖屏播放。 3. 横竖屏，锁屏，进度拖动，网络重试，状态栏跟随，操作栏暗影效果，时间样式选择。",
   "homepage": "https://github.com/yangxina/NicooPlayer",
   "license": {
     "type": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/yangxina/NicooPlayer.git",
-    "tag": "1.1.8"
+    "tag": "1.2.1"
   },
   "platforms": {
     "ios": "8.0"
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "SnapKit": [
-      "~> 4.0.0"
+
     ],
     "MBProgressHUD": [
       "~> 0.9.2"
