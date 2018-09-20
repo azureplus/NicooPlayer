@@ -136,7 +136,7 @@ extension CellPlayVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellPlayVC.cellIdentifier, for: indexPath) as? NicooVideoCell
         
         cell?.playButtonClickBlock = { [weak self] (sender) in
-            var url = URL(string: "http://img.ytsg.cn/video/2/6/1531478862326.mp4")
+            var url = URL(string: "https://dn-mykplus.qbox.me/3.mp4")
             
             if indexPath.row % 2 == 0 {
                 if let filePath = Bundle.main.path(forResource: "localFile", ofType: ".mp4") {

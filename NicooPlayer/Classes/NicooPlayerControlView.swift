@@ -23,13 +23,18 @@ class NicooPlayerControlView: UIView {
         let view = UIView()
        //view.backgroundColor = UIColor(white: 0.2, alpha: 0.2)
         //创建渐变层
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor(white: 0.1, alpha: 0.5).cgColor, UIColor.darkGray.withAlphaComponent(0.0).cgColor]
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.height, height: 60)
-        gradientLayer.locations = [0, 0.99, 1]
-        view.layer.addSublayer(gradientLayer)
+        view.layer.addSublayer(topBarBgLayer)
         return view
     }()
+    
+    lazy var topBarBgLayer: CAGradientLayer = {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor(white: 0.0, alpha: 0.6).cgColor, UIColor.darkGray.withAlphaComponent(0.0).cgColor]
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.height, height: 60)
+        gradientLayer.locations = [0, 0.99, 1]
+        return gradientLayer
+    }()
+    
     lazy var closeButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(NicooImgManager.foundImage(imageName: ""), for: .normal)
@@ -89,13 +94,18 @@ class NicooPlayerControlView: UIView {
         let view = UIView()
        // view.backgroundColor = UIColor(white: 0.2, alpha: 0.2)
         //创建渐变层
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.darkGray.withAlphaComponent(0.0).cgColor, UIColor(white: 0.1, alpha: 0.5).cgColor]
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.height, height: 40)
-        gradientLayer.locations = [0, 0.99, 1]
-        view.layer.addSublayer(gradientLayer)
+        view.layer.addSublayer(bottomBarBgLayer)
         return view
     }()
+    
+    lazy var bottomBarBgLayer: CAGradientLayer = {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.darkGray.withAlphaComponent(0.0).cgColor, UIColor(white: 0.0, alpha: 0.6).cgColor]
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.height, height: 40)
+        gradientLayer.locations = [0, 0.99, 1]
+        return gradientLayer
+    }()
+    
     lazy var loadedProgressView: UIProgressView = {
         let progressView = UIProgressView()
         progressView.progress = 0
@@ -635,6 +645,17 @@ extension NicooPlayerControlView {
             make.top.equalTo(fullScreen ? 20 : 0)
     
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        topControlBarView.layoutIfNeeded()
+        print(topControlBarView.frame)
+        topBarBgLayer.frame = CGRect(x: 0, y: 0, width: topControlBarView.frame.size.width, height: topControlBarView.frame.size.height)
+        
+        bottomControlBarView.layoutIfNeeded()
+        print(bottomControlBarView.frame)
+        bottomBarBgLayer.frame = CGRect(x: 0, y: 0, width: bottomControlBarView.frame.size.width, height: 40)
     }
     
 }

@@ -95,10 +95,11 @@ class PlayVideoVC: UIViewController {
     
     //  初始化播放器
     @objc func btnclick(_ sender: UIButton) {
-        let url = URL(string: "http://img.ytsg.cn/video/2/6/1531478862326.mp4")
+        let url = URL(string: "https://dn-mykplus.qbox.me/2.mp4")
         playerView.playVideo(url, "VideoName", fateherView)
+        
         // 初始化播放器，并从某个时间点开始播放
-        // playerView.replayVideo("https://dn-mykplus.qbox.me/3.mp4", "视屏名称", fateherView, 180.0)
+        // playerView.replayVideo(url, "视屏名称", fateherView, 180.0)
     }
     
     // 改变父视图

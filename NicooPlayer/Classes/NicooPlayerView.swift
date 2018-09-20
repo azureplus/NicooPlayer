@@ -85,7 +85,7 @@ open class NicooPlayerView: UIView {
     
     static let kCustomViewTag = 6666
     
-    // MARK: - Public Var
+    // MARK: - ************** --> Public Var <-- **************
     /// 播放状态
     public var playerStatu: PlayerStatus? {
         didSet {
@@ -162,7 +162,7 @@ open class NicooPlayerView: UIView {
     public var playLocalFileVideoCloseCallBack:((_ playValue: Float) -> Void)?
     
     
-    // MARK: - Private Var
+    // MARK: - ************** --> Private Var <-- **************
     private var sliderTouchBeginValue: Float64? = 0  // 记录进度条拖动前的值
     /// 视频截图
     private(set)  var imageGenerator: AVAssetImageGenerator?  // 用来做预览，目前没有预览的需求
@@ -246,7 +246,7 @@ open class NicooPlayerView: UIView {
     private lazy var pauseButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(NicooImgManager.foundImage(imageName: "pause"), for: .normal)
-        button.backgroundColor = UIColor(white: 0.0, alpha: 0.90)
+        button.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         button.imageEdgeInsets.left = 5
         button.layer.cornerRadius = 27.5
         button.layer.masksToBounds = true
