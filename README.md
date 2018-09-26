@@ -1,9 +1,9 @@
 # NicooPlayer
 
-[![CI Status](https://img.shields.io/travis/504672006@qq.com/NicooEnptyView.svg?style=flat)](https://travis-ci.org/504672006@qq.com/NicooPlayer)
-[![Version](https://img.shields.io/cocoapods/v/NicooEnptyView.svg?style=flat)](https://cocoapods.org/pods/NicooPlayer)
-[![License](https://img.shields.io/cocoapods/l/NicooEnptyView.svg?style=flat)](https://cocoapods.org/pods/NicooPlayer)
-[![Platform](https://img.shields.io/cocoapods/p/NicooEnptyView.svg?style=flat)](https://cocoapods.org/pods/NicooPlayer)
+[![CI Status](https://img.shields.io/travis/504672006@qq.com/NicooPlayer.svg?style=flat)](https://travis-ci.org/504672006@qq.com/NicooPlayer)
+[![Version](https://img.shields.io/cocoapods/v/NicooPlayer.svg?style=flat)](https://cocoapods.org/pods/NicooPlayer)
+[![License](https://img.shields.io/cocoapods/l/NicooPlayer.svg?style=flat)](https://cocoapods.org/pods/NicooPlayer)
+[![Platform](https://img.shields.io/cocoapods/p/NicooPlayer.svg?style=flat)](https://cocoapods.org/pods/NicooPlayer)
 
 ## Example
 
