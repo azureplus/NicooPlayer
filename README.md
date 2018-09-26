@@ -1,32 +1,20 @@
+# NicooPlayer
+
+[![CI Status](https://img.shields.io/travis/504672006@qq.com/NicooEnptyView.svg?style=flat)](https://travis-ci.org/504672006@qq.com/NicooPlayer)
+[![Version](https://img.shields.io/cocoapods/v/NicooEnptyView.svg?style=flat)](https://cocoapods.org/pods/NicooPlayer)
+[![License](https://img.shields.io/cocoapods/l/NicooEnptyView.svg?style=flat)](https://cocoapods.org/pods/NicooPlayer)
+[![Platform](https://img.shields.io/cocoapods/p/NicooEnptyView.svg?style=flat)](https://cocoapods.org/pods/NicooPlayer)
+
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
 ## Requirements
 
 
 （适配iOS12 新机型）
 
 1.  如果整个项目不支持横屏，播放视频时，页面需要横屏，在APPDelegate 内导入播放器头文件 , 添加方法 ：
-
-（在实际项目中，如果有做组件化，这里应该通过路由去拿OrientationSupport 状态，如果对路由有兴趣的朋友可以到：https://github.com/yangxina/NicooSwiftRouterDemo  查看Swift路由Demo） 
-
-
-
-另外由于播放器对系统的状态栏做了操作， 所以需要在主工程的 info.plist 文件中添加：Status bar is initially hidden == YES ， 并在有播放器的VC中重写 Status bar 样式的方法：
-
-
-
-
-
-/// 重写系统方法，为了让 StatusBar 跟随播放器的操作栏一起 隐藏或显示，且在全屏播放时， StatusBar 样式变为 lightContent
-
-
-/// 全屏播放时，让状态栏变为 lightContent
-
-/// 1.如果整个项目的状态栏已经为 lightContent，则不需要这些操作，直接播放就好。
-
-/// 2.如果整个项目状态栏为default，则需要在添加播放器的页面加上一个bool判断， 再重写preferredStatusBarStyle属性,将状态栏样式与播放器的横竖屏关联，plist文件中添加: Status bar is initially hidden = YES   ，在有播放器的VC中添加： 
-
-
-（具体看Demo）
-
 /***********************************************************************************************************/
 
 func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: 
@@ -46,6 +34,25 @@ return num.getOrientSupports()
 }
 
 /***********************************************************************************************************/
+
+（在实际项目中，如果有做组件化，这里应该通过路由去拿OrientationSupport 状态，如果对路由有兴趣的朋友可以到：https://github.com/yangxina/NicooSwiftRouterDemo  查看Swift路由Demo） 
+
+
+
+另外由于播放器对系统的状态栏做了操作， 所以需要在主工程的 info.plist 文件中添加：Status bar is initially hidden == YES ， 并在有播放器的VC中重写 Status bar 样式的方法：
+
+/// 这里重写系统方法，为了让 StatusBar 跟随播放器的操作栏一起 隐藏或显示，且在全屏播放时， StatusBar 样式变为 lightContent
+override var preferredStatusBarStyle: UIStatusBarStyle {
+let orirntation = UIApplication.shared.statusBarOrientation
+if  orirntation == UIInterfaceOrientation.landscapeLeft || orirntation == UIInterfaceOrientation.landscapeRight {
+return .lightContent
+}
+return .default
+}
+
+/// 1.如果整个项目的状态栏已经为 lightContent，则不需要这些操作，直接播放就好。
+（具体看Demo）
+
 
 2.点击播放按钮时，调用：
 
