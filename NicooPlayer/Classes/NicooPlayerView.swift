@@ -973,10 +973,10 @@ private extension NicooPlayerView {
                     make.edges.equalTo(UIApplication.shared.keyWindow!)
                 })
                 if #available(iOS 11.0, *) {                           // 横屏播放时，适配X
-                    if UIDevice.current.isiPhoneX() {
+                    if UIDevice.current.isiPhoneXSeriesDevices() {
                         self.playControllViewEmbed.snp.remakeConstraints({ (make) in
-                            make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(25)
-                            make.trailing.equalTo(self.safeAreaLayoutGuide.snp.trailing).offset(-25)
+                            make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(28)
+                            make.trailing.equalTo(self.safeAreaLayoutGuide.snp.trailing).offset(-28)
                             make.top.equalTo(self.safeAreaLayoutGuide.snp.top)
                             make.bottom.equalToSuperview()
                         })
@@ -997,7 +997,7 @@ private extension NicooPlayerView {
                             make.edges.equalTo(containerView)
                         })
                         if #available(iOS 11.0, *) {         // 竖屏播放时，适配X
-                            if UIDevice.current.isiPhoneX() {
+                            if UIDevice.current.isiPhoneXSeriesDevices() {
                                 self.playControllViewEmbed.snp.makeConstraints({ (make) in
                                     make.edges.equalToSuperview()
                                 })

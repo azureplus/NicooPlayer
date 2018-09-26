@@ -23,6 +23,13 @@ public struct  NicooVideoModel {
 }
 
 public extension UIDevice {
+    
+    /// 判断是否为X系列
+    ///
+    /// - Returns: 兼容X系列手机
+    public func isiPhoneXSeriesDevices() -> Bool {
+        return (iosType() == "iPhoneX" || iosType() == "iPhoneXS" || iosType() == "iPhoneXSMax" || iosType() == "iPhoneXR")
+    }
     /// 判断是否为iPhoneX
     ///
     /// - Returns: 兼容
@@ -100,10 +107,14 @@ public extension UIDevice {
         if platform == "iPhone9,2" { return "iPhone7Plus"}
         if platform == "iPhone10,1" { return "iPhone8"}
         if platform == "iPhone10,2" { return "iPhone8Plus"}
-        if platform == "iPhone10,3" { return "iPhoneX"}
+        if platform == "iPhone10,3" { return "iPhoneX"}    // 国行
         if platform == "iPhone10,4" { return "iPhone8"}
         if platform == "iPhone10,5" { return "iPhone8Plus"}
-        if platform == "iPhone10,6" { return "iPhoneX"}
+        if platform == "iPhone10,6" { return "iPhoneX"}   // 美港
+        if platform == "iPhone11,2" { return "iPhoneXS"}
+        if platform == "iPhone11,4" { return "iPhoneXSMax"} // 国行
+        if platform == "iPhone11,6" { return "iPhoneXSMax"} // 美港
+        if platform == "iPhone11,8" { return "iPhoneXR"}
         if platform == "i386"   { return "Simulator"}
         if platform == "x86_64" { return "Simulator"}
         return platform
