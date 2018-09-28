@@ -346,8 +346,8 @@ open class NicooPlayerView: UIView {
         bottomBarType = bothSidesTimelable! ? PlayerBottomBarType.PlayerBottomBarTimeBothSides : PlayerBottomBarType.PlayerBottomBarTimeRight
         
         // 注册APP被挂起 + 进入前台通知
-        NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.applicationResignActivity(_:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.applicationBecomeActivity(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.applicationResignActivity(_:)), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.applicationBecomeActivity(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -392,7 +392,7 @@ extension NicooPlayerView {
         showLoadingHud()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let lastPositionValue = CMTimeMakeWithSeconds(Float64(lastPlayTime), (avItem.duration.timescale))
+            let lastPositionValue = CMTimeMakeWithSeconds(Float64(lastPlayTime), preferredTimescale: (avItem.duration.timescale))
             self.playSinceTime(lastPositionValue)
         }
         
@@ -444,12 +444,12 @@ extension NicooPlayerView {
     
     /// 移除当前播放器屏幕方向监听
     open func disableDeviceOrientationChange() {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: UIDevice.current)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: UIDevice.current)
     }
     
     /// 注册屏幕旋转监听通知
     open func enableDeviceOrientationChange() {
-        NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.orientChange(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: UIDevice.current)
+        NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.orientChange(_:)), name: UIDevice.orientationDidChangeNotification, object: UIDevice.current)
     }
 }
 
@@ -516,7 +516,7 @@ private extension NicooPlayerView {
             self.playerStatu = PlayerStatus.Pause
             guard let avItem = self.avItem else{return}
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                let lastPositionValue = CMTimeMakeWithSeconds(Float64(playLastTime), (avItem.duration.timescale))
+                let lastPositionValue = CMTimeMakeWithSeconds(Float64(playLastTime), preferredTimescale: (avItem.duration.timescale))
                 self.playSinceTime(lastPositionValue)
             }
         }
@@ -603,7 +603,7 @@ private extension NicooPlayerView {
     /// - Parameter time: 要从开始的播放起点
     private func playSinceTime(_ time: CMTime) {
         if CMTIME_IS_VALID(time) {
-            avItem?.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero, completionHandler: { [weak self] (finish) in
+            avItem?.seek(to: time, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero, completionHandler: { [weak self] (finish) in
                 if finish {
                     self?.playerStatu = PlayerStatus.Playing
                     self?.hideLoadingHud()
@@ -642,8 +642,8 @@ private extension NicooPlayerView {
         avItem.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: NSKeyValueObservingOptions.new, context: nil)
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         // 注册屏幕旋转通知
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: UIDevice.current)
-        NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.orientChange(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: UIDevice.current)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: UIDevice.current)
+        NotificationCenter.default.addObserver(self, selector: #selector(NicooPlayerView.orientChange(_:)), name: UIDevice.orientationDidChangeNotification, object: UIDevice.current)
     }
     
     // MARK: - 返回，关闭，全屏，播放，暂停,重播,音量，亮度，进度拖动 - UserAction
@@ -706,7 +706,7 @@ private extension NicooPlayerView {
         }
         // MARK: - 重播
         playControllViewEmbed.replayButtonClickBlock = { [weak self] (_) in
-            self?.avItem?.seek(to: kCMTimeZero)
+            self?.avItem?.seek(to: CMTime.zero)
             self?.playControllViewEmbed.timeSlider.value = 0
             self?.playControllViewEmbed.screenIsLock = false
             self?.startReadyToPlay()
@@ -819,8 +819,8 @@ private extension NicooPlayerView {
                     if !strongSelf.playControllViewEmbed.loadingView.isAnimating {
                         strongSelf.playControllViewEmbed.loadingView.startAnimating()
                     }
-                    let po = CMTimeMakeWithSeconds(Float64(position) * Float64(sliderValue), (avItem.duration.timescale))
-                    avItem.seek(to: po, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+                    let po = CMTimeMakeWithSeconds(Float64(position) * Float64(sliderValue), preferredTimescale: (avItem.duration.timescale))
+                    avItem.seek(to: po, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
                     /// 拖动完成，sumTime置为0 回到之前的播放状态，如果播放状态为
                     strongSelf.sumTime = 0
                     strongSelf.pauseButton.isHidden = false
@@ -968,7 +968,7 @@ private extension NicooPlayerView {
             isFullScreen = true
             self.removeFromSuperview()
             UIApplication.shared.keyWindow?.addSubview(self)
-            UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.transitionCurlUp, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.transitionCurlUp, animations: {
                 self.snp.makeConstraints({ (make) in
                     make.edges.equalTo(UIApplication.shared.keyWindow!)
                 })
@@ -992,7 +992,7 @@ private extension NicooPlayerView {
                 self.removeFromSuperview()
                 if let containerView = self.fatherView {
                     containerView.addSubview(self)
-                    UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
+                    UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveLinear, animations: {
                         self.snp.makeConstraints({ (make) in
                             make.edges.equalTo(containerView)
                         })
@@ -1047,8 +1047,8 @@ extension NicooPlayerView: NicooPlayerControlViewDelegate {
             return
         }
         let position = Float64 ((avItem.duration.value)/Int64(avItem.duration.timescale))
-        let po = CMTimeMakeWithSeconds(Float64(position) * Float64(sender.value), (avItem.duration.timescale))
-        avItem.seek(to: po, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+        let po = CMTimeMakeWithSeconds(Float64(position) * Float64(sender.value), preferredTimescale: (avItem.duration.timescale))
+        avItem.seek(to: po, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
         pauseButton.isHidden = false
         playerStatu = PlayerStatus.Playing
         sliderTouchBeginValue = 0
@@ -1085,7 +1085,7 @@ extension NicooPlayerView {
     /// 监听PlayerItem对象
     fileprivate func listenTothePlayer() {
         guard let avItem = self.avItem else {return}
-        player?.addPeriodicTimeObserver(forInterval: CMTimeMake(Int64(1.0), Int32(1.0)), queue: nil, using: { [weak self] (time) in
+        player?.addPeriodicTimeObserver(forInterval: CMTimeMake(value: Int64(1.0), timescale: Int32(1.0)), queue: nil, using: { [weak self] (time) in
             guard let strongSelf = self else { return }
             let timeScaleValue = Int64(avItem.currentTime().timescale) /// 当前时间
             let timeScaleDuration = Int64(avItem.duration.timescale)   /// 总时间
@@ -1119,7 +1119,7 @@ extension NicooPlayerView {
             return
         }
         if keyPath == "status" {
-            if avItem.status == AVPlayerItemStatus.readyToPlay {
+            if avItem.status == AVPlayerItem.Status.readyToPlay {
                 let duration = Float(avItem.duration.value)/Float(avItem.duration.timescale)
                 let currentTime =  avItem.currentTime().value/Int64(avItem.currentTime().timescale)
                 let durationHours = (Int(duration) / 3600) % 60
@@ -1140,12 +1140,12 @@ extension NicooPlayerView {
                 }
                 self.videoDuration = Float(duration)
                 print("时长 = \(duration) S, 已播放 = \(currentTime) s")
-            }else if avItem.status == AVPlayerItemStatus.unknown {
+            }else if avItem.status == AVPlayerItem.Status.unknown {
                 //视频加载失败，或者未知原因
                 // playerStatu = PlayerStatus.Unknow
                 hideLoadingHud()
                 
-            }else if avItem.status == AVPlayerItemStatus.failed {
+            }else if avItem.status == AVPlayerItem.Status.failed {
                 print("PlayerStatus.failed")
                 // 代理出去，在外部处理网络问题
                 if playControllViewEmbed.loadingView.isAnimating {
