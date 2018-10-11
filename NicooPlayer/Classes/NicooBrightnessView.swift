@@ -11,7 +11,8 @@ import SnapKit
 
 extension UINavigationController { // 用于状态栏的显示，样式
     override open var preferredStatusBarStyle: UIStatusBarStyle {
-        return (self.viewControllers.last?.preferredStatusBarStyle)!
+        guard let vc = self.viewControllers.last else { return UIStatusBarStyle.default }
+        return vc.preferredStatusBarStyle
     }
 }
 

@@ -95,7 +95,7 @@ class PlayVideoVC: UIViewController {
     
     //  初始化播放器
     @objc func btnclick(_ sender: UIButton) {
-        let url = URL(string: "https://dn-mykplus.qbox.me/2.mp4")
+        let url = URL(string: "http://api.gfs100.cn/upload/20180126/201801261120124536.mp4")
         playerView.playVideo(url, "VideoName", fateherView)
         
         // 初始化播放器，并从某个时间点开始播放

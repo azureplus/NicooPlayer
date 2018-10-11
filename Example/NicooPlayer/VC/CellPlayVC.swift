@@ -11,13 +11,13 @@ import NicooPlayer
 
 
 class CellPlayVC: UIViewController {
-
+    
     static let cellIdentifier = "VideoCell"
     
     @IBOutlet weak var tableView: UITableView!
     
     var index = 0
-
+    
     /// 这里重写系统方法，为了让 StatusBar 跟随播放器的操作栏一起 隐藏或显示，且在全屏播放时， StatusBar 样式变为 lightContent
     override var preferredStatusBarStyle: UIStatusBarStyle {
         let orirntation = UIApplication.shared.statusBarOrientation
@@ -29,7 +29,7 @@ class CellPlayVC: UIViewController {
     /// 全屏播放时，让状态栏变为 lightContent
     /// 1.如果整个项目的状态栏已经为 lightContent，则不需要这些操作，直接播放就好。
     /// 2.如果整个项目状态栏为default，则需要在添加播放器的页面加上一个bool判断， 再重写preferredStatusBarStyle属性,将状态栏样式与播放器的横竖屏关联，plist文件中添加: Status bar is initially hidden = YES
-   
+    
     
     
     /// 播放器控件
@@ -47,6 +47,12 @@ class CellPlayVC: UIViewController {
         return barBtn
     }()
     
+    //cell上播放需要添加deinit， 移除播放器。释放播放器
+    deinit {
+        print("试图控制器被释放了")
+        playerView.removeFromSuperview()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "视频列表播放"
@@ -63,11 +69,6 @@ class CellPlayVC: UIViewController {
         
     }
     
-    //cell上播放需要添加deinit， 移除播放器。释放播放器
-    deinit {
-        print("试图控制器被释放了")
-        playerView.removeFromSuperview()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -77,7 +78,7 @@ class CellPlayVC: UIViewController {
             // 视图出现时，播放器存在与当前页面
             playerView.playerStatu = PlayerStatus.Playing
         }
-       
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -94,23 +95,24 @@ class CellPlayVC: UIViewController {
         }
         
     }
- 
+    
     @objc func barButtonClick() {
         /// netWorkAlert 实际上应该是一个变量
-        let netWorkAlert = NicooNetWorkAlert(frame: self.view.bounds, itemButtonTitles: ["不播放","继续"], message: "是否允许非wifi播放？")
-        if  !netWorkAlert.allowedWWanPlayInCurrentVideoGroups {  // 当前这个部电视剧没有被允许
-            
-        } else {
-             print("已经允许当前电视剧非wifi播放，尽管看")
-        }
-        netWorkAlert.itemButtonClick = { [weak self] (index) in
-            guard let strongSelf = self else {
-                return
-            }
-            let next = NextViewController()
-            strongSelf.navigationController?.pushViewController(next, animated: true)
-        }
-        netWorkAlert.showInWindow()
+        playerView.cancle()
+        //        let netWorkAlert = NicooNetWorkAlert(frame: self.view.bounds, itemButtonTitles: ["不播放","继续"], message: "是否允许非wifi播放？")
+        //        if  !netWorkAlert.allowedWWanPlayInCurrentVideoGroups {  // 当前这个部电视剧没有被允许
+        //
+        //        } else {
+        //             print("已经允许当前电视剧非wifi播放，尽管看")
+        //        }
+        //        netWorkAlert.itemButtonClick = { [weak self] (index) in
+        //            guard let strongSelf = self else {
+        //                return
+        //            }
+        //            let next = NextViewController()
+        //            strongSelf.navigationController?.pushViewController(next, animated: true)
+        //        }
+        //        netWorkAlert.showInWindow()
     }
     
     @objc func topBarCustonButtonClick(_ sender: UIButton) {
@@ -136,13 +138,15 @@ extension CellPlayVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellPlayVC.cellIdentifier, for: indexPath) as? NicooVideoCell
         
         cell?.playButtonClickBlock = { [weak self] (sender) in
-            var url = URL(string: "https://dn-mykplus.qbox.me/3.mp4")
-            
-            if indexPath.row % 2 == 0 {
+            var url = URL(string: ["http://api.gfs100.cn/upload/20180126/201801261120124536.mp4","https://mvvideo5.meitudata.com/56ea0e90d6cb2653.mp4","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://api.gfs100.cn/upload/20171218/201712181643211975.mp4"][indexPath.row])
+            if indexPath.row == 0 {
                 if let filePath = Bundle.main.path(forResource: "localFile", ofType: ".mp4") {
                     url = URL(fileURLWithPath: filePath)
                 }
             }
+            
+            let videoDicPath: String = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last!
+            print("document = \(videoDicPath)")
             self?.playerView.playVideo(url, "VideoName", cell?.backGroundImage)
             self?.index = indexPath.row
         }
@@ -164,7 +168,7 @@ extension CellPlayVC: NicooPlayerDelegate, NicooCustomMuneDelegate {
     // NicooPlayerDelegate 网络重试
     
     func retryToPlayVideo(_ videoModel: NicooVideoModel?, _ fatherView: UIView?) {
-         let url = URL(string: videoModel?.videoUrl ?? "")
+        let url = URL(string: videoModel?.videoUrl ?? "")
         if  let sinceTime = videoModel?.videoPlaySinceTime, sinceTime > 0 {
             playerView.replayVideo(url, videoModel?.videoName, fatherView, sinceTime)
         }else {
@@ -186,22 +190,22 @@ extension CellPlayVC: NicooPlayerDelegate, NicooCustomMuneDelegate {
     
     /// 自定义操作控件代理  ：NicooCustomMuneDelegate,   customTopBarActions 和 showCustomMuneView的优先级为  后者优先， 实现后者， 前者不起效
     
-//    func showCustomMuneView() -> UIView? {
-//
-//        if self.index%2 == 0 {
-//            let view = CustomMuneView(frame: self.view.bounds)
-//            view.itemClick = { [weak self] in
-//                self?.push()
-//            }
-//             return view
-//        }else {
-//            let view1 = CustomMuneView11(frame: self.view.bounds)
-//            view1.itemClick = { [weak self] in
-//                 self?.push()
-//            }
-//            return view1
-//        }
-//
-//    }
+    //    func showCustomMuneView() -> UIView? {
+    //
+    //        if self.index%2 == 0 {
+    //            let view = CustomMuneView(frame: self.view.bounds)
+    //            view.itemClick = { [weak self] in
+    //                self?.push()
+    //            }
+    //             return view
+    //        }else {
+    //            let view1 = CustomMuneView11(frame: self.view.bounds)
+    //            view1.itemClick = { [weak self] in
+    //                 self?.push()
+    //            }
+    //            return view1
+    //        }
+    //
+    //    }
     
 }

@@ -26,7 +26,6 @@ class DownLoadedVideoPlayerVC: UIViewController {
    
     
     fileprivate lazy var videoPlayer: NicooPlayerView = {
-        //  这里应该走另一条线，一个简单的视频播放，将播放View旋转90度。
         let player = NicooPlayerView(frame: self.view.frame, bothSidesTimelable: true)
         player.delegate = self
         return player
@@ -36,6 +35,10 @@ class DownLoadedVideoPlayerVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let fileUrl = Bundle.main.path(forResource: "localFile", ofType: ".mp4")
         videoPlayer.playLocalVideoInFullscreen(fileUrl, "localFile", view, sinceTime: 0)
         videoPlayer.playLocalFileVideoCloseCallBack = { [weak self] (playValue) in
