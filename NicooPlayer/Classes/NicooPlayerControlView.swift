@@ -649,11 +649,9 @@ extension NicooPlayerControlView {
     override func layoutSubviews() {
         super.layoutSubviews()
         topControlBarView.layoutIfNeeded()
-        print(topControlBarView.frame)
         topBarBgLayer.frame = CGRect(x: 0, y: 0, width: topControlBarView.frame.size.width, height: topControlBarView.frame.size.height)
         
         bottomControlBarView.layoutIfNeeded()
-        print(bottomControlBarView.frame)
         bottomBarBgLayer.frame = CGRect(x: 0, y: 0, width: bottomControlBarView.frame.size.width, height: 40)
     }
     

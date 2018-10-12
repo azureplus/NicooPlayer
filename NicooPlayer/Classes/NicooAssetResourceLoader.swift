@@ -191,7 +191,7 @@ extension NicooAssetResourceLoader: NicooVideoRequestTaskDelegate {
         processPendingRequests()
     }
     
-    func didReceiveVideoLengthWithTask(task: NicooVideoRequestTask, videoLength: UInt, mimeType: String) {
+    func didReceiveVideoLengthWithTask(task: NicooVideoRequestTask, videoLength: Int, mimeType: String) {
         
     }
     

@@ -382,17 +382,12 @@ extension NicooPlayerView {
     ///   - lastPlayTime: 上次播放的时间点
     open func replayVideo(_ videoUrl: URL?, _ videoTitle: String? = nil, _ containerView: UIView?, _ lastPlayTime: Float) {
         self.playVideo(videoUrl, videoTitle, containerView)
-        guard let avItem = self.avItem else {
-            return
-        }
-        self.playTimeSince = lastPlayTime      // 保存播放起点，在网络断开时，点击重试，可以找到起点
-        self.playerStatu = PlayerStatus.Pause
+        guard let avItem = self.avItem else { return }
+        self.playTimeSince = lastPlayTime              // 保存播放起点，在网络断开时，点击重试，可以找到起点
         if self.playControllViewEmbed.loadingView.isAnimating {
             self.playControllViewEmbed.loadingView.stopAnimating()
         }
-        showLoadingHud()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             let lastPositionValue = CMTimeMakeWithSeconds(Float64(lastPlayTime), preferredTimescale: (avItem.asset.duration.timescale))
             self.playSinceTime(lastPositionValue)
         }
@@ -567,6 +562,7 @@ private extension NicooPlayerView {
         }
         self.playerLayer?.removeFromSuperlayer()
         self.layer.removeAllAnimations()
+       // player?.replaceCurrentItem(with: nil)
         avItem = nil
         avAsset = nil
     }
@@ -587,11 +583,11 @@ private extension NicooPlayerView {
         }
         avItem = AVPlayerItem(asset: avAsset!)
 
-        if player != nil {
-            player?.replaceCurrentItem(with: avItem!)
-        } else {
+//        if player != nil {
+//            player?.replaceCurrentItem(with: avItem!)
+//        } else {
             player = AVPlayer(playerItem: self.avItem!)
-        }
+       // }
 
         playerLayer = AVPlayerLayer(player: self.player!)
         self.layer.addSublayer(playerLayer!)
@@ -636,7 +632,6 @@ private extension NicooPlayerView {
         if CMTIME_IS_VALID(time) {
             avItem?.seek(to: time, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero, completionHandler: { [weak self] (finish) in
                 if finish {
-                    self?.playerStatu = PlayerStatus.Playing
                     self?.hideLoadingHud()
                 }
             })
@@ -971,7 +966,8 @@ private extension NicooPlayerView {
         } else {
             playControllViewEmbed.durationTimeLab.text = "00:00"
         }
-        self.loadedFailedView.removeFromSuperview()
+        
+        loadedFailedView.removeFromSuperview()
     }
     
     // MARK: - 网络提示显示
@@ -1052,15 +1048,15 @@ private extension NicooPlayerView {
     /// - Parameter sender: 记录被挂起前的播放状态，进入前台时恢复状态
     @objc func applicationResignActivity(_ sender: NSNotification) {
         self.beforeSliderChangePlayStatu = self.playerStatu  // 记录下进入后台前的播放状态
-        self.playerStatu = PlayerStatus.Pause
+        if playerStatu == PlayerStatus.Playing {
+            playerStatu = PlayerStatus.Pause
+        }
     }
     
     // MARK: - APP进入前台，恢复播放状态
     @objc func applicationBecomeActivity(_ sender: NSNotification) {
         if let oldStatu = self.beforeSliderChangePlayStatu {
             self.playerStatu = oldStatu                      // 恢复进入后台前的播放状态
-        }else {
-            self.playerStatu = PlayerStatus.Pause
         }
     }
     
@@ -1115,15 +1111,20 @@ extension NicooPlayerView: NicooPlayerControlViewDelegate {
     }
 }
 
+// MARK: - NicooLoaderUrlConnectionDelegate
+
 extension NicooPlayerView: NicooLoaderUrlConnectionDelegate {
     
     public func didFinishLoadingWithTask(task: NicooVideoRequestTask) {
-        
+        print("didFinishLoadingWithTask--------\(task.downLoadingOffset)")
         
     }
     
     public func didFailLoadingWithTask(task: NicooVideoRequestTask, errorCode: Int) {
-        
+        print("didFailLoadingWithTask -------- \(errorCode)")
+        playerStatu = PlayerStatus.Failed
+        hideLoadingHud()
+        showLoadedFailedView()
     }
     
     
@@ -1139,29 +1140,9 @@ extension NicooPlayerView {
         guard let avItem = self.avItem else {return}
         playerTimerObserver = player?.addPeriodicTimeObserver(forInterval: CMTimeMake(value: Int64(1.0), timescale: Int32(1.0)), queue: nil, using: { [weak self] (time) in
             guard let strongSelf = self else { return }
-            let timeScaleValue = Int64(avItem.currentTime().timescale) /// 当前时间
-            let timeScaleDuration = Int64(avItem.asset.duration.timescale)   /// 总时间
-            
-            if avItem.asset.duration.value > 0 && avItem.currentTime().value > 0 {
-                let value = avItem.currentTime().value / timeScaleValue  /// 当前播放时间
-                let duration = avItem.asset.duration.value / timeScaleDuration /// 视频总时长
-                let playValue = Float(value)/Float(duration)
-                
-                let stringDuration = strongSelf.formatTimDuration(position: Int(value), duration:Int(duration))
-                
-                let stringValue = strongSelf.formatTimPosition(position: Int(value), duration: Int(duration))
-                
-                if strongSelf.bottomBarType == PlayerBottomBarType.PlayerBottomBarTimeBothSides {   //时间在两侧
-                    strongSelf.playControllViewEmbed.positionTimeLab.text = stringValue
-                    strongSelf.playControllViewEmbed.durationTimeLab.text = stringDuration
-                } else {
-                     self?.playControllViewEmbed.durationTimeLab.text = String(format: "%@/%@", stringValue, stringDuration)
-                }
-                
-                self?.playControllViewEmbed.timeSlider.value = playValue
-                
-                self?.playedValue = Float(value)                                      // 保存播放进度
-            }
+            // 刷新时间UI
+            strongSelf.updateTimeSliderValue(avItem: avItem)
+         
         }) as? NSObject
         
     }
@@ -1175,14 +1156,16 @@ extension NicooPlayerView {
             if avItem.status == AVPlayerItem.Status.readyToPlay {
                 print("AVPlayerItem.Status.readyToPlay")
                 playerStatu = PlayerStatus.Playing // 初始状态为播放
-                updateTimeSliderValue(avItem: avItem)
+                updateTimeLableLayout(avItem: avItem)
                
             }else if avItem.status == AVPlayerItem.Status.unknown {
                 //视频加载失败，或者未知原因
+                playerStatu = PlayerStatus.Unknown
                 hideLoadingHud()
                 
             }else if avItem.status == AVPlayerItem.Status.failed {
                 print("PlayerStatus.failed")
+                playerStatu = PlayerStatus.Failed
                 // 代理出去，在外部处理网络问题
                 if playControllViewEmbed.loadingView.isAnimating {
                     playControllViewEmbed.loadingView.stopAnimating()
@@ -1193,17 +1176,11 @@ extension NicooPlayerView {
                 }
             }
         } else if keyPath == "loadedTimeRanges" {
-             print("loadedTimeRanges")
-            //监听缓存进度，根据时间来监听
-            let timeRange = avItem.loadedTimeRanges
-            let cmTimeRange = timeRange[0] as! CMTimeRange
-            let startSeconds = CMTimeGetSeconds(cmTimeRange.start)
-            let durationSeconds = CMTimeGetSeconds(cmTimeRange.duration)
-            let timeInterval = startSeconds + durationSeconds                    // 计算总进度
-            let totalDuration = CMTimeGetSeconds(avItem.asset.duration)
-            self.loadedValue = Float(timeInterval)                               // 保存缓存进度
-            self.playControllViewEmbed.loadedProgressView.setProgress(Float(timeInterval/totalDuration), animated: true)
-        } else if keyPath == "playbackBufferEmpty" {                     // 监听播放器正在缓冲数据
+            print("loadedTimeRanges")
+            updateLoadingProgress(avItem: avItem)
+            
+        } else if keyPath == "playbackBufferEmpty" {
+            playerStatu = PlayerStatus.Buffering                // 监听播放器正在缓冲数据
             print("playbackBufferEmpty")
         } else if keyPath == "playbackLikelyToKeepUp" {                   //监听视频缓冲达到可以播放的状态
              print("playbackLikelyToKeepUp")
@@ -1213,11 +1190,36 @@ extension NicooPlayerView {
         }
     }
     
-    /// 更新时间
+    /// 更新时间进度条
     ///
     /// - Parameter avItem: AVPlayerItem
     
     private func updateTimeSliderValue(avItem: AVPlayerItem) {
+        
+        let timeScaleValue = Int64(avItem.currentTime().timescale) /// 当前时间
+        let timeScaleDuration = Int64(avItem.asset.duration.timescale)   /// 总时间
+        if avItem.asset.duration.value > 0 && avItem.currentTime().value > 0 {
+            let value = avItem.currentTime().value / timeScaleValue  /// 当前播放时间
+            let duration = avItem.asset.duration.value / timeScaleDuration /// 视频总时长
+            let playValue = Float(value)/Float(duration)
+            let stringDuration = self.formatTimDuration(position: Int(value), duration:Int(duration))
+            let stringValue = self.formatTimPosition(position: Int(value), duration: Int(duration))
+            if self.bottomBarType == PlayerBottomBarType.PlayerBottomBarTimeBothSides {   //时间在两侧
+                self.playControllViewEmbed.positionTimeLab.text = stringValue
+                self.playControllViewEmbed.durationTimeLab.text = stringDuration
+            } else {
+                self.playControllViewEmbed.durationTimeLab.text = String(format: "%@/%@", stringValue, stringDuration)
+            }
+            self.playControllViewEmbed.timeSlider.value = playValue
+            self.playedValue = Float(value)                                      // 保存播放进度
+        }
+    }
+    
+    /// 更新时间显示布局
+    ///
+    /// - Parameter avItem: AVPlayerItem
+    
+    private func updateTimeLableLayout(avItem: AVPlayerItem) {
         let duration = Float(avItem.asset.duration.value)/Float(avItem.asset.duration.timescale)
         let currentTime =  avItem.currentTime().value/Int64(avItem.currentTime().timescale)
         let durationHours = duration / 3600
@@ -1236,9 +1238,25 @@ extension NicooPlayerView {
             }
         }
         self.videoDuration = Float(duration)
-        print("时长 = \(duration) S, 已播放 = \(currentTime) s")
+        print("video time length = \(duration) s, current time = \(currentTime) s")
         
         listenTothePlayer()
+    }
+    
+    /// 监听缓存进度
+    ///
+    /// - Parameter avItem: AVPlayerItem
+    
+    private func updateLoadingProgress(avItem: AVPlayerItem) {
+        //监听缓存进度，根据时间来监听
+        let timeRange = avItem.loadedTimeRanges
+        let cmTimeRange = timeRange[0] as! CMTimeRange
+        let startSeconds = CMTimeGetSeconds(cmTimeRange.start)
+        let durationSeconds = CMTimeGetSeconds(cmTimeRange.duration)
+        let timeInterval = startSeconds + durationSeconds                    // 计算总进度
+        let totalDuration = CMTimeGetSeconds(avItem.asset.duration)
+        self.loadedValue = Float(timeInterval)                               // 保存缓存进度
+        self.playControllViewEmbed.loadedProgressView.setProgress(Float(timeInterval/totalDuration), animated: true)
     }
     
 }

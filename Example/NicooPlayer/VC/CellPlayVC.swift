@@ -116,7 +116,6 @@ class CellPlayVC: UIViewController {
     }
     
     @objc func topBarCustonButtonClick(_ sender: UIButton) {
-        print("button.customAction")
         self.push()
     }
     

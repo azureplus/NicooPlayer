@@ -18,7 +18,7 @@ public struct VideoFilePath {
 /// 视频加载请求代理
 public protocol NicooVideoRequestTaskDelegate: class {
     
-    func didReceiveVideoLengthWithTask(task: NicooVideoRequestTask, videoLength: UInt, mimeType: String)
+    func didReceiveVideoLengthWithTask(task: NicooVideoRequestTask, videoLength: Int, mimeType: String)
     func didReceiveVideoDataWithTask(task: NicooVideoRequestTask)
     func didFinishLoadingWithTask(task: NicooVideoRequestTask)
     func didFailLoadingWithTask(task: NicooVideoRequestTask, errorCode: Int)
@@ -26,7 +26,7 @@ public protocol NicooVideoRequestTaskDelegate: class {
 }
 
 public extension NicooVideoRequestTaskDelegate {
-    func didReceiveVideoLengthWithTask(task: NicooVideoRequestTask, videoLength: UInt, mimeType: String){}
+    func didReceiveVideoLengthWithTask(task: NicooVideoRequestTask, videoLength: Int, mimeType: String){}
     func didReceiveVideoDataWithTask(task: NicooVideoRequestTask){}
     func didFinishLoadingWithTask(task: NicooVideoRequestTask){}
     func didFailLoadingWithTask(task: NicooVideoRequestTask, errorCode: Int){}
@@ -37,7 +37,7 @@ open class NicooVideoRequestTask: NSObject {
     
     public var url: NSURL?
     public var offSet: Int = 0
-    public var videoLength: UInt = 0
+    public var videoLength: Int = 0
     public var downLoadingOffset: Int = 0
     public var mimeType: String?
     public var isFinishLoad: Bool = false
@@ -162,11 +162,11 @@ extension NicooVideoRequestTask: NSURLConnectionDataDelegate {
             videoLength = Int(length!)!
         }
         
-        self.videoLength = UInt(videoLength)
+        self.videoLength = Int(videoLength)
         //TODO: 此处需要修改为真实数据格式 - 从字典中取
         self.mimeType = "video/mp4"
         //  回调
-        delegate?.didReceiveVideoLengthWithTask(task: self, videoLength: UInt(videoLength), mimeType: mimeType!)
+        delegate?.didReceiveVideoLengthWithTask(task: self, videoLength: Int(videoLength), mimeType: mimeType!)
         //  连接加入到任务数组中
         tasks.append(connection)
         //  初始化文件传输句柄
@@ -194,7 +194,6 @@ extension NicooVideoRequestTask: NSURLConnectionDataDelegate {
         
         if tasks.count < 2 {
             isFinishLoad = true
-            print("connectionDidFinishLoading")
             // tmpPersistence()
         }
         delegate?.didFinishLoadingWithTask(task: self)

@@ -96,16 +96,15 @@ class PlayVideoVC: UIViewController {
     //  初始化播放器
     @objc func btnclick(_ sender: UIButton) {
         let url = URL(string: "http://api.gfs100.cn/upload/20180126/201801261120124536.mp4")
-        playerView.playVideo(url, "VideoName", fateherView)
+       // playerView.playVideo(url, "VideoName", fateherView)
         
         // 初始化播放器，并从某个时间点开始播放
-        // playerView.replayVideo(url, "视屏名称", fateherView, 180.0)
+         playerView.replayVideo(url, "视屏名称", fateherView, 10.0)
     }
     
     // 改变父视图
     @objc func btnclick1(_ sender: UIButton) {
         playerView.changeVideoContainerView(fateherView1)
-        //playerView.playerStatu = TZPlayerView.PlayerStatus.Pause  // 检测到网络变化时调用
     }
     
     /// 获取播放时间，加载时间，视频总时长
