@@ -19,7 +19,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
         func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) 
           -> UIInterfaceOrientationMask { 
             guard let num =  OrientationSupport(rawValue: orientationSupport.rawValue) else { 
-            return [.portrait]
+                  return [.portrait]
             }
             return num.getOrientSupports()  
         }
@@ -27,29 +27,28 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 （在实际项目中，如果有做组件化，这里应该通过路由去拿OrientationSupport 状态，如果对路由有兴趣的朋友可以到：https://github.com/yangxina/NicooSwiftRouterDemo  查看Swift路由Demo） 
 
 
-
-另外由于播放器对系统的状态栏做了操作， 所以需要在主工程的 info.plist 文件中添加：Status bar is initially hidden == YES ， 并在有播放器的VC中重写 Status bar 样式的方法：
+另外由于播放器对系统的状态栏做了操作， 所以需要在主工程的 info.plist 文件中添加：Status bar is initially hidden == YES ， 
+并在有播放器的VC中重写 Status bar 样式的方法：
 
 /// 这里重写系统方法，为了让 StatusBar 跟随播放器的操作栏一起 隐藏或显示，且在全屏播放时， StatusBar 样式变为 lightContent
 
     override var preferredStatusBarStyle: UIStatusBarStyle { 
-             let orirntation = UIApplication.shared.statusBarOrientation
-             if  orirntation == UIInterfaceOrientation.landscapeLeft || orirntation == UIInterfaceOrientation.landscapeRight
-             {
-                 return .lightContent
-             }
-             return .default
-             }
+           let orirntation = UIApplication.shared.statusBarOrientation
+           if  orirntation == UIInterfaceOrientation.landscapeLeft || orirntation == UIInterfaceOrientation.landscapeRight
+           {
+               return .lightContent
+           }
+           return .default
+    }
 
 /// 1.如果整个项目的状态栏已经为 lightContent，则不需要这些操作，直接播放就好。
 （具体看Demo）
-
 
 2.点击播放按钮时，调用：
 
     playerView.playVideo("视频链接", "视频名称", fateherView)
 
-3.如果是接着上次播放的点播放，就像腾讯播放器的记录上次播放， 调用 ：
+3.如果是接着上次播放的点播放，就像其他播放器的记录上次播放， 调用 ：
 
     playerView.replayVideo("视频链接", "视频名称", fateherView, 上次播放到的时间)
 
