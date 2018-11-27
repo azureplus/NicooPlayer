@@ -137,9 +137,9 @@ extension CellPlayVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellPlayVC.cellIdentifier, for: indexPath) as? NicooVideoCell
         
         cell?.playButtonClickBlock = { [weak self] (sender) in
-            var url = URL(string: ["http://api.gfs100.cn/upload/20180126/201801261120124536.mp4","https://mvvideo5.meitudata.com/56ea0e90d6cb2653.mp4","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://api.gfs100.cn/upload/20171218/201712181643211975.mp4"][indexPath.row])
+            var url = URL(string: ["http://api.gfs100.cn/upload/20180126/201801261120124536.mp4","http://jdplay.lecloud.com/play.videocache.lecloud.com/274/39/9/letv-uts/14/ver_00_22-1122095005-avc-417919-aac-48000-6194667-370046165-413523a2317e7a63c6f251ada14b61d8-1541752825177.m3u8?crypt=44aa7f2e178&b=477&nlh=4096&nlt=60&bf=30&p2p=1&video_type=mp4&termid=0&tss=ios&platid=1&splatid=105&its=0&qos=3&fcheck=0&amltag=100&mltag=100&proxy=2071799162,2073440964,2071799162&uid=3663232245.rp&keyitem=GOw_33YJAAbXYE-cnQwpfLlv_b2zAkYctFVqe5bsXQpaGNn3T1-vhw..&ntm=1543321800&nkey=869176ed3f6540260f44ae010bed918b&nkey2=8b03bcfdc0269c83bb4e0c63719c4b4f&auth_key=1543321800-1-0-1-105-a7ed32217a62fb43d1ddbd1c3baf9962&geo=CN-23-323-1&mmsid=66884366&tm=1543303040&key=6f77e67dfd92ba9d6539faed6131d129&playid=0&vtype=13&cvid=1650604119571&payff=0&uidx=0&errc=0&gn=50038&ndtype=2&vrtmcd=106&buss=100&cips=218.88.124.245","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://api.gfs100.cn/upload/20171218/201712181643211975.mp4"][indexPath.row])
             if indexPath.row == 0 {
-                if let filePath = Bundle.main.path(forResource: "localFile", ofType: ".mp4") {
+                if let filePath = Bundle.main.path(forResource: "hubblecast", ofType: ".m4v") {
                     url = URL(fileURLWithPath: filePath)
                 }
             }
@@ -185,6 +185,10 @@ extension CellPlayVC: NicooPlayerDelegate, NicooCustomMuneDelegate {
             buttonS.append(button)
         }
         return buttonS
+    }
+    
+    func currentVideoPlayToEnd(_ videoModel: NicooVideoModel?, _ isPlayingDownLoadFile: Bool) {
+        print("currentVideoPlayToEnd")
     }
     
     /// 自定义操作控件代理  ：NicooCustomMuneDelegate,   customTopBarActions 和 showCustomMuneView的优先级为  后者优先， 实现后者， 前者不起效

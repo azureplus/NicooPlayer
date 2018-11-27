@@ -571,13 +571,19 @@ private extension NicooPlayerView {
     ///
     /// - Parameter videoUrl: 视频链接
     private func setUpPlayerResource(_ videoUrl: URL) {
-        
-        if videoUrl.absoluteString.contains("http") {   // 网络链接
-            resouerLoader = NicooAssetResourceLoader()
-            resouerLoader!.delegate = self
-            let playUrl = resouerLoader!.getURL(url: videoUrl)
-            avAsset = AVURLAsset(url: playUrl ?? videoUrl, options: nil)
-            avAsset?.resourceLoader.setDelegate(resouerLoader, queue: DispatchQueue.main)
+        // 网络链接
+        if videoUrl.absoluteString.contains("http") {
+            // 为了支持M3U8流媒体格式的视频，就不能使用 resouerLoader缓冲数据
+            if videoUrl.absoluteString.contains(".m3u8") {
+                avAsset = AVURLAsset(url: videoUrl, options: nil)
+            } else {
+            // 非流媒体的视频，使用resouerLoader缓冲数据
+                resouerLoader = NicooAssetResourceLoader()
+                resouerLoader!.delegate = self
+                let playUrl = resouerLoader!.getURL(url: videoUrl)
+                avAsset = AVURLAsset(url: playUrl ?? videoUrl, options: nil)
+                avAsset?.resourceLoader.setDelegate(resouerLoader, queue: DispatchQueue.main)
+            }
         } else {  // 非网络链接
             avAsset = AVURLAsset(url: videoUrl, options: nil)
         }
@@ -1006,7 +1012,7 @@ private extension NicooPlayerView {
                     make.edges.equalTo(UIApplication.shared.keyWindow!)
                 })
                 if #available(iOS 11.0, *) {                           // 横屏播放时，适配X
-                    if UIDevice.current.isiPhoneXSeriesDevices() {
+                    if UIDevice.current.isSimulator() {
                         self.playControllViewEmbed.snp.remakeConstraints({ (make) in
                             make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(28)
                             make.trailing.equalTo(self.safeAreaLayoutGuide.snp.trailing).offset(-28)
