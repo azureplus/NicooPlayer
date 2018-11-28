@@ -72,6 +72,7 @@ class PlayVideoVC: UIViewController {
     
     private lazy var playerView: NicooPlayerView = {
         let player = NicooPlayerView(frame: self.fateherView.bounds, bothSidesTimelable: true)
+        player.videoLayerGravity = .resizeAspectFill
         player.delegate = self
         player.customViewDelegate = self
         return player
@@ -95,7 +96,7 @@ class PlayVideoVC: UIViewController {
     
     //  初始化播放器
     @objc func btnclick(_ sender: UIButton) {
-        let url = URL(string: "http://api.gfs100.cn/upload/20180126/201801261120124536.mp4")
+        let url = URL(string: "http://1251883823.vod2.myqcloud.com/9dae6688vodgzp1251883823/55b5b7695285890783177400505/wRJKtSNgLt8A.mp4")
        // playerView.playVideo(url, "VideoName", fateherView)
         
         // 初始化播放器，并从某个时间点开始播放

@@ -79,6 +79,7 @@ enum PanDirection: Int {
     case PanDirectionVertical       //上下
 }
 
+
 /// 播放器View
 open class NicooPlayerView: UIView {
     
@@ -154,6 +155,8 @@ open class NicooPlayerView: UIView {
             }
         }
     }
+    /// 视频填充模式
+    public var videoLayerGravity: AVLayerVideoGravity = .resizeAspect
     public weak var delegate: NicooPlayerDelegate?
     public weak var customViewDelegate: NicooCustomMuneDelegate?
     
@@ -177,7 +180,7 @@ open class NicooPlayerView: UIView {
                     playControllViewEmbed.loadingView.stopAnimating()
                 }
                 if !playControllViewEmbed.panGesture.isEnabled && !playControllViewEmbed.screenIsLock! {
-                    playControllViewEmbed.panGesture.isEnabled = true
+                    playControllViewEmbed.panGesture.isEnabled = !isM3U8
                 }
                 self.hideLoadingHud()
                 if self.subviews.contains(loadedFailedView) {
@@ -312,6 +315,8 @@ open class NicooPlayerView: UIView {
     private var loadedValue: Float = 0
     /// 视频总时长
     private var videoDuration: Float = 0
+    /// 是否为.m3u8格式
+    private var isM3U8: Bool = false
     /// 音量大小
     private var volumeSliderValue: Float64 = 0
     private var playerLayer: AVPlayerLayer?
@@ -575,9 +580,11 @@ private extension NicooPlayerView {
         if videoUrl.absoluteString.contains("http") {
             // 为了支持M3U8流媒体格式的视频，就不能使用 resouerLoader缓冲数据
             if videoUrl.absoluteString.contains(".m3u8") {
+                isM3U8 = true
                 avAsset = AVURLAsset(url: videoUrl, options: nil)
             } else {
             // 非流媒体的视频，使用resouerLoader缓冲数据
+                isM3U8 = false
                 resouerLoader = NicooAssetResourceLoader()
                 resouerLoader!.delegate = self
                 let playUrl = resouerLoader!.getURL(url: videoUrl)
@@ -585,6 +592,7 @@ private extension NicooPlayerView {
                 avAsset?.resourceLoader.setDelegate(resouerLoader, queue: DispatchQueue.main)
             }
         } else {  // 非网络链接
+            isM3U8 = false
             avAsset = AVURLAsset(url: videoUrl, options: nil)
         }
         avItem = AVPlayerItem(asset: avAsset!)
@@ -596,11 +604,15 @@ private extension NicooPlayerView {
        // }
 
         playerLayer = AVPlayerLayer(player: self.player!)
+        playerLayer?.videoGravity = videoLayerGravity
         self.layer.addSublayer(playerLayer!)
         self.addSubview(playControllViewEmbed)
        
         playControllViewEmbed.timeSlider.value = 0
         playControllViewEmbed.loadedProgressView.setProgress(0, animated: false)
+        playControllViewEmbed.timeSlider.isEnabled = !isM3U8
+        playControllViewEmbed.doubleTapGesture.isEnabled = true
+        playControllViewEmbed.panGesture.isEnabled = !isM3U8
         autoHideBar()
         if playControllViewEmbed.playLocalFile! {       // 播放本地视频时只支持左右
             orientationSupport = NicooPlayerOrietation.orientationLeftAndRight
@@ -964,8 +976,6 @@ private extension NicooPlayerView {
         playControllViewEmbed.barIsHidden = false
         playControllViewEmbed.replayContainerView.isHidden = true
         playControllViewEmbed.singleTapGesture.isEnabled = true
-        playControllViewEmbed.doubleTapGesture.isEnabled = true
-        playControllViewEmbed.panGesture.isEnabled = true
         playControllViewEmbed.positionTimeLab.text = "00:00"
         if bottomBarType == PlayerBottomBarType.PlayerBottomBarTimeRight {
             playControllViewEmbed.durationTimeLab.text = "00:00/00:00"
@@ -1035,13 +1045,9 @@ private extension NicooPlayerView {
                         self.snp.makeConstraints({ (make) in
                             make.edges.equalTo(containerView)
                         })
-                        if #available(iOS 11.0, *) {         // 竖屏播放时，适配X
-                            if UIDevice.current.isiPhoneXSeriesDevices() {
-                                self.playControllViewEmbed.snp.makeConstraints({ (make) in
-                                    make.edges.equalToSuperview()
-                                })
-                            }
-                        }
+                        self.playControllViewEmbed.snp.remakeConstraints({ (make) in
+                            make.edges.equalToSuperview()
+                        })
                         self.layoutIfNeeded()
                         self.playControllViewEmbed.layoutIfNeeded()
                     }, completion: nil)
@@ -1270,6 +1276,7 @@ extension NicooPlayerView {
 // MARK: - LayoutPageSubviews (UI布局)
 
 extension NicooPlayerView {
+    
     private func layoutLocalPlayView(_ localView: UIView) {
         self.snp.makeConstraints { (make) in
             make.center.equalToSuperview()

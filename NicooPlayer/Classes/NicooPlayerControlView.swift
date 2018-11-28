@@ -649,10 +649,15 @@ extension NicooPlayerControlView {
     override func layoutSubviews() {
         super.layoutSubviews()
         topControlBarView.layoutIfNeeded()
-        topBarBgLayer.frame = CGRect(x: 0, y: 0, width: topControlBarView.frame.size.width, height: topControlBarView.frame.size.height)
-        
         bottomControlBarView.layoutIfNeeded()
-        bottomBarBgLayer.frame = CGRect(x: 0, y: 0, width: bottomControlBarView.frame.size.width, height: 40)
+        if fullScreen! {
+            topBarBgLayer.frame = CGRect(x: -80, y: 0, width: topControlBarView.frame.size.width + 160, height: topControlBarView.frame.size.height)
+            bottomBarBgLayer.frame = CGRect(x: -80, y: 0, width: bottomControlBarView.frame.size.width + 160, height: 40)
+        } else {
+            topBarBgLayer.frame = CGRect(x: 0, y: 0, width: topControlBarView.frame.size.width, height: topControlBarView.frame.size.height)
+            bottomBarBgLayer.frame = CGRect(x: 0, y: 0, width: bottomControlBarView.frame.size.width, height: 40)
+        }
+       
     }
     
 }

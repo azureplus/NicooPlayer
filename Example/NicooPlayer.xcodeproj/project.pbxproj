@@ -101,7 +101,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		079B9F4420EE0407006A0531 /* VC */ = {
+		079B9F4420EE0407006A0531 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				079B9F4520EE1753006A0531 /* ViewController.swift */,
@@ -111,7 +111,7 @@
 				07655FB92100913100800DC4 /* DownLoadedVideoPlayerVC.swift */,
 				070F19E4213FC3AB00E17779 /* NextViewController.swift */,
 			);
-			path = VC;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		5EB3806956D38C8FE0CC8301 /* Frameworks */ = {
@@ -149,7 +149,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				079B9F4420EE0407006A0531 /* VC */,
+				079B9F4420EE0407006A0531 /* ViewController */,
 				0791D64A20D8AD32009E1109 /* View */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				183D817D21AD2D3D00F7DD2B /* testVideo.m3u8 */,
