@@ -1,6 +1,5 @@
 //
 //  NicooPlayerOrietation.swift
-//  MBProgressHUD
 //
 //  Created by 小星星 on 2018/6/27.
 //
