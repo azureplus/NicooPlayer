@@ -35,7 +35,7 @@ open class NicooNetWorkAlert: UIView {
     }()
     
     deinit {
-        print("网络弹框被释放")
+        NLog("网络弹框被释放")
     }
     
     public init(frame: CGRect, itemButtonTitles: [String]?, message: String) {

@@ -85,6 +85,9 @@ extension NicooVideoRequestTask {
         let actualURLComponents = NSURLComponents(url: url as URL, resolvingAgainstBaseURL: false)
         actualURLComponents?.scheme = "http"
         guard let URL = actualURLComponents?.url else {return}
+        
+        
+        
         let mutableRequest = NSMutableURLRequest(url: URL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringCacheData, timeoutInterval: 20.0)
         if offSet > 0 && self.videoLength > 0 {
             mutableRequest.addValue(String(format: "bytes=%ld-%ld", offSet, self.videoLength - 1), forHTTPHeaderField: "Range")
@@ -94,6 +97,8 @@ extension NicooVideoRequestTask {
         connection = NSURLConnection.init(request: mutableRequest as URLRequest, delegate: self, startImmediately: false)
         connection?.setDelegateQueue(OperationQueue.main)
         connection?.start()
+        
+        
         
     }
     
