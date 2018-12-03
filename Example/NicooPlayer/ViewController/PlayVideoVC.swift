@@ -96,7 +96,9 @@ class PlayVideoVC: UIViewController {
     
     //  初始化播放器
     @objc func btnclick(_ sender: UIButton) {
-        let url = URL(string: "http://1251883823.vod2.myqcloud.com/9dae6688vodgzp1251883823/55b5b7695285890783177400505/wRJKtSNgLt8A.mp4")
+        // http://v.zhubodasai.com/v2/m_20181030_4690/1/d104cd51ca787c02b4ceaf084801ace4_free.m3u8
+        // http://youku163.zuida-bofang.com/20180905/13609_155264ac/index.m3u8
+        let url = URL(string: "http://v.zhubodasai.com/v2/m_20181030_4690/1/d104cd51ca787c02b4ceaf084801ace4_free.m3u8")
         playerView.playVideo(url, "VideoName", fateherView)
         
         // 初始化播放器，并从某个时间点开始播放
@@ -121,7 +123,6 @@ class PlayVideoVC: UIViewController {
         print("已加载时间 = \(poloading) .播放时间 = \(playTime[0]) . 视频总时长= \(playTime[1])")
         sender.setTitle(String(format: "%.2f s", playTime[0]), for: .normal)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         // 如果当前播放器已经添加，支持横竖屏

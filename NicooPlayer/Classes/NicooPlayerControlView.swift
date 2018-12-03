@@ -68,7 +68,7 @@ class NicooPlayerControlView: UIView {
     lazy var replayContainerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 6
-        view.backgroundColor = UIColor(white: 0.2, alpha: 0.2)
+        view.backgroundColor = UIColor(white: 0.2, alpha: 0.05)
         view.layer.masksToBounds = true
         view.isHidden = true
         return view

@@ -608,9 +608,9 @@ private extension NicooPlayerView {
         
         playControllViewEmbed.timeSlider.value = 0
         playControllViewEmbed.loadedProgressView.setProgress(0, animated: false)
-        playControllViewEmbed.timeSlider.isEnabled = !isM3U8
+        playControllViewEmbed.timeSlider.isEnabled = true //!isM3U8
         playControllViewEmbed.doubleTapGesture.isEnabled = true
-        playControllViewEmbed.panGesture.isEnabled = !isM3U8
+        playControllViewEmbed.panGesture.isEnabled = true //!isM3U8
         autoHideBar()
         if playControllViewEmbed.playLocalFile! {       // 播放本地视频时只支持左右
             orientationSupport = NicooPlayerOrietation.orientationLeftAndRight
@@ -791,19 +791,20 @@ private extension NicooPlayerView {
                 
                 strongSelf.cancleAutoHideBar()
                 strongSelf.playControllViewEmbed.barIsHidden = false
-                
+                strongSelf.isDragging = true
                 // 使用绝对值来判断移动的方向
                 let x = abs(veloctyPoint.x)
                 let y = abs(veloctyPoint.y)
                 
                 if x > y {                       //水平滑动
-                    strongSelf.isDragging = true
+                   
                     if !strongSelf.playControllViewEmbed.replayContainerView.isHidden {  // 锁屏状态下播放完成,解锁后，滑动
                         strongSelf.startReadyToPlay()
                         strongSelf.playControllViewEmbed.screenIsLock = false
                     }
                     strongSelf.panDirection = PanDirection.PanDirectionHorizontal
                     // strongSelf.beforeSliderChangePlayStatu = strongSelf.playerStatu  // 拖动开始时，记录下拖动前的状态
+                    strongSelf.playerStatu = PlayerStatus.Pause   
                     strongSelf.pauseButton.isHidden = true                     // 拖动时隐藏暂停按钮
                     strongSelf.sumTime = CGFloat(avItem.currentTime().value)/CGFloat(avItem.currentTime().timescale)
                     if !strongSelf.subviews.contains(strongSelf.draggedProgressView) {
@@ -854,8 +855,10 @@ private extension NicooPlayerView {
                 }
                 break
             case .ended:
+                strongSelf.isDragging = false
                 switch strongSelf.panDirection! {
                 case .PanDirectionHorizontal:
+                    
                     let position = CGFloat(avItem.asset.duration.value)/CGFloat(avItem.asset.duration.timescale)
                     let sliderValue = strongSelf.sumTime!/position
                     let po = CMTimeMakeWithSeconds(Float64(position) * Float64(sliderValue), preferredTimescale: (avItem.asset.duration.timescale))
@@ -863,9 +866,8 @@ private extension NicooPlayerView {
                     /// 拖动完成，sumTime置为0 回到之前的播放状态，如果播放状态为
                     strongSelf.sumTime = 0
                     strongSelf.pauseButton.isHidden = false
+                   
                     strongSelf.playerStatu = PlayerStatus.Playing
-                    strongSelf.isDragging = false
-                    
                     //进度拖拽完成，5庙后自动隐藏操作栏
                     strongSelf.autoHideBar()
                     
@@ -917,14 +919,15 @@ private extension NicooPlayerView {
         }
         let dragValue = sumValue / totalMoveDuration
         // 拖动时间展示
-        let allTimeString =  self.formatTimDuration(position: Int(sumValue), duration: Int(totalMoveDuration))
-        let draggedTimeString = self.formatTimPosition(position: Int(sumValue), duration: Int(totalMoveDuration))
-        self.draggedTimeLable.text = String(format: "%@|%@", draggedTimeString, allTimeString)
-        
-        self.draggedStatusButton.isSelected = moveValue < 0
-        self.playControllViewEmbed.positionTimeLab.text = self.formatTimPosition(position: Int(sumValue), duration: Int(totalMoveDuration))
-        self.playControllViewEmbed.timeSlider.value = Float(dragValue)
-        self.sumTime = sumValue
+        let allTimeString =  formatTimDuration(position: Int(sumValue), duration: Int(totalMoveDuration))
+        let draggedTimeString = formatTimPosition(position: Int(sumValue), duration: Int(totalMoveDuration))
+        draggedTimeLable.text = String(format: "%@|%@", draggedTimeString, allTimeString)
+        draggedStatusButton.isSelected = moveValue < 0
+        if !isDragging {
+             playControllViewEmbed.positionTimeLab.text = self.formatTimPosition(position: Int(sumValue), duration: Int(totalMoveDuration))
+             playControllViewEmbed.timeSlider.value = Float(dragValue)
+        }
+        sumTime = sumValue
         return dragValue
         
     }
@@ -1076,6 +1079,7 @@ extension NicooPlayerView: NicooPlayerControlViewDelegate {
     func sliderTouchBegin(_ sender: UISlider) {
         guard let avItem = self.avItem else { return }
         //beforeSliderChangePlayStatu = playerStatu、
+        playerStatu = PlayerStatus.Pause
         isDragging = true
         playControllViewEmbed.replayContainerView.isHidden = true
         pauseButton.isHidden = true
@@ -1256,13 +1260,15 @@ extension NicooPlayerView {
     private func updateLoadingProgress(avItem: AVPlayerItem) {
         //监听缓存进度，根据时间来监听
         let timeRange = avItem.loadedTimeRanges
-        let cmTimeRange = timeRange[0] as! CMTimeRange
-        let startSeconds = CMTimeGetSeconds(cmTimeRange.start)
-        let durationSeconds = CMTimeGetSeconds(cmTimeRange.duration)
-        let timeInterval = startSeconds + durationSeconds                    // 计算总进度
-        let totalDuration = CMTimeGetSeconds(avItem.asset.duration)
-        self.loadedValue = Float(timeInterval)                               // 保存缓存进度
-        self.playControllViewEmbed.loadedProgressView.setProgress(Float(timeInterval/totalDuration), animated: true)
+        if timeRange.count > 0 {
+            let cmTimeRange = timeRange[0] as! CMTimeRange
+            let startSeconds = CMTimeGetSeconds(cmTimeRange.start)
+            let durationSeconds = CMTimeGetSeconds(cmTimeRange.duration)
+            let timeInterval = startSeconds + durationSeconds                    // 计算总进度
+            let totalDuration = CMTimeGetSeconds(avItem.asset.duration)
+            self.loadedValue = Float(timeInterval)                               // 保存缓存进度
+            self.playControllViewEmbed.loadedProgressView.setProgress(Float(timeInterval/totalDuration), animated: true)
+        }
     }
     
 }
