@@ -487,10 +487,17 @@ private extension NicooPlayerView {
     ///   - sinceTime: 从某个时间开始播放
     
     private func playDownFileWith(_ filePathUrl: String?, _ videoTitle: String?, _ containerView: UIView?, sinceTime: Float? = nil) {
+        guard let localUrl = filePathUrl else { return }
         playControllViewEmbed.playLocalFile = true  // 声明直接就进入全屏播放               ------------------   1
-        fileUrlString = filePathUrl              // 保存本地文件URL
+        fileUrlString = localUrl              // 保存本地文件URL
         /// 重置播放源
-        let url = URL(fileURLWithPath: filePathUrl ?? "")
+        /// 这里这样写，是为了兼容，ts流 本地服务器播放， m3u8视频 文件 ts 下载后，需要搭建本地服务器播放，走的也是网络播放，只是资源在本地，通过
+        var url = URL(string: "")
+        if localUrl.hasPrefix("http") {
+            url = URL(string: localUrl)
+        } else {
+            url = URL(fileURLWithPath: localUrl)
+        }
         // 👇三个属性的设置顺序很重要X
         self.playUrl = url                // 判断视频链接是否更改，更改了就重置播放器        // ------------------------- 2  + 3
         self.videoName = videoTitle      // 视频名称
@@ -1021,7 +1028,7 @@ private extension NicooPlayerView {
                     make.edges.equalTo(UIApplication.shared.keyWindow!)
                 })
                 if #available(iOS 11.0, *) {                           // 横屏播放时，适配X
-                    if UIDevice.current.isSimulator() {
+                    if UIDevice.current.isiPhoneXSeriesDevices() {
                         self.playControllViewEmbed.snp.remakeConstraints({ (make) in
                             make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(28)
                             make.trailing.equalTo(self.safeAreaLayoutGuide.snp.trailing).offset(-28)

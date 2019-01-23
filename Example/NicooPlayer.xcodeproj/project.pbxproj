@@ -19,6 +19,7 @@
 		079B9F4620EE1754006A0531 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079B9F4520EE1753006A0531 /* ViewController.swift */; };
 		183D817E21AD2D3D00F7DD2B /* testVideo.m3u8 in Resources */ = {isa = PBXBuildFile; fileRef = 183D817D21AD2D3D00F7DD2B /* testVideo.m3u8 */; };
 		18A2E75A21A92D0300DE60E6 /* hubblecast.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 18A2E75921A92D0300DE60E6 /* hubblecast.m4v */; };
+		18A6A82F21BBC9EA00833D31 /* monkeyKing.m3u8 in Resources */ = {isa = PBXBuildFile; fileRef = 18A6A82E21BBC9EA00833D31 /* monkeyKing.m3u8 */; };
 		30858DA0B394890F2DD09422 /* Pods_NicooPlayer_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6237AFA061EFABC61B840210 /* Pods_NicooPlayer_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		1714656CCCE457A253FA3994 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		183D817D21AD2D3D00F7DD2B /* testVideo.m3u8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testVideo.m3u8; sourceTree = "<group>"; };
 		18A2E75921A92D0300DE60E6 /* hubblecast.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = hubblecast.m4v; sourceTree = "<group>"; };
+		18A6A82E21BBC9EA00833D31 /* monkeyKing.m3u8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = monkeyKing.m3u8; sourceTree = "<group>"; };
 		404488BB86E22FC167AC84D3 /* Pods-NicooPlayer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NicooPlayer_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NicooPlayer_Tests/Pods-NicooPlayer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* NicooPlayer_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NicooPlayer_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				079B9F4420EE0407006A0531 /* ViewController */,
 				0791D64A20D8AD32009E1109 /* View */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				18A6A82E21BBC9EA00833D31 /* monkeyKing.m3u8 */,
 				183D817D21AD2D3D00F7DD2B /* testVideo.m3u8 */,
 				18A2E75921A92D0300DE60E6 /* hubblecast.m4v */,
 				07655FBB2100923600800DC4 /* localFile.mp4 */,
@@ -302,6 +305,7 @@
 				18A2E75A21A92D0300DE60E6 /* hubblecast.m4v in Resources */,
 				0791D65E20D8B492009E1109 /* CellPlayVC.xib in Resources */,
 				0791D65A20D8B369009E1109 /* NicooVideoCell.xib in Resources */,
+				18A6A82F21BBC9EA00833D31 /* monkeyKing.m3u8 in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				07655FBC2100923700800DC4 /* localFile.mp4 in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,

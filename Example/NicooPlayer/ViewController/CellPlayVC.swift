@@ -138,9 +138,9 @@ extension CellPlayVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellPlayVC.cellIdentifier, for: indexPath) as? NicooVideoCell
         //http://flv2.bn.netease.com/videolib3/1609/12/aOzvT5225/HD/movie_index.m3u8
         cell?.playButtonClickBlock = { [weak self] (sender) in
-            var url = URL(string: ["http://api.gfs100.cn/upload/20180126/201801261120124536.mp4","http://flv2.bn.netease.com/videolib3/1609/12/aOzvT5225/HD/movie_index.m3u8","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://api.gfs100.cn/upload/20171218/201712181643211975.mp4"][indexPath.row])
+            var url = URL(string: ["https://me.guiji365.com/20180616/LQfzeEFU/index.m3u8","http://192.168.137.145:50004/storage/v_m3u8/e7adf3d34b1e8a22a08657655212a038/index.m3u8","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://api.gfs100.cn/upload/20171218/201712181643211975.mp4"][indexPath.row])
             if indexPath.row == 0 {
-                if let filePath = Bundle.main.path(forResource: "hubblecast", ofType: ".m4v") {
+                if let filePath = Bundle.main.path(forResource: "monkeyKing", ofType: ".m3u8") {
                     url = URL(fileURLWithPath: filePath)
                 }
             }
