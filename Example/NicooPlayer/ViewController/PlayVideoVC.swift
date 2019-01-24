@@ -98,7 +98,7 @@ class PlayVideoVC: UIViewController {
     @objc func btnclick(_ sender: UIButton) {
         // http://v.zhubodasai.com/v2/m_20181030_4690/1/d104cd51ca787c02b4ceaf084801ace4_free.m3u8
         // http://youku163.zuida-bofang.com/20180905/13609_155264ac/index.m3u8
-        let url = URL(string: "http://192.168.137.145:50004/storage/v_m3u8/e7adf3d34b1e8a22a08657655212a038/index.m3u8")
+        let url = URL(string: "http://192.168.137.158:50004/storage/v_m3u8/e7adf3d34b1e8a22a08657655212a038/index.m3u8")
         playerView.playVideo(url, "VideoName", fateherView)
         
         // 初始化播放器，并从某个时间点开始播放

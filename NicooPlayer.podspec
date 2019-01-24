@@ -2,14 +2,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NicooPlayer'
-  s.version          = '1.3.2'
-  s.summary          = 'NicooVideoPlayer for swift4.1'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.version          = '1.3.3'
+  s.summary          = 'NicooVideoPlayer for swift4.2'
 
   s.description      = <<-DESC
   播放器： 1. 播放本地网络视频。 2.播放已下载本地文件。 3. 全屏不可切换竖屏播放。 3. 横竖屏，锁屏，进度拖动，网络重试，状态栏跟随，操作栏暗影效果，时间样式选择。 4.支持.mp4 .m4v 等正常格式， 现已支持.m3u8流媒体格式。

@@ -7,363 +7,337 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02ACAD3D995B8FFCC7103BFFFCFF4C7E /* ConstraintInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3BC3EB390E5F54CD07B5AAB531B3BA /* ConstraintInsets.swift */; };
-		085602848783E5ECD62FA833B3695BCF /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC191B4E63E933FED67E4436642F760 /* ConstraintLayoutGuide.swift */; };
-		0C0E4434F229EF3930313178B4BF2239 /* NicooBrightnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F21837F00B75EAB07A9C250FC8B5E97 /* NicooBrightnessView.swift */; };
-		0D18C3978540AB62EAB99B8CE4BAC208 /* ConstraintMakerPriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEEE9DAEB5A2C78EB59A5F1DE902C42 /* ConstraintMakerPriortizable.swift */; };
-		0F4A0CF65B929860AC4ED3BBF1D7F15E /* forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDE80A19B49EC3F546C04254772F11D2 /* forward@2x.png */; };
-		132672EB493A91C33FEC4772DA969784 /* NicooAssetResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541D249AA545E85BAD898464B717908D /* NicooAssetResourceLoader.swift */; };
-		1758A48B650BFC00C2E29E133F913D4D /* NicooPlayer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 726C1BFB4FA4CF7E54C5ED88685679FA /* NicooPlayer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		19B5898E83A8018EE19B7B47CEA0F8BB /* NicooPlayer_fullscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C389EB01ADE1AE1F532611B2D35C8F0 /* NicooPlayer_fullscreen@3x.png */; };
-		1BA07733D36E0171E28F1E2BD3272875 /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F6E615E764433C09A342B165AA3122 /* ConstraintView+Extensions.swift */; };
-		1E9EE9E072F099CD7FF4B67DA9013417 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD78553AB050BFDA20FC817592395083 /* ConstraintRelation.swift */; };
-		1EDC6C02D207FE61AA79EB06F1A128F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004F9356941D3C9C1837F67F9D77A1E /* Foundation.framework */; };
-		2067C0BE526FE391C73197952FFF6EF9 /* Pods-NicooPlayer_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B1B04DC1A89A71B19068691BC36B942 /* Pods-NicooPlayer_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		24F3A0D39993705C9736FD2BDB8EB35D /* NicooPlayer_fullscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E96D501AEB6127B63A848515689994 /* NicooPlayer_fullscreen.png */; };
-		2630ED28173AC357A024A35C400F7F70 /* share_hight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF92E61DC6E9B01516EFCFDBC8E5844C /* share_hight@2x.png */; };
-		2799AA539A68E93393D7B7290A5E421B /* sliderHightLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 20CAE6D2E3C90C2195EF43F61807A7D0 /* sliderHightLight.png */; };
-		27C96C1D5BFF980D54B71F2862F17930 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561C7585822F9ABFA9EA690A13457F6 /* Typealiases.swift */; };
-		2AB91CF943CEDD471B26611F68E8B05F /* ConstraintPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE9AAE9E4696EB6146CF1651DD6E0 /* ConstraintPriority.swift */; };
-		2BE25B47CA1D62E03E701104F2DB483A /* unlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DFD41C15B68A135B60ADCB32AA0A0B36 /* unlock@2x.png */; };
-		32BB9139BB8B8E1FDB4F990F8990ED25 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1485E66C4F0C44C0F4D0992DD9EF90 /* Constraint.swift */; };
-		34C227EC6B5B5EE49FC76D7CAD93C859 /* NicooPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BC75CE9D11AD50BEA716D82A9B16A0 /* NicooPlayerView.swift */; };
-		37F2BB8CCD53D972C70DCDACFBD7FAE1 /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444824DE9A43034CCD0C0E57FD51F3CE /* ConstraintViewDSL.swift */; };
-		38C502F0D36693A8FF6F90F4310797A0 /* unlock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A959A88B5EB20A334A7B973A6E4285D /* unlock@3x.png */; };
-		39995736F808499DD31A8DF661088E7B /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB04EC39B39D62AB4D5E32DFDE32DBC /* SnapKit.framework */; };
-		3B001802107AE5FE777E8642F5310DA4 /* back_hight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC21F1F6F1D4D4E470073BE93644FA7 /* back_hight@2x.png */; };
-		3CD3B21DA44DF21551752A37B6F497B7 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4FC807B682219C27994A1E3ED49AE5 /* back@2x.png */; };
-		3EDBA9A721D6BFA713AD09D9A2D1FAE8 /* ConstraintMakerFinalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FE49C0D66E41F69E4DF38350FAB6BD /* ConstraintMakerFinalizable.swift */; };
-		3F5016241C0ECE05E7D22F7446260D6F /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E697C0A9CE4911DF4B91F78D72168EE /* ConstraintConstantTarget.swift */; };
-		40B3FB9477D8B90113FA3D368B5C26A0 /* back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEC627CAA06529B846D4455B4FA368 /* back@3x.png */; };
-		4B30BA59D5E9256889765D6186CE2A62 /* player_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DFAC05F898F0913ED06A52F1CDBB446A /* player_close@3x.png */; };
-		4D12E407A9678B38C85E1594EEDE8E58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004F9356941D3C9C1837F67F9D77A1E /* Foundation.framework */; };
-		4FDD1A51B07B120C8DA682B718E314A8 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6420F6739C203B58E40873FBD3CE4E /* MBProgressHUD.framework */; };
-		505D1FF8B0CFC633EE66F6DF2D95019D /* play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8466E126C6C9AFBE7B3F78B97BA5993 /* play@3x.png */; };
-		54C4F1871F13DF37250D2DC969FDF089 /* NicooPlayerOrietation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FBCD10E27AC7DC0E73F2F7E2DAA25 /* NicooPlayerOrietation.swift */; };
-		57E9B041CC1D8988C38DDC97CAEFCD76 /* MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DA9A3A5D6A0105EF62835704CE5872 /* MBProgressHUD-dummy.m */; };
-		581EC4BB0F43AE4C2071AE5255A70F44 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72DF2D1D7AB02C2950A29B575C6212 /* LayoutConstraint.swift */; };
-		5913BB188A0FF62F28A58DE4FACCE65A /* Pods-NicooPlayer_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3CBE904DD6517F21101332464CF9E6 /* Pods-NicooPlayer_Tests-dummy.m */; };
-		596DC7D6E6F14505E5BBC2AA5C4E890F /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB90350F59F4E8A3F9C8A90D18666CEB /* ConstraintDSL.swift */; };
-		5B02E15FEBFE2504AD43C1CAE4B51839 /* share_hight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDD23CEE6D5B867D1F9BFC89A42D3984 /* share_hight@3x.png */; };
-		649A2A1DE328C9C7F9C9FA31885B084E /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684FE3A6661F93711FF71A7AE886ACE6 /* ConstraintMakerEditable.swift */; };
-		64D91AD4C7E7E65557528CC0E9B158D0 /* NicooPlayer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6009A0E1BBAED0C21549DFD606B917 /* NicooPlayer-dummy.m */; };
-		68080F21BAC9CA8B0EE8CFC1A328B016 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0223F9361E901B8F6930CF32EEBAEA6 /* ConstraintItem.swift */; };
-		6A6EB71DB58FD9E5BA07B8A75B428A82 /* Pods-NicooPlayer_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 390737154FDF49184EEE949C84CFA71D /* Pods-NicooPlayer_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6AA150C7B86623F65FEAD85CC090B26F /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A84E0A88E11216C0A09E85265A63A /* ConstraintView.swift */; };
-		6B8FC2A221062CEE2F5E3C0C1523ABD9 /* shrinkScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3391BFDE3B4803F752A1319D852B293F /* shrinkScreen@2x.png */; };
-		6C87FF03B5623C5E9C20E3D5C6F33DD2 /* ConstraintMultiplierTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C59D133C9EDA98600B29877722C7393 /* ConstraintMultiplierTarget.swift */; };
-		6DC4115DEE57E4215FB99274C5CF0551 /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16786FDC86E52754377C4553808BE034 /* ConstraintMaker.swift */; };
-		71331E9F4F3C6854CDF52E5858CE9F6B /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0DA12C3BC0EC525EE9F8B46A8F75C84 /* share@2x.png */; };
-		73C0C2D809D6F01F88880EC5C05B679C /* back_hight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE6CEA6C6EDF5C0653D880B9A99EB293 /* back_hight@3x.png */; };
-		742EDC930B7C6F5151D19E6FF42F6BF8 /* player_close.png in Resources */ = {isa = PBXBuildFile; fileRef = B2878212FABB75C313D427607D832C7A /* player_close.png */; };
-		769D5414D0FA88E45BFB65FC89816A36 /* NicooImgManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA10A8071D38BF515EC93061B35FA77 /* NicooImgManager.swift */; };
-		782EC86E8C89C58A54697621EE81881B /* NicooPlayer_fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E157FC72F0AB30CA9511C363DAB2F7 /* NicooPlayer_fullscreen@2x.png */; };
-		79F4D368EBAD5AC7A56FA024481A2FB8 /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A17D45E06C7FAC7F8A83D8CCCBAAFC9 /* SnapKit-dummy.m */; };
-		84502DA385BFB43B946F96924A5D9906 /* pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 633AFC8D7C1E1FEBE1C08AD2C91AEBB0 /* pause@3x.png */; };
-		8501E53A0B6354BA13AEF624D4C1A6CC /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851CB53C3CD52B3BAD4FA03CF2A37349 /* ConstraintMakerRelatable.swift */; };
-		8628625A3DF86604451BBDA734DB0E8E /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC424F53D04F4FFE084C53C24AAA0953 /* play@2x.png */; };
-		862AC3D6E5113B86F7C45219F3584584 /* forward@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C75CED9021F5A8AA9E804AABAD3F34 /* forward@3x.png */; };
-		86F59C7A7386BFAC1B3A67CF4CEAD9BA /* sliderflash.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EACD06D0526B8370F85D36F64CC08D /* sliderflash.png */; };
-		886F0D96A7070128604F0BDF8503903B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004F9356941D3C9C1837F67F9D77A1E /* Foundation.framework */; };
-		8B2BF9B5A59FC453D77EB581068D2A99 /* backward@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DA06BA88EBDF26A8E07DD44EAC80D09 /* backward@3x.png */; };
-		8E48D2CCD3D5B33F51E305C2A2130ED5 /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C53F85561792FDE1EEF682D93D6BF /* ConstraintLayoutGuideDSL.swift */; };
-		904193D09EE246A528D29B5914148371 /* share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD3D834EDC8A91C7031E984F892A747 /* share@3x.png */; };
-		9062CA702769C3EC4E80090BF5586905 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0615A870921500F870AC79E0959B4282 /* ConstraintConfig.swift */; };
-		95442AFB22475F846F658BB30ED7D669 /* Pods-NicooPlayer_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F385D5942E597CFCF8D78B255DFAD40 /* Pods-NicooPlayer_Example-dummy.m */; };
-		99D131BDF8EE20D0D1B2506A08E55001 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2DDA50B7DFD20C9EEA7BD9859DB61 /* LayoutConstraintItem.swift */; };
-		9C6039EFA623D756A81F5F449A5A10B3 /* NicooPlayer_slider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EECA8107CF45D25CF8B9C426920EF367 /* NicooPlayer_slider@2x.png */; };
-		9D06CA263EEF424035FCA6D47818F461 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB39A184AAEA5B022D0B92989F4BC658 /* ConstraintAttributes.swift */; };
-		9E1E71DB0D111A4AB6862F91B09E6958 /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0E8FA2D396119653DD7FC3D9E2914 /* ConstraintMakerExtendable.swift */; };
-		A122B0DEE322E8023E4393922033814D /* ConstraintInsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A25BFD0E2C687C5A023899CF2C73CA6 /* ConstraintInsetTarget.swift */; };
-		A336A37268CA371A1DC16B8642B78EED /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 077DCE57BD6C3B8874F0C2EDB9B9FBDD /* pause@2x.png */; };
-		AA00DCC0C8174B2D7E48EEC3C768B047 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FDB0E8189C27719CC63376241248F0 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		ABD4CE756BDDB0AF03D0E268FB7EFDF8 /* replay@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A4F9E10D4AD93EA70CA98468C7D498 /* replay@3x.png */; };
-		ADCB8D3A163AA8FD2EEF05E7D523874B /* NicooPlayer_slider@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF114768E39D50341254100D6404CCA0 /* NicooPlayer_slider@3x.png */; };
-		ADDE1DE14A116C054FED215233C1DA92 /* NicooPlayer_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9C9067FD98F806BF32888BDE72F55F /* NicooPlayer_slider.png */; };
-		AEBA2542160E2765AA1C51FC3E6307CC /* NicooNetWorkAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C93D58DDCF0CB3B18F5431BD58AC48 /* NicooNetWorkAlert.swift */; };
-		B0AC919B2CDA83FEBC0A06DEE7E30AA8 /* NicooLoadedFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C600BD5BBD51145C738E7CBAB226D77 /* NicooLoadedFailedView.swift */; };
-		B14B7AE8751C2DD78BACA32EECFAA04E /* Player_pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A22D1660E7DC212A0433C01992F0448 /* Player_pause@3x.png */; };
-		B205155EDC49AA5B1BC610C21DD2A400 /* ConstraintPriorityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25180CF6BD70B6C1787E9E929B8A481F /* ConstraintPriorityTarget.swift */; };
-		B5EBB9E101CE29845A305247669916ED /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2929ABEFAFA4A03D143F505AC6946FA1 /* Debugging.swift */; };
-		B646C96E2D7DF54445B3719F800D79E9 /* MBProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FDBBC41E426612AD39C61C4F29B8AE9 /* MBProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B81FD1A723F5DD91AB5C3754914A7E49 /* NicooPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9D8AA0837E278049051BC9273B33C9 /* NicooPlayerControlView.swift */; };
-		BE1626A43F7A0844328E6290BA4ACF1E /* NicooVideoRequestTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C424DC041C834C909C4520FFC970DEF3 /* NicooVideoRequestTask.swift */; };
-		C6806E932B91CC3BE0513ADD7147886C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004F9356941D3C9C1837F67F9D77A1E /* Foundation.framework */; };
-		C699879DC0D3B9CDF2F98BF7292D64CF /* player_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C9DF729818F4B52DB2C4E67EFCCF774 /* player_close@2x.png */; };
-		C9EEE7975FDC21BAE2AC0A96470B6281 /* shrinkScreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C526FA98FAEEB19438A13271A7837 /* shrinkScreen@3x.png */; };
-		CB982ABCA141E75863052F03AD9DA94A /* replay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9648C379E773522190B690DDBCF49B22 /* replay@2x.png */; };
-		CD38D8EF7BCFC5356BB9E1CE5CA975F2 /* lockscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 305E1646F91C882810ADCD96B3B1DC5A /* lockscreen@3x.png */; };
-		D206EDC84CE44D5DC711ADD087BC4B17 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 386E594C964155B925A0DEED5E9C8548 /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D6C6AC7BC638533E430064DC6F237183 /* replay_hight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B0BC4F82B30421E2614F671FB66E2B9 /* replay_hight@2x.png */; };
-		D91636547964F7FBDFF7616B9488C9E3 /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FC56167BEA90B6B946F37B7D80E0C38 /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DBA9B07CB73147636274FF732B8D97B4 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF697A7AD15E179137E57267DCB5E892 /* UILayoutSupport+Extensions.swift */; };
-		DBFDFE2064D31CF665FBC6B2FC07E1B0 /* backward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F665E4FEE82E7D1AA426950631ED5CAE /* backward@2x.png */; };
-		DD24D43981254EEAB516D227CCD1AA48 /* sliderflash@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3B66FE2F71F91E262775F7A90973B22 /* sliderflash@3x.png */; };
-		DDFAED522B218EF37160BA258DEF342C /* Player_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E895706124013596C27FC8410330FCD /* Player_pause@2x.png */; };
-		DF5E69CA178B5B38101BAD12EFD6C941 /* lockscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B05CAEC5D89F089840788B36BD43DC8 /* lockscreen@2x.png */; };
-		E25093691078BC7314D6AFEA3CFD0E6C /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CD43A9329A16581486B01B8A930ED6 /* ConstraintLayoutGuide+Extensions.swift */; };
-		E2C605F73E300D86109DB747090455CB /* replay_hight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F324DD711D8E01F5DFB5D8016D6256A /* replay_hight@3x.png */; };
-		E4AC26FB387427964538FA5FCEA4A8A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E2D699FF0F80CFA68110662E01E81D /* CoreGraphics.framework */; };
-		E506F8128AF3E620F04CDCD368843808 /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85FC38D05DAFAB5222FE7E7E32D84EC /* ConstraintOffsetTarget.swift */; };
-		E60B84CFAD84AF86A4F76A636FB5CB3F /* sliderflash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B091AE6E44733C3F56FD3929744E5715 /* sliderflash@2x.png */; };
-		E87EAB1A5B032C67C78166BAB69181FE /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41CEEFBE5E760092D55C57D78874F6D /* ConstraintDescription.swift */; };
-		E93A581F466C33794ECDA663DD452F4A /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031365ACDF3E1ED66A3ACBF51E899C5C /* ConstraintLayoutSupportDSL.swift */; };
-		E9E69175E609DD0FF38B549E9479CE88 /* player_brightness@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD51E21787643838E3F498D4A3520D8D /* player_brightness@2x.png */; };
-		ECBA1F4D70AF4600563FD39112D5997B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004F9356941D3C9C1837F67F9D77A1E /* Foundation.framework */; };
-		EE21FEF911EDF70D08CA5394E4A68196 /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EB25E17ADE4D9937132EBF736B0F1F /* ConstraintRelatableTarget.swift */; };
-		F3ED58CEA2790902F063B9A434DB29B8 /* ConstraintLayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41E3D1FD09ACEE65C0223D6686EE5F6 /* ConstraintLayoutSupport.swift */; };
-		F6BC8C7C278A6595DF5D3AE67E384960 /* NicooPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 23A6B82AAE3090D12419E3830D6B4F47 /* NicooPlayer.bundle */; };
+		02FE46561E36AD1F540C55FD3754D179 /* ConstraintPriorityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495F3260249C5CD5E62E6D02610A41D /* ConstraintPriorityTarget.swift */; };
+		06EA3E9FDFEC4C10B37AB49D22466079 /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F1F08ED6F3C072E7AC9154FBDC8C4E /* SnapKit-dummy.m */; };
+		0F30E394FBE6D7E0E23AF5D5F62ECE74 /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B058F739089B32F3323418933731ADFB /* ConstraintViewDSL.swift */; };
+		11E2C92E2AA7B07A019D1897F2C15033 /* player_close.png in Resources */ = {isa = PBXBuildFile; fileRef = B2878212FABB75C313D427607D832C7A /* player_close.png */; };
+		15D79E4D1AA4DD25E1FC701B379C42C3 /* ConstraintLayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE14A5BE5AA8350526F042EBC920BAA /* ConstraintLayoutSupport.swift */; };
+		19D86BB5F6F93BF1538C5697558DE802 /* play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8466E126C6C9AFBE7B3F78B97BA5993 /* play@3x.png */; };
+		1B7D6DA96833839C39617BD826AB106B /* NicooNetWorkAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C93D58DDCF0CB3B18F5431BD58AC48 /* NicooNetWorkAlert.swift */; };
+		1C2BE1AF9082F82C2AE7B0600DD680E5 /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB1C88D7583A855F149230ABA2DF3C8 /* ConstraintRelatableTarget.swift */; };
+		1E70BEDA661D8683BED9377E5193395E /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09C8BFD80A7988D3B139768116EE2A7 /* ConstraintMakerRelatable.swift */; };
+		1EADEB30F808CA94D59BE5CDF31DA72E /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 077DCE57BD6C3B8874F0C2EDB9B9FBDD /* pause@2x.png */; };
+		23175EA1EF2E7C6BE3DA76D541B4793B /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2798FAD1ED522B9041959ED19ED6B3DE /* Constraint.swift */; };
+		238238853047C37CAC5238B9384B964A /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC9D64458AB89596AC989C36546AE0 /* Typealiases.swift */; };
+		2552D834A1B0057819C9ADB4746E59DF /* sliderflash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B091AE6E44733C3F56FD3929744E5715 /* sliderflash@2x.png */; };
+		27CE7C456A381A0832C091B60C5C076D /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B73C67F9EFC99A11440EE4069211B84A /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DD25467C20DCCDC7462E7E8841BFF27 /* share_hight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF92E61DC6E9B01516EFCFDBC8E5844C /* share_hight@2x.png */; };
+		2E45DDE6211FDC0D7C7DDA645FD2D610 /* NicooPlayer_slider@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF114768E39D50341254100D6404CCA0 /* NicooPlayer_slider@3x.png */; };
+		31650FD0D39FDBB9B8E1260CDF6D14C8 /* backward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F665E4FEE82E7D1AA426950631ED5CAE /* backward@2x.png */; };
+		33D55D4F311552160881DB730ABE4EE6 /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDCD0CDEC036E08EBEFEBDB5217C5A /* ConstraintView+Extensions.swift */; };
+		3C4E790D8EE3A57E9CAEABAC348CDAF4 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42E6B36692CB79785C933E25719FA6F /* SnapKit.framework */; };
+		3F117FFD6021A389039E9BC45E53E283 /* forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDE80A19B49EC3F546C04254772F11D2 /* forward@2x.png */; };
+		4160F5B43923858F6D5609D8C6325D48 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD97CEFB74800C4A5F04ED11A13D33D5 /* ConstraintItem.swift */; };
+		46658A254D636A8047209CFF71516C27 /* ConstraintMakerFinalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F75E7EE36678F81FD1EC4247DB1B87 /* ConstraintMakerFinalizable.swift */; };
+		47A815759793DEBA29BC6145485A4801 /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35E795A4705B4FB474FF417682335F1 /* ConstraintMakerExtendable.swift */; };
+		483550818D9DB29960A3C0A4EDBEAA0F /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4FC807B682219C27994A1E3ED49AE5 /* back@2x.png */; };
+		50D5DA90F8F9EA36F2774893C96207E1 /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B0F68F55650AB9DA3EB802B75CFE0 /* ConstraintConstantTarget.swift */; };
+		54978F52F781CE79EB51C69C51DFF051 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E03888824F0BC09BC4827577C35087 /* Debugging.swift */; };
+		55B732A6B14AF9E751326D406E85E7F4 /* Player_pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A22D1660E7DC212A0433C01992F0448 /* Player_pause@3x.png */; };
+		5895FC7BBC49245B133174D8C3A1C869 /* NicooPlayer_fullscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C389EB01ADE1AE1F532611B2D35C8F0 /* NicooPlayer_fullscreen@3x.png */; };
+		58D70EFB271E5D8C3F7BF83306702018 /* NicooAssetResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541D249AA545E85BAD898464B717908D /* NicooAssetResourceLoader.swift */; };
+		5D40E76D7B63EAB656C38465C0FA82EC /* back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEC627CAA06529B846D4455B4FA368 /* back@3x.png */; };
+		5F139CED69BE7108D2FB62A92D362919 /* NicooPlayer_fullscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E96D501AEB6127B63A848515689994 /* NicooPlayer_fullscreen.png */; };
+		5F76B3775C0E43288A0C46B9F627359D /* player_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DFAC05F898F0913ED06A52F1CDBB446A /* player_close@3x.png */; };
+		6194C25DF09863EF003205354C17EE00 /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1130FD3420568BD4A44BC6359400E0A8 /* ConstraintLayoutGuide+Extensions.swift */; };
+		6405C9FC5787A8E0F6BFE6ED6F7A691F /* pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 633AFC8D7C1E1FEBE1C08AD2C91AEBB0 /* pause@3x.png */; };
+		6483761D441DCE875FECB403FB1BBC50 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF518E3C1EEA98354E7A1BB1CEC881B /* ConstraintAttributes.swift */; };
+		68323C5CD63706D58551EF53BD47C3CE /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645061FD8BF394AC613CF4F0D51EEE0B /* ConstraintDSL.swift */; };
+		69206852B5721C2BA4596E26977090E3 /* NicooPlayerOrietation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FBCD10E27AC7DC0E73F2F7E2DAA25 /* NicooPlayerOrietation.swift */; };
+		6C0A12B63E196DCDA7E4E14BF2118AE3 /* replay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9648C379E773522190B690DDBCF49B22 /* replay@2x.png */; };
+		7031F5A32251E6CA6B796616A3EACADB /* NicooPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9D8AA0837E278049051BC9273B33C9 /* NicooPlayerControlView.swift */; };
+		744FDD16087F96F15E56306BFB137C74 /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068A4C41AD3E035EFFE7E7F568CE1EF9 /* ConstraintLayoutGuideDSL.swift */; };
+		78323653C1B41AC0E40FB8D1D7955B5A /* sliderflash.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EACD06D0526B8370F85D36F64CC08D /* sliderflash.png */; };
+		7A30324DF205553C13AE21497DB11056 /* Player_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E895706124013596C27FC8410330FCD /* Player_pause@2x.png */; };
+		7F3A04E378949FFC9A0E11CFE2C2C418 /* shrinkScreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C526FA98FAEEB19438A13271A7837 /* shrinkScreen@3x.png */; };
+		7F929F6B345C42E5FEC0D6C52A36A938 /* NicooBrightnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F21837F00B75EAB07A9C250FC8B5E97 /* NicooBrightnessView.swift */; };
+		7FAE73EA22F0C6D7E275D445EABC927A /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C4EE941C99C2F663494C43944D63FD /* ConstraintConfig.swift */; };
+		808AF2E77430460EBFBC5C632BD98CEA /* player_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C9DF729818F4B52DB2C4E67EFCCF774 /* player_close@2x.png */; };
+		844B0B94FC337363B0EA6A8D081CAFD4 /* NicooPlayer_fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E157FC72F0AB30CA9511C363DAB2F7 /* NicooPlayer_fullscreen@2x.png */; };
+		88C56B19FDF52B0B14797574AFF7C476 /* NicooPlayer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 726C1BFB4FA4CF7E54C5ED88685679FA /* NicooPlayer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A788F680F7EAC8DC318A597B9CEA690 /* unlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DFD41C15B68A135B60ADCB32AA0A0B36 /* unlock@2x.png */; };
+		8B95F1E4D5493002B72AD111B696C139 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465909C1E34108C63AB5FBA6378D3493 /* LayoutConstraint.swift */; };
+		8C0628C348D0036B15A1F5D97ED1BBFD /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC424F53D04F4FFE084C53C24AAA0953 /* play@2x.png */; };
+		8C589C8886BE196C79CF17607A21A3AF /* NicooPlayer_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9C9067FD98F806BF32888BDE72F55F /* NicooPlayer_slider.png */; };
+		945DDD83B4F79DBBF74111D7CE8C7310 /* replay@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A4F9E10D4AD93EA70CA98468C7D498 /* replay@3x.png */; };
+		948977D2A72EA5C894BC680802B7ED11 /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39EF6D4C8D8F847461613349A75E07 /* ConstraintDescription.swift */; };
+		95D6C19862B6441AC1DF2BBD76B3D513 /* unlock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A959A88B5EB20A334A7B973A6E4285D /* unlock@3x.png */; };
+		969566489C9E0F50BB5D4C61283BA30A /* back_hight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC21F1F6F1D4D4E470073BE93644FA7 /* back_hight@2x.png */; };
+		9AF3C0481DD8DB4A59CBDC40FC31E4BF /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1FE61DC3251BBA5CD452BE8564C8E7 /* ConstraintMaker.swift */; };
+		9B83BFFFCCB876DD61377A279EFE64AF /* forward@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C75CED9021F5A8AA9E804AABAD3F34 /* forward@3x.png */; };
+		9CFFA1EEFC04D8AAD4158E5C584D49D8 /* replay_hight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B0BC4F82B30421E2614F671FB66E2B9 /* replay_hight@2x.png */; };
+		9E130F7204E56100B532B8AB9C90F671 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B953D578152B8ABC94EDF5E0C6A43 /* LayoutConstraintItem.swift */; };
+		A15EF2BCCD786DABDBBD8BCA78CF5FCC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0046C354D944830297A6E3325395BE0F /* Foundation.framework */; };
+		A1DBFC083FBC1229DC8DCFEF86927BF2 /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A91D0ACFB6CF1883A820AA2607BCA8 /* ConstraintView.swift */; };
+		A64436FBA54C2782D2CC15B52CF63829 /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CE3DCD5A18E652A9D4C4FCC6AEAE10 /* ConstraintMakerEditable.swift */; };
+		A649D23DE2E89BD20658A3338E76C9D0 /* ConstraintMultiplierTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618BA51B32ACF0F8F31A11BACEF95396 /* ConstraintMultiplierTarget.swift */; };
+		A76989CE17F0DA6AED1CA6C65D346580 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17F2D7F42352672F30A144E51AC809 /* ConstraintRelation.swift */; };
+		A7E0C88B2B04A3240FFCDA9DCE13FE6A /* NicooPlayer_slider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EECA8107CF45D25CF8B9C426920EF367 /* NicooPlayer_slider@2x.png */; };
+		AC5E73427BCDF9B4D65A618854DB03A4 /* shrinkScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3391BFDE3B4803F752A1319D852B293F /* shrinkScreen@2x.png */; };
+		AC645E0DD9EC720AD59ABA9AD4BBA23A /* NicooPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BC75CE9D11AD50BEA716D82A9B16A0 /* NicooPlayerView.swift */; };
+		B4B43B2B6D30C65EE59890B569CFD1F3 /* Pods-NicooPlayer_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F385D5942E597CFCF8D78B255DFAD40 /* Pods-NicooPlayer_Example-dummy.m */; };
+		B64D38EE4981701B657D86B24F7556C9 /* player_brightness@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD51E21787643838E3F498D4A3520D8D /* player_brightness@2x.png */; };
+		B7BAA3EBF5068068AAAC4676073DAF9E /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0DA12C3BC0EC525EE9F8B46A8F75C84 /* share@2x.png */; };
+		BA6ED15AC343DA2533DBC4575EF19E6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0046C354D944830297A6E3325395BE0F /* Foundation.framework */; };
+		BBAFAF2ED24E85DCF693DF39C519350D /* NicooImgManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA10A8071D38BF515EC93061B35FA77 /* NicooImgManager.swift */; };
+		BCF09463716EFDAF623A79B9D5255E2C /* share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD3D834EDC8A91C7031E984F892A747 /* share@3x.png */; };
+		BE6CE881C6572B686C7961788E4C3BC5 /* share_hight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDD23CEE6D5B867D1F9BFC89A42D3984 /* share_hight@3x.png */; };
+		C1E4BFA564DA2F893EA19389D6B3B6D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0046C354D944830297A6E3325395BE0F /* Foundation.framework */; };
+		C3D35EB19E7AEDF6C6C5E7505512CAD2 /* NicooVideoRequestTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C424DC041C834C909C4520FFC970DEF3 /* NicooVideoRequestTask.swift */; };
+		C4644F22A4671A214816B2DE192F9497 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45908992EEDBCFF12244DAE9912F7228 /* UILayoutSupport+Extensions.swift */; };
+		C676B90AC87268BA00BA09C776E571E0 /* replay_hight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F324DD711D8E01F5DFB5D8016D6256A /* replay_hight@3x.png */; };
+		C8C6D1D60D8B0C853B9E2E84FA952A10 /* Pods-NicooPlayer_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 390737154FDF49184EEE949C84CFA71D /* Pods-NicooPlayer_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C93291E9C4544637AAA8E4A90F95EC8E /* NicooPlayer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6009A0E1BBAED0C21549DFD606B917 /* NicooPlayer-dummy.m */; };
+		C9F86094B8144E050997AFFC893A2D50 /* back_hight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE6CEA6C6EDF5C0653D880B9A99EB293 /* back_hight@3x.png */; };
+		CFBB55A21DA77BD2C550FB221CEAA669 /* ConstraintInsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAC0AC855EFDB998E84AB91F91FC4CA /* ConstraintInsetTarget.swift */; };
+		D46F3CD3DC4CB3E6E8912719961401DC /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FAAF2F13CE5B667DCA58EF782CF6D /* ConstraintLayoutGuide.swift */; };
+		D835C27379BF35EA3096A687162F2134 /* ConstraintInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297EFDA2A228BE0D126B13FEC2B2AC1 /* ConstraintInsets.swift */; };
+		D9A39AB2EDE7D1834CB132411F006C78 /* NicooPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AEF7865CF117B78F668E40F209D311C6 /* NicooPlayer.bundle */; };
+		DA89CB45D863621025686B3E3C1CAEB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0046C354D944830297A6E3325395BE0F /* Foundation.framework */; };
+		E0E7D577323E7113862E2DB1448D9B73 /* Pods-NicooPlayer_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3CBE904DD6517F21101332464CF9E6 /* Pods-NicooPlayer_Tests-dummy.m */; };
+		E293480982AE2CF8033DB29730F8E351 /* NicooLoadedFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C600BD5BBD51145C738E7CBAB226D77 /* NicooLoadedFailedView.swift */; };
+		E2C5BB75EB0D86A798C70EA72228E172 /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC67A9344FB011AC6B0CB0B1706C1C /* ConstraintLayoutSupportDSL.swift */; };
+		E2F6D2E2C6AB02F997CDA85E32F9907D /* sliderHightLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 20CAE6D2E3C90C2195EF43F61807A7D0 /* sliderHightLight.png */; };
+		E304DF00BD5F77FC582576D249DF088C /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3463E11A1205B5C35B599F4A19C31C3 /* ConstraintOffsetTarget.swift */; };
+		E6DB4B2856050E0BCF01E9A25D74A1B4 /* lockscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 305E1646F91C882810ADCD96B3B1DC5A /* lockscreen@3x.png */; };
+		F0D305C8014B12737D36B8ABC0DF48E5 /* Pods-NicooPlayer_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B1B04DC1A89A71B19068691BC36B942 /* Pods-NicooPlayer_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F23F0B651BA12FC9D6E6EED31C18A013 /* sliderflash@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3B66FE2F71F91E262775F7A90973B22 /* sliderflash@3x.png */; };
+		F3D8383F62E62A3C78408939F305C427 /* backward@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DA06BA88EBDF26A8E07DD44EAC80D09 /* backward@3x.png */; };
+		FA994DE20E8286E0D1048335F7420FFD /* ConstraintPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A931CDC4FB0563592274ED61655C7 /* ConstraintPriority.swift */; };
+		FAB0B9DF45F6E60CB117F8A71A629F97 /* lockscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B05CAEC5D89F089840788B36BD43DC8 /* lockscreen@2x.png */; };
+		FDB1B5B11C85A7E46D235FC4F002E5E7 /* ConstraintMakerPriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0A4D5D85B4FAEB4C7AF868A3E48121 /* ConstraintMakerPriortizable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1799AD0BC2887345ECD189F3C0BE5B01 /* PBXContainerItemProxy */ = {
+		2FEA9E33732160B90F4FF6F18979B324 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 806581F0B324D0A3520283F655916690;
-			remoteInfo = SnapKit;
-		};
-		371FC3ED2C6FC87B98F1461C513085AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6B1714E816AE794962516E2ECBB40A5A;
-			remoteInfo = MBProgressHUD;
-		};
-		7135FBB35EBF962667D943C9AFCD905C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 210A0B6A4832B40F5C92A11CDDE602A7;
-			remoteInfo = "Pods-NicooPlayer_Example";
-		};
-		B7564D4F6E44C8F256FF85830994A8E8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 88AE74F3CBA780E78924F25D2CF860FF;
+			remoteGlobalIDString = 18279A9E612B206865EEBFC4651DDBB5;
 			remoteInfo = "NicooPlayer-NicooPlayer";
 		};
-		DACA1CD7E6FB6AEC093EFA8B1AEB58D3 /* PBXContainerItemProxy */ = {
+		5129E4035DD8943D042015F22945F771 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9D19AC79ECADCDDC141C7773E5AED4D2;
+			remoteGlobalIDString = 11AFBDC2F1C56F94FBC6F1A7F59A46C6;
+			remoteInfo = "Pods-NicooPlayer_Example";
+		};
+		84CED70370F277316E806510D8BA63FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52647C16D181E0C5C4058FF161452E7D;
+			remoteInfo = SnapKit;
+		};
+		979931F151914A7F2AA7D63B31261D60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18B8DB3EFA45F9069CDF5B554425973E;
 			remoteInfo = NicooPlayer;
 		};
-		E0D0BE28793796FD48639ED26AFC5AA2 /* PBXContainerItemProxy */ = {
+		BB647F8AD82952CF022833D9CDE10497 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6B1714E816AE794962516E2ECBB40A5A;
-			remoteInfo = MBProgressHUD;
-		};
-		EBB286FFC3B86ADF6D3FC286192E026C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 806581F0B324D0A3520283F655916690;
+			remoteGlobalIDString = 52647C16D181E0C5C4058FF161452E7D;
 			remoteInfo = SnapKit;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		031365ACDF3E1ED66A3ACBF51E899C5C /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
+		0046C354D944830297A6E3325395BE0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		03AC1868E507F449C050FFD1C6D022D0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0615A870921500F870AC79E0959B4282 /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
+		068A4C41AD3E035EFFE7E7F568CE1EF9 /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		06900EEDDBACAD8D3BD12061CFC46D14 /* NicooPlayer.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = NicooPlayer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		077DCE57BD6C3B8874F0C2EDB9B9FBDD /* pause@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "pause@2x.png"; path = "NicooPlayer/Assets/pause@2x.png"; sourceTree = "<group>"; };
-		0B4FE9AAE9E4696EB6146CF1651DD6E0 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
-		0C3BC3EB390E5F54CD07B5AAB531B3BA /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
-		0CA7857667565EBB775B1BDC8C1C3560 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0FC49E8068048FA9665FEA755A723474 /* MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.xcconfig; sourceTree = "<group>"; };
+		0AF518E3C1EEA98354E7A1BB1CEC881B /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
 		10EACD06D0526B8370F85D36F64CC08D /* sliderflash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = sliderflash.png; path = NicooPlayer/Assets/sliderflash.png; sourceTree = "<group>"; };
+		11084A6BA20780B0A92EE054D45AD2B7 /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
+		1130FD3420568BD4A44BC6359400E0A8 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
 		11CC0F775E621AB42BC5F02C2119C760 /* Pods-NicooPlayer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NicooPlayer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		138C526FA98FAEEB19438A13271A7837 /* shrinkScreen@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "shrinkScreen@3x.png"; path = "NicooPlayer/Assets/shrinkScreen@3x.png"; sourceTree = "<group>"; };
-		16786FDC86E52754377C4553808BE034 /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
-		16EB25E17ADE4D9937132EBF736B0F1F /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Source/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
+		155B0F68F55650AB9DA3EB802B75CFE0 /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
 		1778FE5D81C882BAB11FE532213FE861 /* Pods-NicooPlayer_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NicooPlayer_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		1C3A931CDC4FB0563592274ED61655C7 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
 		1E958EC85AB92EA83616250DAB281C5D /* Pods-NicooPlayer_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-NicooPlayer_Tests.modulemap"; sourceTree = "<group>"; };
 		1EFEC627CAA06529B846D4455B4FA368 /* back@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "back@3x.png"; path = "NicooPlayer/Assets/back@3x.png"; sourceTree = "<group>"; };
+		2057A81225328642D0E49115C61C8897 /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
 		20CAE6D2E3C90C2195EF43F61807A7D0 /* sliderHightLight.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = sliderHightLight.png; path = NicooPlayer/Assets/sliderHightLight.png; sourceTree = "<group>"; };
 		220D549E0F001D1CB0151129D42CF8C1 /* Pods-NicooPlayer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NicooPlayer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		2240511D3986936EBCBA4BFDAF241F53 /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
-		22F7476B6C6DCD73C436592AE17B0C30 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23A6B82AAE3090D12419E3830D6B4F47 /* NicooPlayer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = NicooPlayer.bundle; path = "NicooPlayer-NicooPlayer.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		25180CF6BD70B6C1787E9E929B8A481F /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
-		28FDB0E8189C27719CC63376241248F0 /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		2929ABEFAFA4A03D143F505AC6946FA1 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
+		23C4EE941C99C2F663494C43944D63FD /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
+		2798FAD1ED522B9041959ED19ED6B3DE /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
 		2AA53DDD4C73C480D0A29319586CD1CB /* Pods-NicooPlayer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NicooPlayer_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2B0BC4F82B30421E2614F671FB66E2B9 /* replay_hight@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "replay_hight@2x.png"; path = "NicooPlayer/Assets/replay_hight@2x.png"; sourceTree = "<group>"; };
-		2E697C0A9CE4911DF4B91F78D72168EE /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
 		2E895706124013596C27FC8410330FCD /* Player_pause@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Player_pause@2x.png"; path = "NicooPlayer/Assets/Player_pause@2x.png"; sourceTree = "<group>"; };
 		305E1646F91C882810ADCD96B3B1DC5A /* lockscreen@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "lockscreen@3x.png"; path = "NicooPlayer/Assets/lockscreen@3x.png"; sourceTree = "<group>"; };
-		32B3668C638642AAF32A4CE975C13822 /* NicooPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NicooPlayer.framework; path = NicooPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3391BFDE3B4803F752A1319D852B293F /* shrinkScreen@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "shrinkScreen@2x.png"; path = "NicooPlayer/Assets/shrinkScreen@2x.png"; sourceTree = "<group>"; };
 		33FE472976AE0CE3BCF3D20FC19BF0B8 /* ResourceBundle-NicooPlayer-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-NicooPlayer-Info.plist"; sourceTree = "<group>"; };
-		386E594C964155B925A0DEED5E9C8548 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		35A91D0ACFB6CF1883A820AA2607BCA8 /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
 		390737154FDF49184EEE949C84CFA71D /* Pods-NicooPlayer_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NicooPlayer_Tests-umbrella.h"; sourceTree = "<group>"; };
+		3A39EF6D4C8D8F847461613349A75E07 /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
 		3A3CBE904DD6517F21101332464CF9E6 /* Pods-NicooPlayer_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NicooPlayer_Tests-dummy.m"; sourceTree = "<group>"; };
 		3A959A88B5EB20A334A7B973A6E4285D /* unlock@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "unlock@3x.png"; path = "NicooPlayer/Assets/unlock@3x.png"; sourceTree = "<group>"; };
+		3ABC9D64458AB89596AC989C36546AE0 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
 		3B05CAEC5D89F089840788B36BD43DC8 /* lockscreen@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "lockscreen@2x.png"; path = "NicooPlayer/Assets/lockscreen@2x.png"; sourceTree = "<group>"; };
 		3B82C515DFAAF6F193BA7A7076A0A09F /* NicooPlayer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = NicooPlayer.modulemap; sourceTree = "<group>"; };
-		3D4DFCBF4D2AFAF5FFD2A6CEDB2E2745 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBProgressHUD.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA06BA88EBDF26A8E07DD44EAC80D09 /* backward@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "backward@3x.png"; path = "NicooPlayer/Assets/backward@3x.png"; sourceTree = "<group>"; };
-		3DF15E9CAA366C7B7559BCA81676617B /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F385D5942E597CFCF8D78B255DFAD40 /* Pods-NicooPlayer_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NicooPlayer_Example-dummy.m"; sourceTree = "<group>"; };
 		3F5E0158BB490D7AFEFB01887D2E8CB1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FDBBC41E426612AD39C61C4F29B8AE9 /* MBProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-umbrella.h"; sourceTree = "<group>"; };
 		40A4F9E10D4AD93EA70CA98468C7D498 /* replay@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "replay@3x.png"; path = "NicooPlayer/Assets/replay@3x.png"; sourceTree = "<group>"; };
-		4144686D1518EF289A4BB4628A28FD7C /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
-		41A0E8FA2D396119653DD7FC3D9E2914 /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
-		444824DE9A43034CCD0C0E57FD51F3CE /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
+		45908992EEDBCFF12244DAE9912F7228 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
+		465909C1E34108C63AB5FBA6378D3493 /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
+		48CE3DCD5A18E652A9D4C4FCC6AEAE10 /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
 		4A22D1660E7DC212A0433C01992F0448 /* Player_pause@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Player_pause@3x.png"; path = "NicooPlayer/Assets/Player_pause@3x.png"; sourceTree = "<group>"; };
+		4B25CDA2BB6F54D5AC9057F6793CF8B4 /* Pods_NicooPlayer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NicooPlayer_Example.framework; path = "Pods-NicooPlayer_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C389EB01ADE1AE1F532611B2D35C8F0 /* NicooPlayer_fullscreen@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "NicooPlayer_fullscreen@3x.png"; path = "NicooPlayer/Assets/NicooPlayer_fullscreen@3x.png"; sourceTree = "<group>"; };
 		4C85869772B039DE59C1EA50374753C0 /* NicooPlayer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NicooPlayer.xcconfig; sourceTree = "<group>"; };
 		541D249AA545E85BAD898464B717908D /* NicooAssetResourceLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NicooAssetResourceLoader.swift; path = NicooPlayer/Classes/NicooAssetResourceLoader.swift; sourceTree = "<group>"; };
-		59E2D699FF0F80CFA68110662E01E81D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		5A17D45E06C7FAC7F8A83D8CCCBAAFC9 /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
-		5A25BFD0E2C687C5A023899CF2C73CA6 /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
-		5A6420F6739C203B58E40873FBD3CE4E /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B1485E66C4F0C44C0F4D0992DD9EF90 /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
+		5495F3260249C5CD5E62E6D02610A41D /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
+		55F1F08ED6F3C072E7AC9154FBDC8C4E /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
+		5FAC0AC855EFDB998E84AB91F91FC4CA /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
 		60E96D501AEB6127B63A848515689994 /* NicooPlayer_fullscreen.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = NicooPlayer_fullscreen.png; path = NicooPlayer/Assets/NicooPlayer_fullscreen.png; sourceTree = "<group>"; };
-		629A84E0A88E11216C0A09E85265A63A /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
+		618BA51B32ACF0F8F31A11BACEF95396 /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
 		633AFC8D7C1E1FEBE1C08AD2C91AEBB0 /* pause@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "pause@3x.png"; path = "NicooPlayer/Assets/pause@3x.png"; sourceTree = "<group>"; };
-		684FE3A6661F93711FF71A7AE886ACE6 /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
+		645061FD8BF394AC613CF4F0D51EEE0B /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
 		69B8F4F35B0B88E85F3E7E962E099587 /* Pods-NicooPlayer_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NicooPlayer_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		69FE49C0D66E41F69E4DF38350FAB6BD /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
 		6C9DF729818F4B52DB2C4E67EFCCF774 /* player_close@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_close@2x.png"; path = "NicooPlayer/Assets/player_close@2x.png"; sourceTree = "<group>"; };
+		6C9F6AB944F04427AE56982452AF9676 /* Pods_NicooPlayer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NicooPlayer_Tests.framework; path = "Pods-NicooPlayer_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E9D8AA0837E278049051BC9273B33C9 /* NicooPlayerControlView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NicooPlayerControlView.swift; path = NicooPlayer/Classes/NicooPlayerControlView.swift; sourceTree = "<group>"; };
 		6F21837F00B75EAB07A9C250FC8B5E97 /* NicooBrightnessView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NicooBrightnessView.swift; path = NicooPlayer/Classes/NicooBrightnessView.swift; sourceTree = "<group>"; };
 		726C1BFB4FA4CF7E54C5ED88685679FA /* NicooPlayer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NicooPlayer-umbrella.h"; sourceTree = "<group>"; };
 		729B2E6AA22040A556B85F21F9F1C344 /* Pods-NicooPlayer_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NicooPlayer_Example-frameworks.sh"; sourceTree = "<group>"; };
-		763C53F85561792FDE1EEF682D93D6BF /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		7B9C9067FD98F806BF32888BDE72F55F /* NicooPlayer_slider.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = NicooPlayer_slider.png; path = NicooPlayer/Assets/NicooPlayer_slider.png; sourceTree = "<group>"; };
-		7C59D133C9EDA98600B29877722C7393 /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
 		7F324DD711D8E01F5DFB5D8016D6256A /* replay_hight@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "replay_hight@3x.png"; path = "NicooPlayer/Assets/replay_hight@3x.png"; sourceTree = "<group>"; };
-		8004F9356941D3C9C1837F67F9D77A1E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		84CD43A9329A16581486B01B8A930ED6 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
-		851CB53C3CD52B3BAD4FA03CF2A37349 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
+		8A0A4D5D85B4FAEB4C7AF868A3E48121 /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
 		8C600BD5BBD51145C738E7CBAB226D77 /* NicooLoadedFailedView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NicooLoadedFailedView.swift; path = NicooPlayer/Classes/NicooLoadedFailedView.swift; sourceTree = "<group>"; };
-		8CC191B4E63E933FED67E4436642F760 /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
 		8DE5315F513034C94B146242B2523FC9 /* Pods-NicooPlayer_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-NicooPlayer_Example.modulemap"; sourceTree = "<group>"; };
-		8E48BDB63B1356A684DDA26FE57CBBA6 /* Pods_NicooPlayer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NicooPlayer_Tests.framework; path = "Pods-NicooPlayer_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A56C49A56017C098C7F9FA4565CD18 /* Pods-NicooPlayer_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NicooPlayer_Example-resources.sh"; sourceTree = "<group>"; };
 		90B1E12C31ACEF8207229B207F03FE44 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		910FBCD10E27AC7DC0E73F2F7E2DAA25 /* NicooPlayerOrietation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NicooPlayerOrietation.swift; path = NicooPlayer/Classes/NicooPlayerOrietation.swift; sourceTree = "<group>"; };
-		91F6E615E764433C09A342B165AA3122 /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
+		9297EFDA2A228BE0D126B13FEC2B2AC1 /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
+		92EC67A9344FB011AC6B0CB0B1706C1C /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9561C7585822F9ABFA9EA690A13457F6 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
 		9648C379E773522190B690DDBCF49B22 /* replay@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "replay@2x.png"; path = "NicooPlayer/Assets/replay@2x.png"; sourceTree = "<group>"; };
 		9B1B04DC1A89A71B19068691BC36B942 /* Pods-NicooPlayer_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NicooPlayer_Example-umbrella.h"; sourceTree = "<group>"; };
-		9FC56167BEA90B6B946F37B7D80E0C38 /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
 		A1CFBBC29AB3D3B4CCBE629CDEC9CE49 /* Pods-NicooPlayer_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NicooPlayer_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A5DA9A3A5D6A0105EF62835704CE5872 /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
+		ABE14A1A35D6703183F0F50AEC869DB9 /* NicooPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NicooPlayer.framework; path = NicooPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD51E21787643838E3F498D4A3520D8D /* player_brightness@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_brightness@2x.png"; path = "NicooPlayer/Assets/player_brightness@2x.png"; sourceTree = "<group>"; };
-		AF697A7AD15E179137E57267DCB5E892 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
+		AEF7865CF117B78F668E40F209D311C6 /* NicooPlayer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = NicooPlayer.bundle; path = "NicooPlayer-NicooPlayer.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF5FAAF2F13CE5B667DCA58EF782CF6D /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
+		AFA9D53E2B386B7E728CFB38131AF22D /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B058F739089B32F3323418933731ADFB /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
 		B091AE6E44733C3F56FD3929744E5715 /* sliderflash@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "sliderflash@2x.png"; path = "NicooPlayer/Assets/sliderflash@2x.png"; sourceTree = "<group>"; };
 		B2878212FABB75C313D427607D832C7A /* player_close.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = player_close.png; path = NicooPlayer/Assets/player_close.png; sourceTree = "<group>"; };
 		B3B66FE2F71F91E262775F7A90973B22 /* sliderflash@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "sliderflash@3x.png"; path = "NicooPlayer/Assets/sliderflash@3x.png"; sourceTree = "<group>"; };
 		B5C75CED9021F5A8AA9E804AABAD3F34 /* forward@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "forward@3x.png"; path = "NicooPlayer/Assets/forward@3x.png"; sourceTree = "<group>"; };
 		B5C93D58DDCF0CB3B18F5431BD58AC48 /* NicooNetWorkAlert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NicooNetWorkAlert.swift; path = NicooPlayer/Classes/NicooNetWorkAlert.swift; sourceTree = "<group>"; };
-		BB39A184AAEA5B022D0B92989F4BC658 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
-		BBEEE9DAEB5A2C78EB59A5F1DE902C42 /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
+		B5C9CEB30AA71EB58B5CD53321954DE0 /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
+		B73C67F9EFC99A11440EE4069211B84A /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
+		B8BDCD0CDEC036E08EBEFEBDB5217C5A /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
 		BDD23CEE6D5B867D1F9BFC89A42D3984 /* share_hight@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "share_hight@3x.png"; path = "NicooPlayer/Assets/share_hight@3x.png"; sourceTree = "<group>"; };
-		C0223F9361E901B8F6930CF32EEBAEA6 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
 		C1E157FC72F0AB30CA9511C363DAB2F7 /* NicooPlayer_fullscreen@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "NicooPlayer_fullscreen@2x.png"; path = "NicooPlayer/Assets/NicooPlayer_fullscreen@2x.png"; sourceTree = "<group>"; };
-		C41CEEFBE5E760092D55C57D78874F6D /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
 		C424DC041C834C909C4520FFC970DEF3 /* NicooVideoRequestTask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NicooVideoRequestTask.swift; path = NicooPlayer/Classes/NicooVideoRequestTask.swift; sourceTree = "<group>"; };
+		C42E6B36692CB79785C933E25719FA6F /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C937230B1DBF5ED72465D494172CB5CA /* Pods-NicooPlayer_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NicooPlayer_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		CAB04EC39B39D62AB4D5E32DFDE32DBC /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC6205B3678EE6C93470173FDB71A621 /* Pods_NicooPlayer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NicooPlayer_Example.framework; path = "Pods-NicooPlayer_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCF390ECCA5E6C03EB62227357C0AEFB /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
-		CD78553AB050BFDA20FC817592395083 /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
 		CDC21F1F6F1D4D4E470073BE93644FA7 /* back_hight@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "back_hight@2x.png"; path = "NicooPlayer/Assets/back_hight@2x.png"; sourceTree = "<group>"; };
 		CF114768E39D50341254100D6404CCA0 /* NicooPlayer_slider@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "NicooPlayer_slider@3x.png"; path = "NicooPlayer/Assets/NicooPlayer_slider@3x.png"; sourceTree = "<group>"; };
+		D09C8BFD80A7988D3B139768116EE2A7 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
+		D3463E11A1205B5C35B599F4A19C31C3 /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
+		D35E795A4705B4FB474FF417682335F1 /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
 		D3FCBC31EC6C22212B469F838A3B0B10 /* Pods-NicooPlayer_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NicooPlayer_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		D44D1BD9BA28E3E564E80E7CB086BF07 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		D69B953D578152B8ABC94EDF5E0C6A43 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
+		D6E03888824F0BC09BC4827577C35087 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
 		D7A90D1107470F2995F87AB66CE3BF30 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		D85FC38D05DAFAB5222FE7E7E32D84EC /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
 		D9BC75CE9D11AD50BEA716D82A9B16A0 /* NicooPlayerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NicooPlayerView.swift; path = NicooPlayer/Classes/NicooPlayerView.swift; sourceTree = "<group>"; };
+		DA17F2D7F42352672F30A144E51AC809 /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
 		DA4FC807B682219C27994A1E3ED49AE5 /* back@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "back@2x.png"; path = "NicooPlayer/Assets/back@2x.png"; sourceTree = "<group>"; };
 		DBA10A8071D38BF515EC93061B35FA77 /* NicooImgManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NicooImgManager.swift; path = NicooPlayer/Classes/NicooImgManager.swift; sourceTree = "<group>"; };
-		DBAEF71D6AA2431BBCAD4B85D4AA6123 /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
+		DBE14A5BE5AA8350526F042EBC920BAA /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
 		DC424F53D04F4FFE084C53C24AAA0953 /* play@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "play@2x.png"; path = "NicooPlayer/Assets/play@2x.png"; sourceTree = "<group>"; };
-		DC72DF2D1D7AB02C2950A29B575C6212 /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
 		DCD3D834EDC8A91C7031E984F892A747 /* share@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "share@3x.png"; path = "NicooPlayer/Assets/share@3x.png"; sourceTree = "<group>"; };
 		DD2FB212D4ED74612A7EA76A7D517F06 /* Pods-NicooPlayer_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NicooPlayer_Tests-resources.sh"; sourceTree = "<group>"; };
+		DD97CEFB74800C4A5F04ED11A13D33D5 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
 		DFAC05F898F0913ED06A52F1CDBB446A /* player_close@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_close@3x.png"; path = "NicooPlayer/Assets/player_close@3x.png"; sourceTree = "<group>"; };
 		DFD41C15B68A135B60ADCB32AA0A0B36 /* unlock@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "unlock@2x.png"; path = "NicooPlayer/Assets/unlock@2x.png"; sourceTree = "<group>"; };
-		E41E3D1FD09ACEE65C0223D6686EE5F6 /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
-		E7E2DDA50B7DFD20C9EEA7BD9859DB61 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
 		EB6009A0E1BBAED0C21549DFD606B917 /* NicooPlayer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NicooPlayer-dummy.m"; sourceTree = "<group>"; };
-		EB90350F59F4E8A3F9C8A90D18666CEB /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
+		EEB1C88D7583A855F149230ABA2DF3C8 /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Source/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
+		EEC1C0925B7A75C47F90DA4CD473E0A9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EECA8107CF45D25CF8B9C426920EF367 /* NicooPlayer_slider@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "NicooPlayer_slider@2x.png"; path = "NicooPlayer/Assets/NicooPlayer_slider@2x.png"; sourceTree = "<group>"; };
 		F0DA12C3BC0EC525EE9F8B46A8F75C84 /* share@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "share@2x.png"; path = "NicooPlayer/Assets/share@2x.png"; sourceTree = "<group>"; };
-		F17E1FC179E979704019EB319D561C4B /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
+		F3F75E7EE36678F81FD1EC4247DB1B87 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
 		F665E4FEE82E7D1AA426950631ED5CAE /* backward@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "backward@2x.png"; path = "NicooPlayer/Assets/backward@2x.png"; sourceTree = "<group>"; };
 		F8466E126C6C9AFBE7B3F78B97BA5993 /* play@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "play@3x.png"; path = "NicooPlayer/Assets/play@3x.png"; sourceTree = "<group>"; };
 		F948929D8D802D4CA4DCDDECE9A816DD /* Pods-NicooPlayer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NicooPlayer_Example.release.xcconfig"; sourceTree = "<group>"; };
 		FDE80A19B49EC3F546C04254772F11D2 /* forward@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "forward@2x.png"; path = "NicooPlayer/Assets/forward@2x.png"; sourceTree = "<group>"; };
+		FE1FE61DC3251BBA5CD452BE8564C8E7 /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
 		FE6CEA6C6EDF5C0653D880B9A99EB293 /* back_hight@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "back_hight@3x.png"; path = "NicooPlayer/Assets/back_hight@3x.png"; sourceTree = "<group>"; };
 		FF92E61DC6E9B01516EFCFDBC8E5844C /* share_hight@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "share_hight@2x.png"; path = "NicooPlayer/Assets/share_hight@2x.png"; sourceTree = "<group>"; };
 		FFE7064DDF5D71F7B68155EEE13DEE8C /* NicooPlayer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NicooPlayer-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		13C434651C19769A1FE847FFEF5D80A8 /* Frameworks */ = {
+		0C869790E53655181C8E4D884162EDD6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6806E932B91CC3BE0513ADD7147886C /* Foundation.framework in Frameworks */,
-				4FDD1A51B07B120C8DA682B718E314A8 /* MBProgressHUD.framework in Frameworks */,
-				39995736F808499DD31A8DF661088E7B /* SnapKit.framework in Frameworks */,
+				BA6ED15AC343DA2533DBC4575EF19E6C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9FE6CEF1763E05FB90653801CE3E2B5B /* Frameworks */ = {
+		5BA1C989828C6C11BAC3579CF79EC5A7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4AC26FB387427964538FA5FCEA4A8A3 /* CoreGraphics.framework in Frameworks */,
-				ECBA1F4D70AF4600563FD39112D5997B /* Foundation.framework in Frameworks */,
+				C1E4BFA564DA2F893EA19389D6B3B6D7 /* Foundation.framework in Frameworks */,
+				3C4E790D8EE3A57E9CAEABAC348CDAF4 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A589B69D75DF1105046A519C09037883 /* Frameworks */ = {
+		753C700469FB0CFF2B87873D360BA183 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EDC6C02D207FE61AA79EB06F1A128F5 /* Foundation.framework in Frameworks */,
+				DA89CB45D863621025686B3E3C1CAEB6 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B11ACDCBCC91E7FC6DB3265C74525AE9 /* Frameworks */ = {
+		8621055DF0DD7CA7AB841F23DE799C86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D12E407A9678B38C85E1594EEDE8E58 /* Foundation.framework in Frameworks */,
+				A15EF2BCCD786DABDBBD8BCA78CF5FCC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EECBFE7AD8E2FDF4D14088E74A432D1A /* Frameworks */ = {
+		DD6D9FD3390612885F3D44C0550B8000 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F4D421EA16F0D0744DE08A9FE60163FF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				886F0D96A7070128604F0BDF8503903B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F14D01B37C684095099AE8C8376D636 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ACE3CBBE2C7163F9C96209ED44FA75D0 /* SnapKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		100C4DD3CB697E76327B2334322E2910 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				0046C354D944830297A6E3325395BE0F /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		31CE711313D3B06D33C3ECB810865190 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,22 +362,18 @@
 			path = "Example/Pods/Target Support Files/NicooPlayer";
 			sourceTree = "<group>";
 		};
-		445ABAD9C93653F3EFD8754473D37815 /* Pods */ = {
+		432313F4618A6E0D54282078B6A48A1B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A1DD80E3CFFE6E83AECF3454A37B394D /* MBProgressHUD */,
-				6C9410B7B152F6BDB03A1874D52D43E8 /* SnapKit */,
+				EEC1C0925B7A75C47F90DA4CD473E0A9 /* Info.plist */,
+				2057A81225328642D0E49115C61C8897 /* SnapKit.modulemap */,
+				11084A6BA20780B0A92EE054D45AD2B7 /* SnapKit.xcconfig */,
+				55F1F08ED6F3C072E7AC9154FBDC8C4E /* SnapKit-dummy.m */,
+				B5C9CEB30AA71EB58B5CD53321954DE0 /* SnapKit-prefix.pch */,
+				B73C67F9EFC99A11440EE4069211B84A /* SnapKit-umbrella.h */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		5FF55626C38AB7AFB0A6AD9C5FD40B8D /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				59E2D699FF0F80CFA68110662E01E81D /* CoreGraphics.framework */,
-				8004F9356941D3C9C1837F67F9D77A1E /* Foundation.framework */,
-			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/SnapKit";
 			sourceTree = "<group>";
 		};
 		6058BA1BF3144353B72E6969E980EF9B /* Resources */ = {
@@ -473,49 +443,6 @@
 			path = "Target Support Files/Pods-NicooPlayer_Example";
 			sourceTree = "<group>";
 		};
-		6C9410B7B152F6BDB03A1874D52D43E8 /* SnapKit */ = {
-			isa = PBXGroup;
-			children = (
-				5B1485E66C4F0C44C0F4D0992DD9EF90 /* Constraint.swift */,
-				BB39A184AAEA5B022D0B92989F4BC658 /* ConstraintAttributes.swift */,
-				0615A870921500F870AC79E0959B4282 /* ConstraintConfig.swift */,
-				2E697C0A9CE4911DF4B91F78D72168EE /* ConstraintConstantTarget.swift */,
-				C41CEEFBE5E760092D55C57D78874F6D /* ConstraintDescription.swift */,
-				EB90350F59F4E8A3F9C8A90D18666CEB /* ConstraintDSL.swift */,
-				0C3BC3EB390E5F54CD07B5AAB531B3BA /* ConstraintInsets.swift */,
-				5A25BFD0E2C687C5A023899CF2C73CA6 /* ConstraintInsetTarget.swift */,
-				C0223F9361E901B8F6930CF32EEBAEA6 /* ConstraintItem.swift */,
-				8CC191B4E63E933FED67E4436642F760 /* ConstraintLayoutGuide.swift */,
-				84CD43A9329A16581486B01B8A930ED6 /* ConstraintLayoutGuide+Extensions.swift */,
-				763C53F85561792FDE1EEF682D93D6BF /* ConstraintLayoutGuideDSL.swift */,
-				E41E3D1FD09ACEE65C0223D6686EE5F6 /* ConstraintLayoutSupport.swift */,
-				031365ACDF3E1ED66A3ACBF51E899C5C /* ConstraintLayoutSupportDSL.swift */,
-				16786FDC86E52754377C4553808BE034 /* ConstraintMaker.swift */,
-				684FE3A6661F93711FF71A7AE886ACE6 /* ConstraintMakerEditable.swift */,
-				41A0E8FA2D396119653DD7FC3D9E2914 /* ConstraintMakerExtendable.swift */,
-				69FE49C0D66E41F69E4DF38350FAB6BD /* ConstraintMakerFinalizable.swift */,
-				BBEEE9DAEB5A2C78EB59A5F1DE902C42 /* ConstraintMakerPriortizable.swift */,
-				851CB53C3CD52B3BAD4FA03CF2A37349 /* ConstraintMakerRelatable.swift */,
-				7C59D133C9EDA98600B29877722C7393 /* ConstraintMultiplierTarget.swift */,
-				D85FC38D05DAFAB5222FE7E7E32D84EC /* ConstraintOffsetTarget.swift */,
-				0B4FE9AAE9E4696EB6146CF1651DD6E0 /* ConstraintPriority.swift */,
-				25180CF6BD70B6C1787E9E929B8A481F /* ConstraintPriorityTarget.swift */,
-				16EB25E17ADE4D9937132EBF736B0F1F /* ConstraintRelatableTarget.swift */,
-				CD78553AB050BFDA20FC817592395083 /* ConstraintRelation.swift */,
-				629A84E0A88E11216C0A09E85265A63A /* ConstraintView.swift */,
-				91F6E615E764433C09A342B165AA3122 /* ConstraintView+Extensions.swift */,
-				444824DE9A43034CCD0C0E57FD51F3CE /* ConstraintViewDSL.swift */,
-				2929ABEFAFA4A03D143F505AC6946FA1 /* Debugging.swift */,
-				DC72DF2D1D7AB02C2950A29B575C6212 /* LayoutConstraint.swift */,
-				E7E2DDA50B7DFD20C9EEA7BD9859DB61 /* LayoutConstraintItem.swift */,
-				9561C7585822F9ABFA9EA690A13457F6 /* Typealiases.swift */,
-				AF697A7AD15E179137E57267DCB5E892 /* UILayoutSupport+Extensions.swift */,
-				A23F7C9FEEB37681412CAB596C56CFEE /* Support Files */,
-			);
-			name = SnapKit;
-			path = SnapKit;
-			sourceTree = "<group>";
-		};
 		708F32D90D74DE244A92AA0C2BC142AF /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,73 +456,54 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				708F32D90D74DE244A92AA0C2BC142AF /* Development Pods */,
-				BE81D56A3CE232E94A7B8E6A23BBB065 /* Frameworks */,
-				445ABAD9C93653F3EFD8754473D37815 /* Pods */,
-				B352436743C11BECB135B3744EA50F7A /* Products */,
+				D8B25C6DF01BE2C3F2FA6A25AEE6417A /* Frameworks */,
+				0F14D01B37C684095099AE8C8376D636 /* Pods */,
+				F29CBEA45D1D03582785A97599DBBE92 /* Products */,
 				31CE711313D3B06D33C3ECB810865190 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		A1DD80E3CFFE6E83AECF3454A37B394D /* MBProgressHUD */ = {
+		ACE3CBBE2C7163F9C96209ED44FA75D0 /* SnapKit */ = {
 			isa = PBXGroup;
 			children = (
-				386E594C964155B925A0DEED5E9C8548 /* MBProgressHUD.h */,
-				28FDB0E8189C27719CC63376241248F0 /* MBProgressHUD.m */,
-				AD404285C2AF4ED922609D55E73E125A /* Support Files */,
+				2798FAD1ED522B9041959ED19ED6B3DE /* Constraint.swift */,
+				0AF518E3C1EEA98354E7A1BB1CEC881B /* ConstraintAttributes.swift */,
+				23C4EE941C99C2F663494C43944D63FD /* ConstraintConfig.swift */,
+				155B0F68F55650AB9DA3EB802B75CFE0 /* ConstraintConstantTarget.swift */,
+				3A39EF6D4C8D8F847461613349A75E07 /* ConstraintDescription.swift */,
+				645061FD8BF394AC613CF4F0D51EEE0B /* ConstraintDSL.swift */,
+				9297EFDA2A228BE0D126B13FEC2B2AC1 /* ConstraintInsets.swift */,
+				5FAC0AC855EFDB998E84AB91F91FC4CA /* ConstraintInsetTarget.swift */,
+				DD97CEFB74800C4A5F04ED11A13D33D5 /* ConstraintItem.swift */,
+				AF5FAAF2F13CE5B667DCA58EF782CF6D /* ConstraintLayoutGuide.swift */,
+				1130FD3420568BD4A44BC6359400E0A8 /* ConstraintLayoutGuide+Extensions.swift */,
+				068A4C41AD3E035EFFE7E7F568CE1EF9 /* ConstraintLayoutGuideDSL.swift */,
+				DBE14A5BE5AA8350526F042EBC920BAA /* ConstraintLayoutSupport.swift */,
+				92EC67A9344FB011AC6B0CB0B1706C1C /* ConstraintLayoutSupportDSL.swift */,
+				FE1FE61DC3251BBA5CD452BE8564C8E7 /* ConstraintMaker.swift */,
+				48CE3DCD5A18E652A9D4C4FCC6AEAE10 /* ConstraintMakerEditable.swift */,
+				D35E795A4705B4FB474FF417682335F1 /* ConstraintMakerExtendable.swift */,
+				F3F75E7EE36678F81FD1EC4247DB1B87 /* ConstraintMakerFinalizable.swift */,
+				8A0A4D5D85B4FAEB4C7AF868A3E48121 /* ConstraintMakerPriortizable.swift */,
+				D09C8BFD80A7988D3B139768116EE2A7 /* ConstraintMakerRelatable.swift */,
+				618BA51B32ACF0F8F31A11BACEF95396 /* ConstraintMultiplierTarget.swift */,
+				D3463E11A1205B5C35B599F4A19C31C3 /* ConstraintOffsetTarget.swift */,
+				1C3A931CDC4FB0563592274ED61655C7 /* ConstraintPriority.swift */,
+				5495F3260249C5CD5E62E6D02610A41D /* ConstraintPriorityTarget.swift */,
+				EEB1C88D7583A855F149230ABA2DF3C8 /* ConstraintRelatableTarget.swift */,
+				DA17F2D7F42352672F30A144E51AC809 /* ConstraintRelation.swift */,
+				35A91D0ACFB6CF1883A820AA2607BCA8 /* ConstraintView.swift */,
+				B8BDCD0CDEC036E08EBEFEBDB5217C5A /* ConstraintView+Extensions.swift */,
+				B058F739089B32F3323418933731ADFB /* ConstraintViewDSL.swift */,
+				D6E03888824F0BC09BC4827577C35087 /* Debugging.swift */,
+				465909C1E34108C63AB5FBA6378D3493 /* LayoutConstraint.swift */,
+				D69B953D578152B8ABC94EDF5E0C6A43 /* LayoutConstraintItem.swift */,
+				3ABC9D64458AB89596AC989C36546AE0 /* Typealiases.swift */,
+				45908992EEDBCFF12244DAE9912F7228 /* UILayoutSupport+Extensions.swift */,
+				432313F4618A6E0D54282078B6A48A1B /* Support Files */,
 			);
-			name = MBProgressHUD;
-			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
-		A23F7C9FEEB37681412CAB596C56CFEE /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0CA7857667565EBB775B1BDC8C1C3560 /* Info.plist */,
-				CCF390ECCA5E6C03EB62227357C0AEFB /* SnapKit.modulemap */,
-				DBAEF71D6AA2431BBCAD4B85D4AA6123 /* SnapKit.xcconfig */,
-				5A17D45E06C7FAC7F8A83D8CCCBAAFC9 /* SnapKit-dummy.m */,
-				F17E1FC179E979704019EB319D561C4B /* SnapKit-prefix.pch */,
-				9FC56167BEA90B6B946F37B7D80E0C38 /* SnapKit-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SnapKit";
-			sourceTree = "<group>";
-		};
-		AD404285C2AF4ED922609D55E73E125A /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				22F7476B6C6DCD73C436592AE17B0C30 /* Info.plist */,
-				4144686D1518EF289A4BB4628A28FD7C /* MBProgressHUD.modulemap */,
-				0FC49E8068048FA9665FEA755A723474 /* MBProgressHUD.xcconfig */,
-				A5DA9A3A5D6A0105EF62835704CE5872 /* MBProgressHUD-dummy.m */,
-				2240511D3986936EBCBA4BFDAF241F53 /* MBProgressHUD-prefix.pch */,
-				3FDBBC41E426612AD39C61C4F29B8AE9 /* MBProgressHUD-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/MBProgressHUD";
-			sourceTree = "<group>";
-		};
-		B352436743C11BECB135B3744EA50F7A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3D4DFCBF4D2AFAF5FFD2A6CEDB2E2745 /* MBProgressHUD.framework */,
-				23A6B82AAE3090D12419E3830D6B4F47 /* NicooPlayer.bundle */,
-				32B3668C638642AAF32A4CE975C13822 /* NicooPlayer.framework */,
-				CC6205B3678EE6C93470173FDB71A621 /* Pods_NicooPlayer_Example.framework */,
-				8E48BDB63B1356A684DDA26FE57CBBA6 /* Pods_NicooPlayer_Tests.framework */,
-				3DF15E9CAA366C7B7559BCA81676617B /* SnapKit.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		BE81D56A3CE232E94A7B8E6A23BBB065 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5A6420F6739C203B58E40873FBD3CE4E /* MBProgressHUD.framework */,
-				CAB04EC39B39D62AB4D5E32DFDE32DBC /* SnapKit.framework */,
-				5FF55626C38AB7AFB0A6AD9C5FD40B8D /* iOS */,
-			);
-			name = Frameworks;
+			name = SnapKit;
+			path = SnapKit;
 			sourceTree = "<group>";
 		};
 		C73F3C4EB8624F0830701252A62906E8 /* Pod */ = {
@@ -606,6 +514,15 @@
 				D44D1BD9BA28E3E564E80E7CB086BF07 /* README.md */,
 			);
 			name = Pod;
+			sourceTree = "<group>";
+		};
+		D8B25C6DF01BE2C3F2FA6A25AEE6417A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C42E6B36692CB79785C933E25719FA6F /* SnapKit.framework */,
+				100C4DD3CB697E76327B2334322E2910 /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		EDA9E6E6F30749ECD569207BAB0CC1B2 /* NicooPlayer */ = {
@@ -626,6 +543,18 @@
 			);
 			name = NicooPlayer;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		F29CBEA45D1D03582785A97599DBBE92 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AEF7865CF117B78F668E40F209D311C6 /* NicooPlayer.bundle */,
+				ABE14A1A35D6703183F0F50AEC869DB9 /* NicooPlayer.framework */,
+				4B25CDA2BB6F54D5AC9057F6793CF8B4 /* Pods_NicooPlayer_Example.framework */,
+				6C9F6AB944F04427AE56982452AF9676 /* Pods_NicooPlayer_Tests.framework */,
+				AFA9D53E2B386B7E728CFB38131AF22D /* SnapKit.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		F562B8F9F1142F58BB1222E5240A8F22 /* Pods-NicooPlayer_Tests */ = {
@@ -649,111 +578,68 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		81F848C0217C887DBB2172FACE9F9F1B /* Headers */ = {
+		1AAEFEFBB030088E09775BE7ECCF5463 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A6EB71DB58FD9E5BA07B8A75B428A82 /* Pods-NicooPlayer_Tests-umbrella.h in Headers */,
+				88C56B19FDF52B0B14797574AFF7C476 /* NicooPlayer-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		86FC248060A399F9E3CDAAE45B4FAED0 /* Headers */ = {
+		5279CC502888205FC491896AD061C392 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1758A48B650BFC00C2E29E133F913D4D /* NicooPlayer-umbrella.h in Headers */,
+				C8C6D1D60D8B0C853B9E2E84FA952A10 /* Pods-NicooPlayer_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0D7C8B7FB98DA547B91238E7354B2AB /* Headers */ = {
+		9D2151C1FCB60BD32F60A81DCBD5D0E5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D91636547964F7FBDFF7616B9488C9E3 /* SnapKit-umbrella.h in Headers */,
+				27CE7C456A381A0832C091B60C5C076D /* SnapKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D015B3F3E2F85391AA3B395B5B1ADCE5 /* Headers */ = {
+		CF98339FD36B1CAB037C5BCDEF9EFEAF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B646C96E2D7DF54445B3719F800D79E9 /* MBProgressHUD-umbrella.h in Headers */,
-				D206EDC84CE44D5DC711ADD087BC4B17 /* MBProgressHUD.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EE77A5347C1AB8FCA868B29B61FA214D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2067C0BE526FE391C73197952FFF6EF9 /* Pods-NicooPlayer_Example-umbrella.h in Headers */,
+				F0D305C8014B12737D36B8ABC0DF48E5 /* Pods-NicooPlayer_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		210A0B6A4832B40F5C92A11CDDE602A7 /* Pods-NicooPlayer_Example */ = {
+		11AFBDC2F1C56F94FBC6F1A7F59A46C6 /* Pods-NicooPlayer_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3EFEE0079118B564852737861D668B7D /* Build configuration list for PBXNativeTarget "Pods-NicooPlayer_Example" */;
+			buildConfigurationList = 52F63F9390F120E5E94EC1818AA72B85 /* Build configuration list for PBXNativeTarget "Pods-NicooPlayer_Example" */;
 			buildPhases = (
-				47EC6F85330A36DC8019C04131871A15 /* Sources */,
-				F4D421EA16F0D0744DE08A9FE60163FF /* Frameworks */,
-				EE77A5347C1AB8FCA868B29B61FA214D /* Headers */,
+				CF98339FD36B1CAB037C5BCDEF9EFEAF /* Headers */,
+				D493F67AA4406E6A5F0E2E77DE479F19 /* Sources */,
+				753C700469FB0CFF2B87873D360BA183 /* Frameworks */,
+				50488871ED9D014633A056BE160C742E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3251DD937BE0FC0E06BF3C5E7675E0CA /* PBXTargetDependency */,
-				E8E3B8A38B045C0ECCF81A7DBBDD940D /* PBXTargetDependency */,
-				B40CC170E745926095F5BBE770F733B6 /* PBXTargetDependency */,
+				6FE9C7709626176D9B511F2446CFF2CC /* PBXTargetDependency */,
+				75DEA9FB36CE4B81D53EE434E10192E4 /* PBXTargetDependency */,
 			);
 			name = "Pods-NicooPlayer_Example";
 			productName = "Pods-NicooPlayer_Example";
-			productReference = CC6205B3678EE6C93470173FDB71A621 /* Pods_NicooPlayer_Example.framework */;
+			productReference = 4B25CDA2BB6F54D5AC9057F6793CF8B4 /* Pods_NicooPlayer_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6B1714E816AE794962516E2ECBB40A5A /* MBProgressHUD */ = {
+		18279A9E612B206865EEBFC4651DDBB5 /* NicooPlayer-NicooPlayer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 28A1BDB3CE3F2F1CB0931DFEEDBA7936 /* Build configuration list for PBXNativeTarget "MBProgressHUD" */;
+			buildConfigurationList = 76D9D4619E57528F69AD6EE728642684 /* Build configuration list for PBXNativeTarget "NicooPlayer-NicooPlayer" */;
 			buildPhases = (
-				5D9F4A386169F298C8544D099324BB28 /* Sources */,
-				9FE6CEF1763E05FB90653801CE3E2B5B /* Frameworks */,
-				D015B3F3E2F85391AA3B395B5B1ADCE5 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MBProgressHUD;
-			productName = MBProgressHUD;
-			productReference = 3D4DFCBF4D2AFAF5FFD2A6CEDB2E2745 /* MBProgressHUD.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		806581F0B324D0A3520283F655916690 /* SnapKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 39AE7F177F02A3C2A947A0FE21F14297 /* Build configuration list for PBXNativeTarget "SnapKit" */;
-			buildPhases = (
-				EB8A6094EA35AB211AFEC743CA723BC8 /* Sources */,
-				B11ACDCBCC91E7FC6DB3265C74525AE9 /* Frameworks */,
-				A0D7C8B7FB98DA547B91238E7354B2AB /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SnapKit;
-			productName = SnapKit;
-			productReference = 3DF15E9CAA366C7B7559BCA81676617B /* SnapKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		88AE74F3CBA780E78924F25D2CF860FF /* NicooPlayer-NicooPlayer */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8E00F08E11077BE368DBEC8AFF1E40EB /* Build configuration list for PBXNativeTarget "NicooPlayer-NicooPlayer" */;
-			buildPhases = (
-				49A4D698473786C482DF5F044BF1F453 /* Sources */,
-				EECBFE7AD8E2FDF4D14088E74A432D1A /* Frameworks */,
-				5E40F7A6DF0A12675CEC93771583FF8B /* Resources */,
+				7C6CADBACF092B445EEC05ACA4EDFF50 /* Sources */,
+				DD6D9FD3390612885F3D44C0550B8000 /* Frameworks */,
+				6DA0EB08DE16BAE7E92AF3510B9228AD /* Resources */,
 			);
 			buildRules = (
 			);
@@ -761,46 +647,64 @@
 			);
 			name = "NicooPlayer-NicooPlayer";
 			productName = "NicooPlayer-NicooPlayer";
-			productReference = 23A6B82AAE3090D12419E3830D6B4F47 /* NicooPlayer.bundle */;
+			productReference = AEF7865CF117B78F668E40F209D311C6 /* NicooPlayer.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		9D19AC79ECADCDDC141C7773E5AED4D2 /* NicooPlayer */ = {
+		18B8DB3EFA45F9069CDF5B554425973E /* NicooPlayer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 544EF42742B55C16E87575AA674BCBB5 /* Build configuration list for PBXNativeTarget "NicooPlayer" */;
+			buildConfigurationList = E606B2C6C7B982D9297C42085A492CBB /* Build configuration list for PBXNativeTarget "NicooPlayer" */;
 			buildPhases = (
-				52EC9256AC962E5BBCAB9A4B6C455727 /* Sources */,
-				13C434651C19769A1FE847FFEF5D80A8 /* Frameworks */,
-				DEFF5A7D5BBC0E4610DCDBE9A27BD85F /* Resources */,
-				86FC248060A399F9E3CDAAE45B4FAED0 /* Headers */,
+				1AAEFEFBB030088E09775BE7ECCF5463 /* Headers */,
+				D3B5D8B203DAD475638E90F8D66A56BF /* Sources */,
+				5BA1C989828C6C11BAC3579CF79EC5A7 /* Frameworks */,
+				652113E9EBA71913CA7585B9748378A2 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6CB8BBA519A91B328A9E3EEB3FC17F8C /* PBXTargetDependency */,
-				7D193750128A4F46D5F15BF5DF15ABBC /* PBXTargetDependency */,
-				150F94D325AAF7FB3DCD916D2A73B19F /* PBXTargetDependency */,
+				9273507AAC8B72221BD6DFF0A7500DC9 /* PBXTargetDependency */,
+				B206A7F540377202F349DD10981E09DF /* PBXTargetDependency */,
 			);
 			name = NicooPlayer;
 			productName = NicooPlayer;
-			productReference = 32B3668C638642AAF32A4CE975C13822 /* NicooPlayer.framework */;
+			productReference = ABE14A1A35D6703183F0F50AEC869DB9 /* NicooPlayer.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		FAF3A193E7884DB57508764C18E304AD /* Pods-NicooPlayer_Tests */ = {
+		52647C16D181E0C5C4058FF161452E7D /* SnapKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 50AA4DE5594BC35ADBF454B7FBFD20F3 /* Build configuration list for PBXNativeTarget "Pods-NicooPlayer_Tests" */;
+			buildConfigurationList = 4E5FF87B5C52E34FC26048A8F14A0423 /* Build configuration list for PBXNativeTarget "SnapKit" */;
 			buildPhases = (
-				BF8FDF17BF5A809CEE9B02E911C2CBFB /* Sources */,
-				A589B69D75DF1105046A519C09037883 /* Frameworks */,
-				81F848C0217C887DBB2172FACE9F9F1B /* Headers */,
+				9D2151C1FCB60BD32F60A81DCBD5D0E5 /* Headers */,
+				6EB0B84892C122FFB797DE7CF86266F1 /* Sources */,
+				8621055DF0DD7CA7AB841F23DE799C86 /* Frameworks */,
+				AB2E53CE1EA0493818E77B6A69030C39 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DE5E7E67F7443035F31E97C06A7C3FEE /* PBXTargetDependency */,
+			);
+			name = SnapKit;
+			productName = SnapKit;
+			productReference = AFA9D53E2B386B7E728CFB38131AF22D /* SnapKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8B92FF8A24763370652A14216B88C411 /* Pods-NicooPlayer_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BE70094102074EAC0FFB0E4D55AADDF /* Build configuration list for PBXNativeTarget "Pods-NicooPlayer_Tests" */;
+			buildPhases = (
+				5279CC502888205FC491896AD061C392 /* Headers */,
+				6CE42271CABF44A9E79530AA0709EB80 /* Sources */,
+				0C869790E53655181C8E4D884162EDD6 /* Frameworks */,
+				A547E52FD3A6D5F62C58F1CACE1CB49D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				559AB78DBD3049ACC85F5FF8C0244CCD /* PBXTargetDependency */,
 			);
 			name = "Pods-NicooPlayer_Tests";
 			productName = "Pods-NicooPlayer_Tests";
-			productReference = 8E48BDB63B1356A684DDA26FE57CBBA6 /* Pods_NicooPlayer_Tests.framework */;
+			productReference = 6C9F6AB944F04427AE56982452AF9676 /* Pods_NicooPlayer_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -820,221 +724,284 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = B352436743C11BECB135B3744EA50F7A /* Products */;
+			productRefGroup = F29CBEA45D1D03582785A97599DBBE92 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6B1714E816AE794962516E2ECBB40A5A /* MBProgressHUD */,
-				9D19AC79ECADCDDC141C7773E5AED4D2 /* NicooPlayer */,
-				88AE74F3CBA780E78924F25D2CF860FF /* NicooPlayer-NicooPlayer */,
-				210A0B6A4832B40F5C92A11CDDE602A7 /* Pods-NicooPlayer_Example */,
-				FAF3A193E7884DB57508764C18E304AD /* Pods-NicooPlayer_Tests */,
-				806581F0B324D0A3520283F655916690 /* SnapKit */,
+				18B8DB3EFA45F9069CDF5B554425973E /* NicooPlayer */,
+				18279A9E612B206865EEBFC4651DDBB5 /* NicooPlayer-NicooPlayer */,
+				11AFBDC2F1C56F94FBC6F1A7F59A46C6 /* Pods-NicooPlayer_Example */,
+				8B92FF8A24763370652A14216B88C411 /* Pods-NicooPlayer_Tests */,
+				52647C16D181E0C5C4058FF161452E7D /* SnapKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5E40F7A6DF0A12675CEC93771583FF8B /* Resources */ = {
+		50488871ED9D014633A056BE160C742E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CD3B21DA44DF21551752A37B6F497B7 /* back@2x.png in Resources */,
-				40B3FB9477D8B90113FA3D368B5C26A0 /* back@3x.png in Resources */,
-				3B001802107AE5FE777E8642F5310DA4 /* back_hight@2x.png in Resources */,
-				73C0C2D809D6F01F88880EC5C05B679C /* back_hight@3x.png in Resources */,
-				DBFDFE2064D31CF665FBC6B2FC07E1B0 /* backward@2x.png in Resources */,
-				8B2BF9B5A59FC453D77EB581068D2A99 /* backward@3x.png in Resources */,
-				0F4A0CF65B929860AC4ED3BBF1D7F15E /* forward@2x.png in Resources */,
-				862AC3D6E5113B86F7C45219F3584584 /* forward@3x.png in Resources */,
-				DF5E69CA178B5B38101BAD12EFD6C941 /* lockscreen@2x.png in Resources */,
-				CD38D8EF7BCFC5356BB9E1CE5CA975F2 /* lockscreen@3x.png in Resources */,
-				24F3A0D39993705C9736FD2BDB8EB35D /* NicooPlayer_fullscreen.png in Resources */,
-				782EC86E8C89C58A54697621EE81881B /* NicooPlayer_fullscreen@2x.png in Resources */,
-				19B5898E83A8018EE19B7B47CEA0F8BB /* NicooPlayer_fullscreen@3x.png in Resources */,
-				ADDE1DE14A116C054FED215233C1DA92 /* NicooPlayer_slider.png in Resources */,
-				9C6039EFA623D756A81F5F449A5A10B3 /* NicooPlayer_slider@2x.png in Resources */,
-				ADCB8D3A163AA8FD2EEF05E7D523874B /* NicooPlayer_slider@3x.png in Resources */,
-				A336A37268CA371A1DC16B8642B78EED /* pause@2x.png in Resources */,
-				84502DA385BFB43B946F96924A5D9906 /* pause@3x.png in Resources */,
-				8628625A3DF86604451BBDA734DB0E8E /* play@2x.png in Resources */,
-				505D1FF8B0CFC633EE66F6DF2D95019D /* play@3x.png in Resources */,
-				E9E69175E609DD0FF38B549E9479CE88 /* player_brightness@2x.png in Resources */,
-				742EDC930B7C6F5151D19E6FF42F6BF8 /* player_close.png in Resources */,
-				C699879DC0D3B9CDF2F98BF7292D64CF /* player_close@2x.png in Resources */,
-				4B30BA59D5E9256889765D6186CE2A62 /* player_close@3x.png in Resources */,
-				DDFAED522B218EF37160BA258DEF342C /* Player_pause@2x.png in Resources */,
-				B14B7AE8751C2DD78BACA32EECFAA04E /* Player_pause@3x.png in Resources */,
-				CB982ABCA141E75863052F03AD9DA94A /* replay@2x.png in Resources */,
-				ABD4CE756BDDB0AF03D0E268FB7EFDF8 /* replay@3x.png in Resources */,
-				D6C6AC7BC638533E430064DC6F237183 /* replay_hight@2x.png in Resources */,
-				E2C605F73E300D86109DB747090455CB /* replay_hight@3x.png in Resources */,
-				71331E9F4F3C6854CDF52E5858CE9F6B /* share@2x.png in Resources */,
-				904193D09EE246A528D29B5914148371 /* share@3x.png in Resources */,
-				2630ED28173AC357A024A35C400F7F70 /* share_hight@2x.png in Resources */,
-				5B02E15FEBFE2504AD43C1CAE4B51839 /* share_hight@3x.png in Resources */,
-				6B8FC2A221062CEE2F5E3C0C1523ABD9 /* shrinkScreen@2x.png in Resources */,
-				C9EEE7975FDC21BAE2AC0A96470B6281 /* shrinkScreen@3x.png in Resources */,
-				86F59C7A7386BFAC1B3A67CF4CEAD9BA /* sliderflash.png in Resources */,
-				E60B84CFAD84AF86A4F76A636FB5CB3F /* sliderflash@2x.png in Resources */,
-				DD24D43981254EEAB516D227CCD1AA48 /* sliderflash@3x.png in Resources */,
-				2799AA539A68E93393D7B7290A5E421B /* sliderHightLight.png in Resources */,
-				2BE25B47CA1D62E03E701104F2DB483A /* unlock@2x.png in Resources */,
-				38C502F0D36693A8FF6F90F4310797A0 /* unlock@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DEFF5A7D5BBC0E4610DCDBE9A27BD85F /* Resources */ = {
+		652113E9EBA71913CA7585B9748378A2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6BC8C7C278A6595DF5D3AE67E384960 /* NicooPlayer.bundle in Resources */,
+				D9A39AB2EDE7D1834CB132411F006C78 /* NicooPlayer.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA0EB08DE16BAE7E92AF3510B9228AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				483550818D9DB29960A3C0A4EDBEAA0F /* back@2x.png in Resources */,
+				5D40E76D7B63EAB656C38465C0FA82EC /* back@3x.png in Resources */,
+				969566489C9E0F50BB5D4C61283BA30A /* back_hight@2x.png in Resources */,
+				C9F86094B8144E050997AFFC893A2D50 /* back_hight@3x.png in Resources */,
+				31650FD0D39FDBB9B8E1260CDF6D14C8 /* backward@2x.png in Resources */,
+				F3D8383F62E62A3C78408939F305C427 /* backward@3x.png in Resources */,
+				3F117FFD6021A389039E9BC45E53E283 /* forward@2x.png in Resources */,
+				9B83BFFFCCB876DD61377A279EFE64AF /* forward@3x.png in Resources */,
+				FAB0B9DF45F6E60CB117F8A71A629F97 /* lockscreen@2x.png in Resources */,
+				E6DB4B2856050E0BCF01E9A25D74A1B4 /* lockscreen@3x.png in Resources */,
+				5F139CED69BE7108D2FB62A92D362919 /* NicooPlayer_fullscreen.png in Resources */,
+				844B0B94FC337363B0EA6A8D081CAFD4 /* NicooPlayer_fullscreen@2x.png in Resources */,
+				5895FC7BBC49245B133174D8C3A1C869 /* NicooPlayer_fullscreen@3x.png in Resources */,
+				8C589C8886BE196C79CF17607A21A3AF /* NicooPlayer_slider.png in Resources */,
+				A7E0C88B2B04A3240FFCDA9DCE13FE6A /* NicooPlayer_slider@2x.png in Resources */,
+				2E45DDE6211FDC0D7C7DDA645FD2D610 /* NicooPlayer_slider@3x.png in Resources */,
+				1EADEB30F808CA94D59BE5CDF31DA72E /* pause@2x.png in Resources */,
+				6405C9FC5787A8E0F6BFE6ED6F7A691F /* pause@3x.png in Resources */,
+				8C0628C348D0036B15A1F5D97ED1BBFD /* play@2x.png in Resources */,
+				19D86BB5F6F93BF1538C5697558DE802 /* play@3x.png in Resources */,
+				B64D38EE4981701B657D86B24F7556C9 /* player_brightness@2x.png in Resources */,
+				11E2C92E2AA7B07A019D1897F2C15033 /* player_close.png in Resources */,
+				808AF2E77430460EBFBC5C632BD98CEA /* player_close@2x.png in Resources */,
+				5F76B3775C0E43288A0C46B9F627359D /* player_close@3x.png in Resources */,
+				7A30324DF205553C13AE21497DB11056 /* Player_pause@2x.png in Resources */,
+				55B732A6B14AF9E751326D406E85E7F4 /* Player_pause@3x.png in Resources */,
+				6C0A12B63E196DCDA7E4E14BF2118AE3 /* replay@2x.png in Resources */,
+				945DDD83B4F79DBBF74111D7CE8C7310 /* replay@3x.png in Resources */,
+				9CFFA1EEFC04D8AAD4158E5C584D49D8 /* replay_hight@2x.png in Resources */,
+				C676B90AC87268BA00BA09C776E571E0 /* replay_hight@3x.png in Resources */,
+				B7BAA3EBF5068068AAAC4676073DAF9E /* share@2x.png in Resources */,
+				BCF09463716EFDAF623A79B9D5255E2C /* share@3x.png in Resources */,
+				2DD25467C20DCCDC7462E7E8841BFF27 /* share_hight@2x.png in Resources */,
+				BE6CE881C6572B686C7961788E4C3BC5 /* share_hight@3x.png in Resources */,
+				AC5E73427BCDF9B4D65A618854DB03A4 /* shrinkScreen@2x.png in Resources */,
+				7F3A04E378949FFC9A0E11CFE2C2C418 /* shrinkScreen@3x.png in Resources */,
+				78323653C1B41AC0E40FB8D1D7955B5A /* sliderflash.png in Resources */,
+				2552D834A1B0057819C9ADB4746E59DF /* sliderflash@2x.png in Resources */,
+				F23F0B651BA12FC9D6E6EED31C18A013 /* sliderflash@3x.png in Resources */,
+				E2F6D2E2C6AB02F997CDA85E32F9907D /* sliderHightLight.png in Resources */,
+				8A788F680F7EAC8DC318A597B9CEA690 /* unlock@2x.png in Resources */,
+				95D6C19862B6441AC1DF2BBD76B3D513 /* unlock@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A547E52FD3A6D5F62C58F1CACE1CB49D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB2E53CE1EA0493818E77B6A69030C39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		47EC6F85330A36DC8019C04131871A15 /* Sources */ = {
+		6CE42271CABF44A9E79530AA0709EB80 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95442AFB22475F846F658BB30ED7D669 /* Pods-NicooPlayer_Example-dummy.m in Sources */,
+				E0E7D577323E7113862E2DB1448D9B73 /* Pods-NicooPlayer_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49A4D698473786C482DF5F044BF1F453 /* Sources */ = {
+		6EB0B84892C122FFB797DE7CF86266F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23175EA1EF2E7C6BE3DA76D541B4793B /* Constraint.swift in Sources */,
+				6483761D441DCE875FECB403FB1BBC50 /* ConstraintAttributes.swift in Sources */,
+				7FAE73EA22F0C6D7E275D445EABC927A /* ConstraintConfig.swift in Sources */,
+				50D5DA90F8F9EA36F2774893C96207E1 /* ConstraintConstantTarget.swift in Sources */,
+				948977D2A72EA5C894BC680802B7ED11 /* ConstraintDescription.swift in Sources */,
+				68323C5CD63706D58551EF53BD47C3CE /* ConstraintDSL.swift in Sources */,
+				D835C27379BF35EA3096A687162F2134 /* ConstraintInsets.swift in Sources */,
+				CFBB55A21DA77BD2C550FB221CEAA669 /* ConstraintInsetTarget.swift in Sources */,
+				4160F5B43923858F6D5609D8C6325D48 /* ConstraintItem.swift in Sources */,
+				6194C25DF09863EF003205354C17EE00 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
+				D46F3CD3DC4CB3E6E8912719961401DC /* ConstraintLayoutGuide.swift in Sources */,
+				744FDD16087F96F15E56306BFB137C74 /* ConstraintLayoutGuideDSL.swift in Sources */,
+				15D79E4D1AA4DD25E1FC701B379C42C3 /* ConstraintLayoutSupport.swift in Sources */,
+				E2C5BB75EB0D86A798C70EA72228E172 /* ConstraintLayoutSupportDSL.swift in Sources */,
+				9AF3C0481DD8DB4A59CBDC40FC31E4BF /* ConstraintMaker.swift in Sources */,
+				A64436FBA54C2782D2CC15B52CF63829 /* ConstraintMakerEditable.swift in Sources */,
+				47A815759793DEBA29BC6145485A4801 /* ConstraintMakerExtendable.swift in Sources */,
+				46658A254D636A8047209CFF71516C27 /* ConstraintMakerFinalizable.swift in Sources */,
+				FDB1B5B11C85A7E46D235FC4F002E5E7 /* ConstraintMakerPriortizable.swift in Sources */,
+				1E70BEDA661D8683BED9377E5193395E /* ConstraintMakerRelatable.swift in Sources */,
+				A649D23DE2E89BD20658A3338E76C9D0 /* ConstraintMultiplierTarget.swift in Sources */,
+				E304DF00BD5F77FC582576D249DF088C /* ConstraintOffsetTarget.swift in Sources */,
+				FA994DE20E8286E0D1048335F7420FFD /* ConstraintPriority.swift in Sources */,
+				02FE46561E36AD1F540C55FD3754D179 /* ConstraintPriorityTarget.swift in Sources */,
+				1C2BE1AF9082F82C2AE7B0600DD680E5 /* ConstraintRelatableTarget.swift in Sources */,
+				A76989CE17F0DA6AED1CA6C65D346580 /* ConstraintRelation.swift in Sources */,
+				33D55D4F311552160881DB730ABE4EE6 /* ConstraintView+Extensions.swift in Sources */,
+				A1DBFC083FBC1229DC8DCFEF86927BF2 /* ConstraintView.swift in Sources */,
+				0F30E394FBE6D7E0E23AF5D5F62ECE74 /* ConstraintViewDSL.swift in Sources */,
+				54978F52F781CE79EB51C69C51DFF051 /* Debugging.swift in Sources */,
+				8B95F1E4D5493002B72AD111B696C139 /* LayoutConstraint.swift in Sources */,
+				9E130F7204E56100B532B8AB9C90F671 /* LayoutConstraintItem.swift in Sources */,
+				06EA3E9FDFEC4C10B37AB49D22466079 /* SnapKit-dummy.m in Sources */,
+				238238853047C37CAC5238B9384B964A /* Typealiases.swift in Sources */,
+				C4644F22A4671A214816B2DE192F9497 /* UILayoutSupport+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C6CADBACF092B445EEC05ACA4EDFF50 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		52EC9256AC962E5BBCAB9A4B6C455727 /* Sources */ = {
+		D3B5D8B203DAD475638E90F8D66A56BF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				132672EB493A91C33FEC4772DA969784 /* NicooAssetResourceLoader.swift in Sources */,
-				0C0E4434F229EF3930313178B4BF2239 /* NicooBrightnessView.swift in Sources */,
-				769D5414D0FA88E45BFB65FC89816A36 /* NicooImgManager.swift in Sources */,
-				B0AC919B2CDA83FEBC0A06DEE7E30AA8 /* NicooLoadedFailedView.swift in Sources */,
-				AEBA2542160E2765AA1C51FC3E6307CC /* NicooNetWorkAlert.swift in Sources */,
-				64D91AD4C7E7E65557528CC0E9B158D0 /* NicooPlayer-dummy.m in Sources */,
-				B81FD1A723F5DD91AB5C3754914A7E49 /* NicooPlayerControlView.swift in Sources */,
-				54C4F1871F13DF37250D2DC969FDF089 /* NicooPlayerOrietation.swift in Sources */,
-				34C227EC6B5B5EE49FC76D7CAD93C859 /* NicooPlayerView.swift in Sources */,
-				BE1626A43F7A0844328E6290BA4ACF1E /* NicooVideoRequestTask.swift in Sources */,
+				58D70EFB271E5D8C3F7BF83306702018 /* NicooAssetResourceLoader.swift in Sources */,
+				7F929F6B345C42E5FEC0D6C52A36A938 /* NicooBrightnessView.swift in Sources */,
+				BBAFAF2ED24E85DCF693DF39C519350D /* NicooImgManager.swift in Sources */,
+				E293480982AE2CF8033DB29730F8E351 /* NicooLoadedFailedView.swift in Sources */,
+				1B7D6DA96833839C39617BD826AB106B /* NicooNetWorkAlert.swift in Sources */,
+				C93291E9C4544637AAA8E4A90F95EC8E /* NicooPlayer-dummy.m in Sources */,
+				7031F5A32251E6CA6B796616A3EACADB /* NicooPlayerControlView.swift in Sources */,
+				69206852B5721C2BA4596E26977090E3 /* NicooPlayerOrietation.swift in Sources */,
+				AC645E0DD9EC720AD59ABA9AD4BBA23A /* NicooPlayerView.swift in Sources */,
+				C3D35EB19E7AEDF6C6C5E7505512CAD2 /* NicooVideoRequestTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5D9F4A386169F298C8544D099324BB28 /* Sources */ = {
+		D493F67AA4406E6A5F0E2E77DE479F19 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57E9B041CC1D8988C38DDC97CAEFCD76 /* MBProgressHUD-dummy.m in Sources */,
-				AA00DCC0C8174B2D7E48EEC3C768B047 /* MBProgressHUD.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF8FDF17BF5A809CEE9B02E911C2CBFB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5913BB188A0FF62F28A58DE4FACCE65A /* Pods-NicooPlayer_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EB8A6094EA35AB211AFEC743CA723BC8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32BB9139BB8B8E1FDB4F990F8990ED25 /* Constraint.swift in Sources */,
-				9D06CA263EEF424035FCA6D47818F461 /* ConstraintAttributes.swift in Sources */,
-				9062CA702769C3EC4E80090BF5586905 /* ConstraintConfig.swift in Sources */,
-				3F5016241C0ECE05E7D22F7446260D6F /* ConstraintConstantTarget.swift in Sources */,
-				E87EAB1A5B032C67C78166BAB69181FE /* ConstraintDescription.swift in Sources */,
-				596DC7D6E6F14505E5BBC2AA5C4E890F /* ConstraintDSL.swift in Sources */,
-				02ACAD3D995B8FFCC7103BFFFCFF4C7E /* ConstraintInsets.swift in Sources */,
-				A122B0DEE322E8023E4393922033814D /* ConstraintInsetTarget.swift in Sources */,
-				68080F21BAC9CA8B0EE8CFC1A328B016 /* ConstraintItem.swift in Sources */,
-				E25093691078BC7314D6AFEA3CFD0E6C /* ConstraintLayoutGuide+Extensions.swift in Sources */,
-				085602848783E5ECD62FA833B3695BCF /* ConstraintLayoutGuide.swift in Sources */,
-				8E48D2CCD3D5B33F51E305C2A2130ED5 /* ConstraintLayoutGuideDSL.swift in Sources */,
-				F3ED58CEA2790902F063B9A434DB29B8 /* ConstraintLayoutSupport.swift in Sources */,
-				E93A581F466C33794ECDA663DD452F4A /* ConstraintLayoutSupportDSL.swift in Sources */,
-				6DC4115DEE57E4215FB99274C5CF0551 /* ConstraintMaker.swift in Sources */,
-				649A2A1DE328C9C7F9C9FA31885B084E /* ConstraintMakerEditable.swift in Sources */,
-				9E1E71DB0D111A4AB6862F91B09E6958 /* ConstraintMakerExtendable.swift in Sources */,
-				3EDBA9A721D6BFA713AD09D9A2D1FAE8 /* ConstraintMakerFinalizable.swift in Sources */,
-				0D18C3978540AB62EAB99B8CE4BAC208 /* ConstraintMakerPriortizable.swift in Sources */,
-				8501E53A0B6354BA13AEF624D4C1A6CC /* ConstraintMakerRelatable.swift in Sources */,
-				6C87FF03B5623C5E9C20E3D5C6F33DD2 /* ConstraintMultiplierTarget.swift in Sources */,
-				E506F8128AF3E620F04CDCD368843808 /* ConstraintOffsetTarget.swift in Sources */,
-				2AB91CF943CEDD471B26611F68E8B05F /* ConstraintPriority.swift in Sources */,
-				B205155EDC49AA5B1BC610C21DD2A400 /* ConstraintPriorityTarget.swift in Sources */,
-				EE21FEF911EDF70D08CA5394E4A68196 /* ConstraintRelatableTarget.swift in Sources */,
-				1E9EE9E072F099CD7FF4B67DA9013417 /* ConstraintRelation.swift in Sources */,
-				1BA07733D36E0171E28F1E2BD3272875 /* ConstraintView+Extensions.swift in Sources */,
-				6AA150C7B86623F65FEAD85CC090B26F /* ConstraintView.swift in Sources */,
-				37F2BB8CCD53D972C70DCDACFBD7FAE1 /* ConstraintViewDSL.swift in Sources */,
-				B5EBB9E101CE29845A305247669916ED /* Debugging.swift in Sources */,
-				581EC4BB0F43AE4C2071AE5255A70F44 /* LayoutConstraint.swift in Sources */,
-				99D131BDF8EE20D0D1B2506A08E55001 /* LayoutConstraintItem.swift in Sources */,
-				79F4D368EBAD5AC7A56FA024481A2FB8 /* SnapKit-dummy.m in Sources */,
-				27C96C1D5BFF980D54B71F2862F17930 /* Typealiases.swift in Sources */,
-				DBA9B07CB73147636274FF732B8D97B4 /* UILayoutSupport+Extensions.swift in Sources */,
+				B4B43B2B6D30C65EE59890B569CFD1F3 /* Pods-NicooPlayer_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		150F94D325AAF7FB3DCD916D2A73B19F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SnapKit;
-			target = 806581F0B324D0A3520283F655916690 /* SnapKit */;
-			targetProxy = 1799AD0BC2887345ECD189F3C0BE5B01 /* PBXContainerItemProxy */;
-		};
-		3251DD937BE0FC0E06BF3C5E7675E0CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MBProgressHUD;
-			target = 6B1714E816AE794962516E2ECBB40A5A /* MBProgressHUD */;
-			targetProxy = 371FC3ED2C6FC87B98F1461C513085AB /* PBXContainerItemProxy */;
-		};
-		6CB8BBA519A91B328A9E3EEB3FC17F8C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MBProgressHUD;
-			target = 6B1714E816AE794962516E2ECBB40A5A /* MBProgressHUD */;
-			targetProxy = E0D0BE28793796FD48639ED26AFC5AA2 /* PBXContainerItemProxy */;
-		};
-		7D193750128A4F46D5F15BF5DF15ABBC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "NicooPlayer-NicooPlayer";
-			target = 88AE74F3CBA780E78924F25D2CF860FF /* NicooPlayer-NicooPlayer */;
-			targetProxy = B7564D4F6E44C8F256FF85830994A8E8 /* PBXContainerItemProxy */;
-		};
-		B40CC170E745926095F5BBE770F733B6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SnapKit;
-			target = 806581F0B324D0A3520283F655916690 /* SnapKit */;
-			targetProxy = EBB286FFC3B86ADF6D3FC286192E026C /* PBXContainerItemProxy */;
-		};
-		DE5E7E67F7443035F31E97C06A7C3FEE /* PBXTargetDependency */ = {
+		559AB78DBD3049ACC85F5FF8C0244CCD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-NicooPlayer_Example";
-			target = 210A0B6A4832B40F5C92A11CDDE602A7 /* Pods-NicooPlayer_Example */;
-			targetProxy = 7135FBB35EBF962667D943C9AFCD905C /* PBXContainerItemProxy */;
+			target = 11AFBDC2F1C56F94FBC6F1A7F59A46C6 /* Pods-NicooPlayer_Example */;
+			targetProxy = 5129E4035DD8943D042015F22945F771 /* PBXContainerItemProxy */;
 		};
-		E8E3B8A38B045C0ECCF81A7DBBDD940D /* PBXTargetDependency */ = {
+		6FE9C7709626176D9B511F2446CFF2CC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NicooPlayer;
-			target = 9D19AC79ECADCDDC141C7773E5AED4D2 /* NicooPlayer */;
-			targetProxy = DACA1CD7E6FB6AEC093EFA8B1AEB58D3 /* PBXContainerItemProxy */;
+			target = 18B8DB3EFA45F9069CDF5B554425973E /* NicooPlayer */;
+			targetProxy = 979931F151914A7F2AA7D63B31261D60 /* PBXContainerItemProxy */;
+		};
+		75DEA9FB36CE4B81D53EE434E10192E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SnapKit;
+			target = 52647C16D181E0C5C4058FF161452E7D /* SnapKit */;
+			targetProxy = 84CED70370F277316E806510D8BA63FF /* PBXContainerItemProxy */;
+		};
+		9273507AAC8B72221BD6DFF0A7500DC9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "NicooPlayer-NicooPlayer";
+			target = 18279A9E612B206865EEBFC4651DDBB5 /* NicooPlayer-NicooPlayer */;
+			targetProxy = 2FEA9E33732160B90F4FF6F18979B324 /* PBXContainerItemProxy */;
+		};
+		B206A7F540377202F349DD10981E09DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SnapKit;
+			target = 52647C16D181E0C5C4058FF161452E7D /* SnapKit */;
+			targetProxy = BB647F8AD82952CF022833D9CDE10497 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0FA6205B760155AD41D5D799182903CA /* Release */ = {
+		26AD38618934D01A33BFFA9A138879ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11CC0F775E621AB42BC5F02C2119C760 /* Pods-NicooPlayer_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-NicooPlayer_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NicooPlayer_Example/Pods-NicooPlayer_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2C135A884FDDDEAFC9DE1D154194D312 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11084A6BA20780B0A92EE054D45AD2B7 /* SnapKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SnapKit/SnapKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SnapKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
+				PRODUCT_MODULE_NAME = SnapKit;
+				PRODUCT_NAME = SnapKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		47DD5A61FDC4DE302445BADD6C2C847A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2AA53DDD4C73C480D0A29319586CD1CB /* Pods-NicooPlayer_Tests.release.xcconfig */;
 			buildSettings = {
@@ -1068,7 +1035,23 @@
 			};
 			name = Release;
 		};
-		16F6CD2CA43FB419AD87F583C4D9E456 /* Release */ = {
+		53EE40A9A61B9AEB02058DF648DA3864 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C85869772B039DE59C1EA50374753C0 /* NicooPlayer.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/NicooPlayer";
+				INFOPLIST_FILE = "Target Support Files/NicooPlayer/ResourceBundle-NicooPlayer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = NicooPlayer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		6E1FACB3F0BF22505AA288D71B8C518B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F948929D8D802D4CA4DCDDECE9A816DD /* Pods-NicooPlayer_Example.release.xcconfig */;
 			buildSettings = {
@@ -1095,7 +1078,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1103,7 +1085,100 @@
 			};
 			name = Release;
 		};
-		1EE19F5DD95931924296F637BF18BD8F /* Debug */ = {
+		85B95B1234E227C814CCC2C7902D0916 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		A34AEFCF764CBA670B9032FAE75789D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C85869772B039DE59C1EA50374753C0 /* NicooPlayer.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/NicooPlayer/NicooPlayer-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/NicooPlayer/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/NicooPlayer/NicooPlayer.modulemap";
+				PRODUCT_MODULE_NAME = NicooPlayer;
+				PRODUCT_NAME = NicooPlayer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A73625DEBD810B78234FA1958C191C8C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1157,18 +1232,21 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		23DB93C93BC3F17D6453C1896915D7ED /* Release */ = {
+		B8F7D34D868042303915A56683BB21AF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBAEF71D6AA2431BBCAD4B85D4AA6123 /* SnapKit.xcconfig */;
+			baseConfigurationReference = 11084A6BA20780B0A92EE054D45AD2B7 /* SnapKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1190,7 +1268,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1199,7 +1276,23 @@
 			};
 			name = Release;
 		};
-		443FCC138ADA616036F3DEA51464B531 /* Debug */ = {
+		E6BD3E7FFC17CD6396F1C82389C8BBAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C85869772B039DE59C1EA50374753C0 /* NicooPlayer.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/NicooPlayer";
+				INFOPLIST_FILE = "Target Support Files/NicooPlayer/ResourceBundle-NicooPlayer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = NicooPlayer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		FA0D65B62DD456145516D75FE425001E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 220D549E0F001D1CB0151129D42CF8C1 /* Pods-NicooPlayer_Tests.debug.xcconfig */;
 			buildSettings = {
@@ -1232,70 +1325,7 @@
 			};
 			name = Debug;
 		};
-		467393AB03BE30A415E80EE22B7F6139 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FC49E8068048FA9665FEA755A723474 /* MBProgressHUD.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MBProgressHUD/MBProgressHUD-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MBProgressHUD/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD.modulemap";
-				PRODUCT_MODULE_NAME = MBProgressHUD;
-				PRODUCT_NAME = MBProgressHUD;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		923634B0719240CF683B8E8BB1E004FA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FC49E8068048FA9665FEA755A723474 /* MBProgressHUD.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MBProgressHUD/MBProgressHUD-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MBProgressHUD/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD.modulemap";
-				PRODUCT_MODULE_NAME = MBProgressHUD;
-				PRODUCT_NAME = MBProgressHUD;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		9369E670BC75C8E560F2FFDB98AD565F /* Release */ = {
+		FC3BF9FDC8D4068854FAC381266EBC30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C85869772B039DE59C1EA50374753C0 /* NicooPlayer.xcconfig */;
 			buildSettings = {
@@ -1319,266 +1349,67 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B29A5D5DE3B64CA764CB6C7076FD0EB8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBAEF71D6AA2431BBCAD4B85D4AA6123 /* SnapKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SnapKit/SnapKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SnapKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
-				PRODUCT_MODULE_NAME = SnapKit;
-				PRODUCT_NAME = SnapKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C279E254933D5BDBBFB71A75A03C725C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C85869772B039DE59C1EA50374753C0 /* NicooPlayer.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/NicooPlayer";
-				INFOPLIST_FILE = "Target Support Files/NicooPlayer/ResourceBundle-NicooPlayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = NicooPlayer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		D5AD6B451B4218CE3845D2B3F56C0115 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11CC0F775E621AB42BC5F02C2119C760 /* Pods-NicooPlayer_Example.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-NicooPlayer_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-NicooPlayer_Example/Pods-NicooPlayer_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E1F5D38F92F891E71D5D056B85DFBBBA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C85869772B039DE59C1EA50374753C0 /* NicooPlayer.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/NicooPlayer";
-				INFOPLIST_FILE = "Target Support Files/NicooPlayer/ResourceBundle-NicooPlayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = NicooPlayer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		E4D792D912618FDA8E22BAE36610E14C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C85869772B039DE59C1EA50374753C0 /* NicooPlayer.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/NicooPlayer/NicooPlayer-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/NicooPlayer/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/NicooPlayer/NicooPlayer.modulemap";
-				PRODUCT_MODULE_NAME = NicooPlayer;
-				PRODUCT_NAME = NicooPlayer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		F4568DEE257655D290C2B9CEAB37C934 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		28A1BDB3CE3F2F1CB0931DFEEDBA7936 /* Build configuration list for PBXNativeTarget "MBProgressHUD" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				923634B0719240CF683B8E8BB1E004FA /* Debug */,
-				467393AB03BE30A415E80EE22B7F6139 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1EE19F5DD95931924296F637BF18BD8F /* Debug */,
-				F4568DEE257655D290C2B9CEAB37C934 /* Release */,
+				A73625DEBD810B78234FA1958C191C8C /* Debug */,
+				85B95B1234E227C814CCC2C7902D0916 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		39AE7F177F02A3C2A947A0FE21F14297 /* Build configuration list for PBXNativeTarget "SnapKit" */ = {
+		4E5FF87B5C52E34FC26048A8F14A0423 /* Build configuration list for PBXNativeTarget "SnapKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B29A5D5DE3B64CA764CB6C7076FD0EB8 /* Debug */,
-				23DB93C93BC3F17D6453C1896915D7ED /* Release */,
+				2C135A884FDDDEAFC9DE1D154194D312 /* Debug */,
+				B8F7D34D868042303915A56683BB21AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3EFEE0079118B564852737861D668B7D /* Build configuration list for PBXNativeTarget "Pods-NicooPlayer_Example" */ = {
+		52F63F9390F120E5E94EC1818AA72B85 /* Build configuration list for PBXNativeTarget "Pods-NicooPlayer_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D5AD6B451B4218CE3845D2B3F56C0115 /* Debug */,
-				16F6CD2CA43FB419AD87F583C4D9E456 /* Release */,
+				26AD38618934D01A33BFFA9A138879ED /* Debug */,
+				6E1FACB3F0BF22505AA288D71B8C518B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		50AA4DE5594BC35ADBF454B7FBFD20F3 /* Build configuration list for PBXNativeTarget "Pods-NicooPlayer_Tests" */ = {
+		76D9D4619E57528F69AD6EE728642684 /* Build configuration list for PBXNativeTarget "NicooPlayer-NicooPlayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				443FCC138ADA616036F3DEA51464B531 /* Debug */,
-				0FA6205B760155AD41D5D799182903CA /* Release */,
+				E6BD3E7FFC17CD6396F1C82389C8BBAD /* Debug */,
+				53EE40A9A61B9AEB02058DF648DA3864 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		544EF42742B55C16E87575AA674BCBB5 /* Build configuration list for PBXNativeTarget "NicooPlayer" */ = {
+		8BE70094102074EAC0FFB0E4D55AADDF /* Build configuration list for PBXNativeTarget "Pods-NicooPlayer_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E4D792D912618FDA8E22BAE36610E14C /* Debug */,
-				9369E670BC75C8E560F2FFDB98AD565F /* Release */,
+				FA0D65B62DD456145516D75FE425001E /* Debug */,
+				47DD5A61FDC4DE302445BADD6C2C847A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8E00F08E11077BE368DBEC8AFF1E40EB /* Build configuration list for PBXNativeTarget "NicooPlayer-NicooPlayer" */ = {
+		E606B2C6C7B982D9297C42085A492CBB /* Build configuration list for PBXNativeTarget "NicooPlayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C279E254933D5BDBBFB71A75A03C725C /* Debug */,
-				E1F5D38F92F891E71D5D056B85DFBBBA /* Release */,
+				A34AEFCF764CBA670B9032FAE75789D1 /* Debug */,
+				FC3BF9FDC8D4068854FAC381266EBC30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
