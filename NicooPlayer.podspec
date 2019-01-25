@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NicooPlayer'
-  s.version          = '1.3.4'
+  s.version          = '1.3.3'
   s.summary          = 'NicooVideoPlayer for swift4.2'
 
   s.description      = <<-DESC
