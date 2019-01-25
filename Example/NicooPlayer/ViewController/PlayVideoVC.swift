@@ -73,6 +73,7 @@ class PlayVideoVC: UIViewController {
     private lazy var playerView: NicooPlayerView = {
         let player = NicooPlayerView(frame: self.fateherView.bounds, bothSidesTimelable: true)
         player.videoLayerGravity = .resizeAspectFill
+        player.videoNameShowOnlyFullScreen = true
         player.delegate = self
         player.customViewDelegate = self
         return player
