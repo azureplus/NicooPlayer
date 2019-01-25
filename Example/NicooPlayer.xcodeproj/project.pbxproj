@@ -15,7 +15,6 @@
 		0791D65920D8B369009E1109 /* NicooVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791D65720D8B369009E1109 /* NicooVideoCell.swift */; };
 		0791D65A20D8B369009E1109 /* NicooVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0791D65820D8B369009E1109 /* NicooVideoCell.xib */; };
 		0791D65D20D8B492009E1109 /* CellPlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791D65B20D8B492009E1109 /* CellPlayVC.swift */; };
-		0791D65E20D8B492009E1109 /* CellPlayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0791D65C20D8B492009E1109 /* CellPlayVC.xib */; };
 		079B9F4620EE1754006A0531 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079B9F4520EE1753006A0531 /* ViewController.swift */; };
 		183D817E21AD2D3D00F7DD2B /* testVideo.m3u8 in Resources */ = {isa = PBXBuildFile; fileRef = 183D817D21AD2D3D00F7DD2B /* testVideo.m3u8 */; };
 		18A2E75A21A92D0300DE60E6 /* hubblecast.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 18A2E75921A92D0300DE60E6 /* hubblecast.m4v */; };
@@ -48,7 +47,6 @@
 		0791D65720D8B369009E1109 /* NicooVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicooVideoCell.swift; sourceTree = "<group>"; };
 		0791D65820D8B369009E1109 /* NicooVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NicooVideoCell.xib; sourceTree = "<group>"; };
 		0791D65B20D8B492009E1109 /* CellPlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPlayVC.swift; sourceTree = "<group>"; };
-		0791D65C20D8B492009E1109 /* CellPlayVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellPlayVC.xib; sourceTree = "<group>"; };
 		079B9F4520EE1753006A0531 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0D689AB229E55E1B0F0F9A6E /* Pods-NicooPlayer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NicooPlayer_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NicooPlayer_Example/Pods-NicooPlayer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1714656CCCE457A253FA3994 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 			children = (
 				079B9F4520EE1753006A0531 /* ViewController.swift */,
 				0791D65B20D8B492009E1109 /* CellPlayVC.swift */,
-				0791D65C20D8B492009E1109 /* CellPlayVC.xib */,
 				0791D65520D8B2E1009E1109 /* PlayVideoVC.swift */,
 				07655FB92100913100800DC4 /* DownLoadedVideoPlayerVC.swift */,
 				070F19E4213FC3AB00E17779 /* NextViewController.swift */,
@@ -264,15 +261,15 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = NRD5RKUVRB;
+						DevelopmentTeam = UQSUKX6888;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = NRD5RKUVRB;
+						DevelopmentTeam = UQSUKX6888;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -303,7 +300,6 @@
 			files = (
 				183D817E21AD2D3D00F7DD2B /* testVideo.m3u8 in Resources */,
 				18A2E75A21A92D0300DE60E6 /* hubblecast.m4v in Resources */,
-				0791D65E20D8B492009E1109 /* CellPlayVC.xib in Resources */,
 				0791D65A20D8B369009E1109 /* NicooVideoCell.xib in Resources */,
 				18A6A82F21BBC9EA00833D31 /* monkeyKing.m3u8 in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
@@ -540,16 +536,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = NRD5RKUVRB;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQSUKX6888;
 				INFOPLIST_FILE = NicooPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tzpt.nicoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Xs.nicooPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e7e0aea7-38ce-44b1-8d6e-9788e0580ef8";
-				PROVISIONING_PROFILE_SPECIFIER = allIdTest;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -562,15 +558,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = NRD5RKUVRB;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQSUKX6888;
 				INFOPLIST_FILE = NicooPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tzpt.nicoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Xs.nicooPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = allIdTest;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -582,8 +578,8 @@
 			baseConfigurationReference = 404488BB86E22FC167AC84D3 /* Pods-NicooPlayer_Tests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = NRD5RKUVRB;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQSUKX6888;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -606,8 +602,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A8EB779262E6ED0967718D3E /* Pods-NicooPlayer_Tests.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = NRD5RKUVRB;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQSUKX6888;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

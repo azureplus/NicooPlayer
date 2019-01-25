@@ -64,7 +64,7 @@ extension DownLoadedVideoPlayerVC {
 
 extension DownLoadedVideoPlayerVC: NicooPlayerDelegate {
     
-    func retryToPlayVideo(_ videoModel: NicooVideoModel?, _ fatherView: UIView?) {
+    func retryToPlayVideo(_ player: NicooPlayerView , _ videoModel: NicooVideoModel?, _ fatherView: UIView?) {
         
     }
     

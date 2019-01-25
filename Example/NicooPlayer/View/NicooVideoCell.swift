@@ -10,6 +10,8 @@ import UIKit
 
 class NicooVideoCell: UITableViewCell {
 
+    static let cellIdentifier = "VideoCell"
+    
     @IBOutlet weak var backGroundImage: UIImageView!
     lazy var playButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -18,11 +20,14 @@ class NicooVideoCell: UITableViewCell {
         button.layer.masksToBounds = true
         button.setImage(UIImage(named: "pause"), for: .normal)
         button.addTarget(self, action: #selector(playButtonClick(_:)), for: .touchUpInside)
-        button.tag = 99         // 这里Ta必须要有， 并设为非0
         return button
     }()
+    // 是否播放器已经存在
+    var isPlayerExist = false
     
     var playButtonClickBlock:((_ sender: UIButton) ->())?
+    var goDetailClick:((_ sender: UIButton) ->Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backGroundImage.addSubview(playButton)
@@ -30,6 +35,10 @@ class NicooVideoCell: UITableViewCell {
             make.center.equalToSuperview()
             make.width.height.equalTo(60)
         }
+    }
+    
+    @IBAction func goNextDetail(_ sender: UIButton) {
+        goDetailClick?(sender)
     }
     
     @objc func playButtonClick(_ sender: UIButton) {
