@@ -457,6 +457,7 @@ private extension NicooPlayerView {
         // 👇三个属性的设置顺序很重要
         self.playUrl = url   // 判断视频链接是否更改，更改了就重置播放器
         self.videoName = videoName      // 视频名称
+        self.playControllViewEmbed.videoNameLable.isHidden = videoNameShowOnlyFullScreen
         
         if !isFullScreen! {
             fatherView = containView // 更换父视图时
@@ -582,6 +583,7 @@ private extension NicooPlayerView {
                 avAsset = AVURLAsset(url: videoUrl, options: nil)
             } else {
                 // 非流媒体的视频，使用resouerLoader缓冲数据
+                // 现在主流的视频都是流媒体，所以这里要考虑下流媒体的下载，然后做断点续传。
                 isM3U8 = false
                 avAsset = AVURLAsset(url: videoUrl, options: nil)
                 //                resouerLoader = NicooAssetResourceLoader()

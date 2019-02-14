@@ -15,7 +15,7 @@ class NicooVideoCell: UITableViewCell {
     @IBOutlet weak var backGroundImage: UIImageView!
     lazy var playButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.backgroundColor = UIColor.black
+        button.backgroundColor = UIColor(white: 0, alpha: 0.5)
         button.layer.cornerRadius = 30
         button.layer.masksToBounds = true
         button.setImage(UIImage(named: "pause"), for: .normal)

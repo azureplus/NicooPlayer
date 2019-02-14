@@ -12,7 +12,7 @@ import NicooPlayer
 
 class CellPlayVC: UIViewController {
     
-    private let urlStrings =  ["https://me.guiji365.com/20180616/LQfzeEFU/index.m3u8","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://api.gfs100.cn/upload/20171218/201712181643211975.mp4","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4"]
+    private let urlStrings =  ["https://me.guiji365.com/20180616/LQfzeEFU/index.m3u8","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://aliyun36001.baomihua.com/23cb24d3f9974acc8f72e93f5bd62d71/5c4b0c68/3917/39169227_7_d7d4eedd1c7bf7965d15ff422c82ef0a.mp4","http://api.gfs100.cn/upload/20171218/201712181643211975.mp4","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4","http://api.gfs100.cn/upload/20180201/201802011423168057.mp4"]
     
     private lazy var tableView: UITableView = {
         let table = UITableView(frame: view.bounds, style: .plain)
