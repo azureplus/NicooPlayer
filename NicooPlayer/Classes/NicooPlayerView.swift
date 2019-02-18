@@ -31,7 +31,7 @@ public extension NicooCustomMuneDelegate {
 public protocol NicooPlayerDelegate: class {
     
     /// 代理在外部处理网络问题
-    func retryToPlayVideo(_ player: NicooPlayerView?, _ videoModel: NicooVideoModel?, _ fatherView: UIView?)
+    func retryToPlayVideo(_ player: NicooPlayerView, _ videoModel: NicooVideoModel?, _ fatherView: UIView?)
     
     /// 当前播放的视频播放完成时调用
     ///
