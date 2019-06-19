@@ -38,8 +38,8 @@ class DownLoadedVideoPlayerVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let fileUrl = Bundle.main.path(forResource: "localFile", ofType: ".mp4")
-        videoPlayer.playLocalVideoInFullscreen(fileUrl, "localFile", view, sinceTime: 0)
+        let fileUrl = Bundle.main.path(forResource: "hubblecast", ofType: ".m4v")
+        videoPlayer.playLocalVideoInFullscreen(fileUrl, "hubblecast", view, sinceTime: 0)
         videoPlayer.playLocalFileVideoCloseCallBack = { [weak self] (playValue) in
             self?.navigationController?.popViewController(animated: false)
         }
