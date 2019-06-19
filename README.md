@@ -22,7 +22,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 
-（适配iOS12 新机型）
+（适配iOS12 新机型） thank you.
 
    (新改动： 支持M3U8流媒体格式的视频播放。 播放器播放正常.mp4，.m4v等后缀的视频时，采用resourceLoader缓存器实现断点续传。而.m3u8格式的视频不支持这种方式。如果是m3u8格式的视频，则不适用本地缓存器，直接从服务器拉流直接播放, 且流媒体格式不支持拖动进度。)
 
