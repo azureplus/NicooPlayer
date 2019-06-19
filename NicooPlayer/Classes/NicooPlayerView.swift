@@ -193,7 +193,7 @@ open class NicooPlayerView: UIView {
         didSet {
             if fatherView != nil && !(fatherView?.subviews.contains(self))! {
                 fatherView?.addSubview(self)
-            }  
+            }
         }
     }
     /// 嵌入式播放控制View
@@ -513,7 +513,6 @@ private extension NicooPlayerView {
         /// 播放记录
         if let playLastTime = sinceTime, playLastTime > 1 {
             self.playTimeSince = playLastTime      // 保存播放起点，在网络断开时，点击重试，可以找到起点
-            self.playerStatu = PlayerStatus.Pause
             guard let avItem = self.avItem else{return}
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 let lastPositionValue = CMTimeMakeWithSeconds(Float64(playLastTime), preferredTimescale: (avItem.asset.duration.timescale))
@@ -621,6 +620,8 @@ private extension NicooPlayerView {
             showLoadingHud()      /// 网络视频才显示菊花
             orientationSupport = NicooPlayerOrietation.orientationAll
         }
+        
+        player?.play()
     }
     
     /// 重置播放器
@@ -773,11 +774,7 @@ private extension NicooPlayerView {
                     strongSelf.addSubview(customMuneView)
                 }
                 customMuneView.snp.makeConstraints({ (make) in
-                    if #available(iOS 11.0, *) {
-                        make.edges.equalTo(strongSelf.safeAreaLayoutGuide.snp.edges)
-                    } else {
-                        make.edges.equalToSuperview()
-                    }
+                    make.edges.equalToSuperview()
                 })
             }
             
@@ -802,14 +799,14 @@ private extension NicooPlayerView {
                 let y = abs(veloctyPoint.y)
                 
                 if x > y {                       //水平滑动
-                   
+                    
                     if !strongSelf.playControllViewEmbed.replayContainerView.isHidden {  // 锁屏状态下播放完成,解锁后，滑动
                         strongSelf.startReadyToPlay()
                         strongSelf.playControllViewEmbed.screenIsLock = false
                     }
                     strongSelf.panDirection = PanDirection.PanDirectionHorizontal
                     // strongSelf.beforeSliderChangePlayStatu = strongSelf.playerStatu  // 拖动开始时，记录下拖动前的状态
-                    strongSelf.playerStatu = PlayerStatus.Pause   
+                    strongSelf.playerStatu = PlayerStatus.Pause
                     strongSelf.pauseButton.isHidden = true                     // 拖动时隐藏暂停按钮
                     strongSelf.sumTime = CGFloat(avItem.currentTime().value)/CGFloat(avItem.currentTime().timescale)
                     if !strongSelf.subviews.contains(strongSelf.draggedProgressView) {
@@ -871,7 +868,7 @@ private extension NicooPlayerView {
                     /// 拖动完成，sumTime置为0 回到之前的播放状态，如果播放状态为
                     strongSelf.sumTime = 0
                     strongSelf.pauseButton.isHidden = false
-                   
+                    
                     strongSelf.playerStatu = PlayerStatus.Playing
                     //进度拖拽完成，5庙后自动隐藏操作栏
                     strongSelf.autoHideBar()
@@ -929,8 +926,8 @@ private extension NicooPlayerView {
         draggedTimeLable.text = String(format: "%@|%@", draggedTimeString, allTimeString)
         playControllViewEmbed.positionTimeLab.text = self.formatTimPosition(position: Int(sumValue), duration: Int(totalMoveDuration))
         draggedStatusButton.isSelected = moveValue < 0
-        if !isDragging {     
-             playControllViewEmbed.timeSlider.value = Float(dragValue)
+        if !isDragging {
+            playControllViewEmbed.timeSlider.value = Float(dragValue)
         }
         sumTime = sumValue
         return dragValue
@@ -1175,15 +1172,15 @@ extension NicooPlayerView {
         if keyPath == "status" {
             if avItem.status == AVPlayerItem.Status.readyToPlay {
                 print("AVPlayerItem.Status.readyToPlay")
-                playerStatu = PlayerStatus.Playing // 初始状态为播放
+                playerStatu = PlayerStatus.ReadyToPlay // 初始状态为播放
+                playControllViewEmbed.playOrPauseBtn.isSelected = true
                 updateTimeLableLayout(avItem: avItem)
                 
             }else if avItem.status == AVPlayerItem.Status.unknown {
                 //视频加载失败，或者未知原因
                 playerStatu = PlayerStatus.Unknown
                 hideLoadingHud()
-                
-            }else if avItem.status == AVPlayerItem.Status.failed {
+            } else if avItem.status == AVPlayerItem.Status.failed {
                 NLog("PlayerStatus.failed")
                 playerStatu = PlayerStatus.Failed
                 // 代理出去，在外部处理网络问题
@@ -1231,7 +1228,7 @@ extension NicooPlayerView {
                 self.playControllViewEmbed.timeSlider.value = playValue
                 self.playedValue = Float(value)                                      // 保存播放进度
             }
-           
+            
         }
     }
     

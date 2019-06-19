@@ -26,7 +26,7 @@ class PlayVideoVC: UIViewController {
     /// 全屏播放时，让状态栏变为 lightContent
     /// 1.如果整个项目的状态栏已经为 lightContent，则不需要这些操作，直接播放就好。
     /// 2.如果整个项目状态栏为default，则需要在添加播放器的页面加上一个bool判断， 再重写preferredStatusBarStyle属性,将状态栏样式与播放器的横竖屏关联，plist文件中添加: Status bar is initially hidden = YES
-   
+    
     
     
     
@@ -103,7 +103,7 @@ class PlayVideoVC: UIViewController {
         playerView.playVideo(url, "VideoName", fateherView)
         
         // 初始化播放器，并从某个时间点开始播放
-         //playerView.replayVideo(url, "视屏名称", fateherView, 10.0)
+        //playerView.replayVideo(url, "视屏名称", fateherView, 10.0)
     }
     
     // 改变父视图
@@ -148,29 +148,38 @@ class PlayVideoVC: UIViewController {
         playerView.interfaceOrientation(UIInterfaceOrientation.portrait)  // 先回到竖屏状态
         navigationController?.pushViewController(NextViewController(), animated: true)
     }
-   
+    
 }
 
 // MARK: - NicooPlayerDelegate
 
 extension PlayVideoVC: NicooPlayerDelegate, NicooCustomMuneDelegate {
-   
-    func customTopBarActions() -> [UIButton]? {
-        var buttonS = [UIButton]()
-        for i in 0..<3 {
-            let button = UIButton(type: .custom)
-            button.backgroundColor = UIColor.white
-            button.setImage(UIImage(named: ["collection","downLoad","shareAction"][i]), for: .normal)
-            button.addTarget(self, action: #selector(topBarCustonButtonClick(_:)), for: .touchUpInside)
-            buttonS.append(button)
+    
+    //    func customTopBarActions() -> [UIButton]? {
+    //        var buttonS = [UIButton]()
+    //        for i in 0..<3 {
+    //            let button = UIButton(type: .custom)
+    //            button.backgroundColor = UIColor.white
+    //            button.setImage(UIImage(named: ["collection","downLoad","shareAction"][i]), for: .normal)
+    //            button.addTarget(self, action: #selector(topBarCustonButtonClick(_:)), for: .touchUpInside)
+    //            buttonS.append(button)
+    //        }
+    //        return buttonS
+    //    }
+    //
+    func showCustomMuneView() -> UIView? {
+        let view1 = CustomMuneView11(frame: self.view.bounds)
+        view1.itemClick = { [weak self] in
+            print("itemClick ===== ?>>>>>>>>")
         }
-        return buttonS
+        return view1
+        
     }
     
     func retryToPlayVideo(_ player: NicooPlayerView, _ videoModel: NicooVideoModel?, _ fatherView: UIView?) {
         print("网络不可用时调用")
         let url = URL(string: videoModel?.videoUrl ?? "")
-        if  let sinceTime = videoModel?.videoPlaySinceTime, sinceTime > 0 {    
+        if  let sinceTime = videoModel?.videoPlaySinceTime, sinceTime > 0 {
             player.replayVideo(url, videoModel?.videoName, fatherView, sinceTime)
         }else {
             player.playVideo(url, videoModel?.videoName, fatherView)
