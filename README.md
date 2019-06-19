@@ -15,8 +15,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 <img src="https://github.com/shiliujiejie/NicooPlayer/blob/master/ScreenShot/IMG_0221.PNG" width = "80%" />
 <img src="https://github.com/shiliujiejie/NicooPlayer/blob/master/ScreenShot/IMG_0223.PNG" width = "80%" />
 <img src="https://github.com/shiliujiejie/NicooPlayer/blob/master/ScreenShot/IMG_0224.PNG" width = "80%" />
-<img src="https://github.com/shiliujiejie/NicooPlayer/blob/master/ScreenShot/IMG_0227.PNG" width = "80%" />
-<img src="https://github.com/shiliujiejie/NicooPlayer/blob/master/ScreenShot/IMG_0228.PNG" width = "80%" />
+<img src="https://github.com/shiliujiejie/NicooPlayer/blob/master/ScreenShot/IMG_0227.PNG" width = "35%" />
+<img src="https://github.com/shiliujiejie/NicooPlayer/blob/master/ScreenShot/IMG_0228.PNG" width = "35%" />
 <img src="https://github.com/shiliujiejie/NicooPlayer/blob/master/ScreenShot/IMG_0229.PNG" width = "80%" />
 
 ## Requirements
